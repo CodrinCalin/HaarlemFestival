@@ -1,0 +1,6 @@
+
+e	php:S1784"DExplicitly mention the visibility of this constructor "__construct".(‡¸Úœùÿÿÿÿ8ş¿üÛ1
+:php:S113"'Add a new line at the end of this file.8ş¿üÛ1
+L	php:S1481"+Remove this unused "$model" local variable.(ˆóÚòøÿÿÿÿ8™Ø—Û1
+B	php:S2003"&Replace "require" with "require_once".(ñ‘ãŠ8ş¿üÛ1
+h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(ñ‘ãŠ8ş¿üÛ1
