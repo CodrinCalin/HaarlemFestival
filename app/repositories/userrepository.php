@@ -5,7 +5,8 @@ use PDO;
 
 class UserRepository extends Repository {
 
-    function getAll() {
+    function getAll()
+    {
         $stmt = $this->connection->prepare("SELECT * FROM users");
         $stmt->execute();
 
@@ -15,18 +16,56 @@ class UserRepository extends Repository {
         return $users;
     }
 
+    public function getUserById($userId)
+    {
+        $stmt = $this->connection->prepare(
+            "SELECT * 
+                FROM users 
+                WHERE id=:userId");
+        $stmt->execute([':userId' => $userId]);
 
-    public function insert($user) {
-        $stmt = $this->connection->prepare("INSERT INTO users (username, email, password, first_name, last_name, date_created) 
-        VALUES (:username, :email, :password, :first_name, :last_name, :date_created)");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\\Models\\User');
+        $userRetrieved = $stmt->fetch();
 
-        $date = date('Y/m/d h:i:s H', time());
+        if ($userRetrieved) {
+            return $userRetrieved;
+        } else {
+            return null;
+        }
+    }
 
-        $results = $stmt->execute([':email' => $user->email,
-                                ':password' => $user->password,
-                                ':first_name' => $user->first_name,
-                                ':last_name' => $user->last_name,
-                                ':date_created' =>  $date]);
-        return $results;
+    public function addUser($newUser)
+    {
+        $stmt = $this->connection->prepare(
+            "INSERT INTO users (username, email, password, first_name, last_name, date_created) 
+                VALUES (:username, :email, :password, :first_name, :last_name, CURRENT_TIMESTAMP)");
+
+        $results = $stmt->execute([
+            ':username' => $newUser->username,
+            ':email' => $newUser->email,
+            ':password' => $newUser->password,
+            ':first_name' => $newUser->first_name,
+            ':last_name' => $newUser->last_name]);
+    }
+
+    public function updateUserById($updatedUser)
+    {
+        $stmt = $this->connection->prepare(
+          "UPDATE `users` SET username=:username, first_name=:firstName, last_name=:lastName 
+                WHERE id=:id");
+        $stmt->execute([
+                ':username' => $updatedUser->username,
+                ':firstName' => $updatedUser->first_name,
+                ':lastName' => $updatedUser->last_name,
+                ':id' => $updatedUser->id]);
+    }
+
+    public function deleteUserById($userId)
+    {
+        $stmt = $this->connection->prepare(
+        "DELETE 
+                FROM `users` 
+                WHERE id=:userId");
+        $stmt->execute([':userId' => $userId]);
     }
 }

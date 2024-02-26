@@ -2,7 +2,15 @@
 include __DIR__ . '/../header.php';
 ?>
 
-    <h1>Manage Users</h1>
+    <div class="row">
+        <h1 class="col-3">Manage Users</h1>
+        <div class="col-2">
+            <button class="btn btn-success"><a href="/manageusers/create" style="color: white; text-decoration: none;">Create New</a></button>
+        </div>
+    </div>
+    <?php
+    if($model){
+    ?>
     <table class="table">
         <thead>
         <tr>
@@ -34,6 +42,9 @@ include __DIR__ . '/../header.php';
         ?>
         </tbody>
     </table>
+    <?php }else{ ?>
+        <h3>No users present in the database!</h3>
+    <?php } ?>
 
 <?php
 include __DIR__ . '/../footer.php';
