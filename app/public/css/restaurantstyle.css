@@ -1,16 +1,70 @@
-* .container {
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    color: white;
+    background-color: slategray;
+}
+
+.container {
     margin: 0;
+    padding: 0;
 }
 
-.foodbg {
-    width: 100%;
-    max-height: 100vh;
+img {
+    height: 100dvh;
+    width: 100dvw;
 }
 
-.food-bg-darkening {
-    background-color: black;
-    opacity: 50%;
-    width: 100vw;
-    height: 100vh;
+.text-blue {
+    color: #07BEB8;
+}
+
+.yummy-text {
+    font-family: "Sansita", sans-serif;
+    font-weight: 800;
+    font-size: 15rem;
+    transform: rotate(2.5deg) translate(-50%, -50%);
+    background-color: #07BEB8;
+    border-radius: 5%;
+}
+
+.date-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.75rem;
+    transform: rotate(2.5deg) translate(0%, 170%);
+}
+
+.caption-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 5rem;
+    transform: translate(-50%, 300%);
+}
+
+.details-bg {
+    background-color: #FFFFD4;
+}
+
+.yummy-details {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.75rem;
+}
+
+.yummy-details-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.6rem;
+    margin-left: 20dvw;
+    margin-right: 20dvw;
+}
+
+.banner {
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    font-size: 3.75rem;
+    background-color: #FFFFD4;
+    border-radius: 20px;
+    margin-left: 20dvw;
+    min-width: 60vw;
 }
