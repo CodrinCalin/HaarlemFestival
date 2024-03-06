@@ -19,6 +19,28 @@ class AuthController
         require __DIR__ . '/../views/auth/index.php';
     }
 
+    public function login(){
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            if(isset($_POST["username"]))
+            {
+                $usernameInput = $_POST["username"];
+                $userMatch = $this->service->getUserByUsername($usernameInput);
+                if($userMatch != null){
+                    $passwordInput = $_POST["password"];
+                    if(password_verify($passwordInput, $userMatch->password)) {
+                        $_SESSION["authUser"] = $userMatch;
+                        header("Location: /");
+                        exit();
+                    }else{
+                        echo "Incorrect password!";
+                    }
+                }else{
+                    echo "User not found!";
+                }
+            }
+        }
+    }
+
     public function register(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $newUser = new User();

@@ -26,7 +26,7 @@
                         <?php }?>
                         <li class="nav-item"><a href="/auth/logout" class="nav-link">Log out</a></li>
                     <?php } else{ ?>
-                        <li class="nav-item"><a href="/auth/login" class="nav-link">Login</a></li>
+                        <li class="nav-item"><a href="/auth" class="nav-link">Login</a></li>
                         <li class="nav-item"><a href="/auth/register" class="nav-link">Register</a></li>
                     <?php } ?>
                 </ul>
