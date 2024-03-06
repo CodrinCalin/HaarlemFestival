@@ -5,6 +5,24 @@
     font-family: Calibri;
     color: black;
 }
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+}
+
+/* Form required symbol */
 .required{
     color: red;
+}
+
+/* Sticky Footer */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
 }
