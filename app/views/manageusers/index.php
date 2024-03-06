@@ -25,27 +25,26 @@ include __DIR__ . '/../header.php';
         </thead>
         <tbody>
         <?php
-        foreach ($model as $user) {
-            echo "<tr>";
-                echo "<td>$user->username</td>";
-                echo "<td>$user->email</td>";
-                echo "<td>$user->password</td>";
-                echo "<td>$user->first_name</td>";
-                echo "<td>$user->last_name</td>";
-                echo "<td>$user->date_created</td>";
-                echo "<td><a href='/manageusers/edit?id=$user->id'>Edit</a>";
-                echo " | ";
-                echo "<a href='/manageusers/delete?id=$user->id'>Delete</a>";
-                echo "</td>";
-            echo "</tr>";
-        }
-        ?>
+        foreach ($model as $user) { ?>
+            <tr>
+                <td><?php echo isset($user->username) ? $user->username : "" ; ?></td>
+                <td><?php echo isset($user->email) ? $user->email : "" ; ?></td>
+                <td><?php echo isset($user->password) ? $user->password : "" ; ?></td>
+                <td><?php echo isset($user->last_name) ? $user->last_name : "" ; ?></td>
+                <td><?php echo isset($user->first_name) ? $user->first_name : "" ; ?></td>
+                <td><?php echo isset($user->date_created) ? $user->date_created : "" ; ?></td>
+                <td>
+                    <a href='/manageusers/edit?id=<?php echo $user->id;?>'>Edit</a>
+                    |
+                    <a href='/manageusers/delete?id=<?php echo $user->id;?>'>Delete</a>
+                </td>
+            </tr>
+        <?php } ?>
         </tbody>
     </table>
-    <?php }else{ ?>
+    <?php } else{ ?>
         <h3>No users present in the database!</h3>
     <?php } ?>
-
 <?php
 include __DIR__ . '/../footer.php';
 ?>

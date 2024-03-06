@@ -5,7 +5,7 @@ class HomeController
 {
     function __construct()
     {
-        /*for now empty*/
+        session_start();
     }
 
     public function index()

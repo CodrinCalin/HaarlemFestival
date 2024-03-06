@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Models\Permissions;
 use PDO;
 
 class UserRepository extends Repository {
@@ -19,9 +20,9 @@ class UserRepository extends Repository {
     public function getUserById($userId)
     {
         $stmt = $this->connection->prepare(
-            "SELECT * 
-                FROM users 
-                WHERE id=:userId");
+            "SELECT id, username, email, password, first_name, last_name, permissions, date_created
+                    FROM users
+                    WHERE id=:userId");
         $stmt->execute([':userId' => $userId]);
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\\Models\\User');
@@ -34,18 +35,52 @@ class UserRepository extends Repository {
         }
     }
 
-    public function addUser($newUser)
+    public function getUserByUsername($usernameInput)
     {
         $stmt = $this->connection->prepare(
-            "INSERT INTO users (username, email, password, first_name, last_name, date_created) 
-                VALUES (:username, :email, :password, :first_name, :last_name, CURRENT_TIMESTAMP)");
+            "SELECT id, username, email, password, first_name, last_name, permissions, date_created
+                    FROM users  
+                    WHERE username LIKE :username");
+        $stmt->execute([':username' => $usernameInput]);
 
-        $results = $stmt->execute([
-            ':username' => $newUser->username,
-            ':email' => $newUser->email,
-            ':password' => $newUser->password,
-            ':first_name' => $newUser->first_name,
-            ':last_name' => $newUser->last_name]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\\Models\\User');
+        $userRetrieved = $stmt->fetch();
+
+        if ($userRetrieved) {
+            return $userRetrieved;
+        } else {
+            return null;
+        }
+    }
+
+    public function addUser($username, $email, $password)
+    {
+        $default_permissions = 2; // 0-System, 1-Admin, 2-User
+        $stmt = $this->connection->prepare(
+            "INSERT INTO users (username, email, password, permissions, date_created) 
+                    VALUES (:username, :email, :password, :permissions, CURRENT_TIMESTAMP)");
+
+        $stmt->execute([
+            ':username' => $username,
+            ':email' => $email,
+            ':password' => $password,
+            ':permissions' => $default_permissions]);
+    }
+
+    public function addUserWithDetails($username, $email, $password, $first_name, $last_name)
+    {
+        $default_permissions = 2; // 0-System, 1-Admin, 2-User
+        $stmt = $this->connection->prepare(
+            "INSERT INTO users (username, email, password, first_name, last_name, permissions, date_created) 
+                VALUES (:username, :email, :password, :first_name, :last_name, :permissions, CURRENT_TIMESTAMP)");
+
+        $stmt->execute([
+            ':username' => $username,
+            ':email' => $email,
+            ':password' => $password,
+            ':first_name' => $first_name,
+            ':last_name' => $last_name,
+            ':permissions' => $default_permissions]);
     }
 
     public function updateUserById($updatedUser)
@@ -67,5 +102,34 @@ class UserRepository extends Repository {
                 FROM `users` 
                 WHERE id=:userId");
         $stmt->execute([':userId' => $userId]);
+    }
+
+    public function checkUsernameExists($usernameInput)
+    {
+        $username = $this->getUserByUsername($usernameInput);
+
+        if ($username == $usernameInput) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkEmailExists($emailInput)
+    {
+        $stmt = $this->connection->prepare(
+            "SELECT `id`, `email`
+                FROM users 
+                WHERE email LIKE :email");
+        $stmt->execute([':email' => $emailInput]);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\\Models\\User');
+        $result = $stmt->fetch();
+
+        if ($result->email == $emailInput) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

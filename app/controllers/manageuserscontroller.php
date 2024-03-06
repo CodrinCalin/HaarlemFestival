@@ -11,6 +11,7 @@ class ManageUsersController
 
     function __construct()
     {
+        session_start();
         $this->service = new UserService();
     }
 
