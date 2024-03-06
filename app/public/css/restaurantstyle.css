@@ -68,3 +68,10 @@ img {
     margin-left: 20dvw;
     min-width: 60vw;
 }
+
+.restaurant-card {
+    width: 500px;
+    height: 1000px;
+    background-size: 100% 100%;
+    border-radius: 20px;
+}

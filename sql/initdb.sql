@@ -67,6 +67,37 @@ ALTER TABLE `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Table structure for table `restaurantCategory`
+--
+
+CREATE TABLE `restaurantCategory` (
+                         `id` int(11) NOT NULL,
+                         `category` varchar(21) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `restaurantCategory`
+--
+
+INSERT INTO `restaurantCategory` (`id`, `category`) VALUES
+    (1, 'From The Sea'),
+    (2, 'International Cuisine');
+
+--
+-- Indexes for table `restaurantCategory`
+--
+ALTER TABLE `restaurantCategory`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for table `restaurantCategory`
+--
+ALTER TABLE `restaurantCategory`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

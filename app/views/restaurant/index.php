@@ -20,16 +20,35 @@ include __DIR__ . "/../header.php";
     <div class="caption-text position-absolute fw-bold top-50 start-50 text-center vw-100">A Food Festival in Haarlem</div>
 
     <div class="details-bg p-4 vw-100">
-        <div class="yummy-details text-black fw-bold position-relative text-center vw-100">Yummy! Food Event Details</div>
-        <div class="yummy-details-text text-black position-relative text-center vw-50 mt-2 mb-2">Come and see the participating restaurants at our very own food event at the Haarlem Festival. Featuring all sorts of different cuisines you're sure to find something you that fits your tastes! Take a quick look at each restaurant and easily find out more about any restaurant and book your very own reservation by clicking "Learn More".</div>
-        <div class="yummy-details-text text-blue fw-bold position-relative text-center vw-50">REMINDER:</div>
-        <div class="yummy-details-text text-blue fw-bold position-relative text-center vw-50">A reservation is mandatory to dine at participating restaurants, remember to book before you wish to dine!</div>
+        <h1 class="yummy-details text-black fw-bold position-relative text-center vw-100">Yummy! Food Event Details</h1>
+        <p class="yummy-details-text text-black position-relative text-center vw-50 mt-2 mb-2">Come and see the participating restaurants at our very own food event at the Haarlem Festival. Featuring all sorts of different cuisines you're sure to find something you that fits your tastes! Take a quick look at each restaurant and easily find out more about any restaurant and book your very own reservation by clicking "Learn More".</p>
+        <p class="yummy-details-text text-blue fw-bold position-relative text-center vw-50">REMINDER:</p>
+        <p class="yummy-details-text text-blue fw-bold position-relative text-center vw-50">A reservation is mandatory to dine at participating restaurants, remember to book before you wish to dine!</p>
     </div>
 
-    <div class="banner text-black fw-bold position-relative text-center mt-3">From The Sea</div>
-    <!--            Insert Seafood Cards Here-->
-    <div class="banner text-black fw-bold position-relative text-center mt-3 text-nowrap">International Cuisine</div>
-    <!--            Insert International Cards Here-->
+    <?php
+        foreach($categoryModel as $category) {
+            echo "<div class='banner text-black fw-bold position-relative text-center mt-3 text-nowrap'>$category->category</div>"; } ?>
+
+<!--         TODO: For each restaurant with the same category, echo the column to place under the category -->
+    <div class="row mt-1 g-5 row-cols-3 d-flex justify-content-center">
+        <div class="col">
+            <img class="restaurant-card position-absolute" src="/img/png/ratatouille.png" alt="Picture of restaurant Ratatouille">
+            <div class="restaurant-card bg-dark opacity-50 position-relative"></div>
+            <h1 class="fw-bold position-relative bottom-50">Ratatouille</h1>
+        </div>
+        <div class="col">
+            <img class="restaurant-card position-absolute" src="/img/png/ratatouille.png" alt="Picture of restaurant Ratatouille">
+            <div class="restaurant-card bg-dark opacity-50 position-relative"></div>
+            <h1 class="fw-bold position-relative bottom-50">Ratatouille</h1>
+        </div>
+        <div class="col">
+            <img class="restaurant-card position-absolute" src="/img/png/ratatouille.png" alt="Picture of restaurant Ratatouille">
+            <div class="restaurant-card bg-dark opacity-50 position-relative"></div>
+            <h1 class="fw-bold position-relative bottom-50">Ratatouille</h1>
+        </div>
+
+    </div>
 
 </div>
 

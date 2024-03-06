@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
-use App\Services\UserService;
+use App\Models\Restaurant;
+use App\Models\restaurantCategory;
+use App\Services\RestaurantService;
 use http\Header;
 
 class RestaurantController {
@@ -11,11 +12,12 @@ class RestaurantController {
     private $service;
 
     function __construct() {
-        //$this->service = new RestaurantService();
+        $this->service = new RestaurantService();
     }
 
     public function index()
     {
+        $categoryModel = $this->service->getAllCategories();
         require __DIR__ . '/../views/restaurant/index.php';
     }
 
