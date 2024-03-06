@@ -37,6 +37,7 @@ CREATE TABLE `users` (
      `password` varchar(1000) NOT NULL,
      `first_name` varchar(255) NULL,
      `last_name` varchar(255) NULL,
+     `permissions` int(11) DEFAULT 1,
      `date_created` datetime  DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -44,9 +45,6 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `date_created`) VALUES
-    (1, 'Admin', 'admin@gmail.com', 'admin', 'Admin','Administrator', default),
-    (2, 'User', 'user@gmail.com', 'user', 'User','Customer', '2022-11-30 13:09:55');
 
 --
 -- Indexes for dumped tables
@@ -55,6 +53,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_
 --
 -- Indexes for table `users`
 --
+
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
@@ -65,9 +64,11 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for table `users`
 --
+
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
