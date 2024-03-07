@@ -17,6 +17,10 @@ img {
     width: 100dvw;
 }
 
+.darken {
+    filter: brightness(50%);
+}
+
 .text-blue {
     color: #07BEB8;
 }
@@ -39,7 +43,7 @@ img {
 .caption-text {
     font-family: "Montserrat", sans-serif;
     font-size: 5rem;
-    transform: translate(-50%, 300%);
+    transform: translateY(-125%);
 }
 
 .details-bg {
@@ -58,7 +62,7 @@ img {
     margin-right: 20dvw;
 }
 
-.banner {
+.category {
     font-family: "Montserrat", sans-serif;
     letter-spacing: 10px;
     text-transform: uppercase;
@@ -69,9 +73,16 @@ img {
     min-width: 60vw;
 }
 
-.restaurant-card {
-    width: 500px;
-    height: 1000px;
-    background-size: 100% 100%;
+.card, .card-img-overlay, .card-img {
+    max-width: 500px;
+    max-height: 1000px;
     border-radius: 20px;
 }
+
+.content-tag {
+    font-family: "Montserrat", sans-serif;
+    background-color: #CA2B3D;
+    border-radius: 20px;
+}
+
+
