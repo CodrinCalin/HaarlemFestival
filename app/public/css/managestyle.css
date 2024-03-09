@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
+
+/*Sheet to make making management page easy by making things easy to center alongside easy and common styles to use*/
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    color: white;
+    background-color: slategray;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+/*Center all child elements with flexbox*/
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+/*Make a box around something with padding, useful for fill-in*/
+.box {
+    background-color: #303436;
+    border-radius: 20px;
+    padding: 20px;
+}

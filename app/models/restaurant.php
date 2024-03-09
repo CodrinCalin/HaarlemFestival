@@ -6,15 +6,18 @@ class Restaurant
 {
     public int $id;
     public string $name;
-    public string $image;
-    public string $description;
-    public string $location;
-    public string $phone_number;
-    public string $website;
-    public array $food_tags;
-    public int $rating;
-    public string $category;
-
-    //Sessions, Seats, Reservations on separate class
+    public array $tags;
+    public string $rating;
+    public string $address;
+    public string $phoneNumber;
+    public string $menuLink;
+    public string $menuText;
+    public float $adultPrice;
+    public float $childPrice;
+    public string $previewImage;
+    public string $frontPageImage;
+    public string $displayImageOne;
+    public string $displayImageTwo;
+    public restaurantCategory $restaurantCategory;
 
 }

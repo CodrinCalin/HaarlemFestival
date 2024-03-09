@@ -74,16 +74,17 @@ ALTER TABLE `users`
 
 CREATE TABLE `restaurantCategory` (
                          `id` int(11) NOT NULL,
-                         `category` varchar(21) NOT NULL
+                         `category` varchar(21) NOT NULL,
+                         `order` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `restaurantCategory`
 --
 
-INSERT INTO `restaurantCategory` (`id`, `category`) VALUES
-    (1, 'From The Sea'),
-    (2, 'International Cuisine');
+INSERT INTO `restaurantCategory` (`id`, `category`, `order`) VALUES
+    (1, 'From The Sea', 1),
+    (2, 'International Cuisine', 2);
 
 --
 -- Indexes for table `restaurantCategory`

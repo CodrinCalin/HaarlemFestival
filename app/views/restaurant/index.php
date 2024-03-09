@@ -7,14 +7,13 @@ include __DIR__ . "/../header.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="/css/restaurantstyle.css" rel="stylesheet">
 </head>
 
 <body>
 
 <div class="container-fluid p-0 m-0">
-    <img class="darken" src="/img/png/food-bg.png" alt="People at a festival">
+    <img class="darken img-scale" src="/img/png/food-bg.png" alt="People at a festival">
     <div class="yummy-text position-absolute top-50 start-50 px-5">Yummy!</div>
     <div class="date-text position-absolute fw-bold top-50 start-50">July 25th-28th</div>
     <div class="caption-text position-absolute fw-bold text-center vw-100 z-1">A Food Festival in Haarlem</div>
@@ -26,18 +25,24 @@ include __DIR__ . "/../header.php";
     </div>
 
     <?php
+        if($categoryModel){
+
         foreach($categoryModel as $category) { ?>
             <div class='category text-black fw-bold position-relative text-center mt-3'><?php echo $category->category ?></div>
         <?php } ?>
 
+
+        <?php }else{
+            echo "<h3>Error: No categories found</h3>"; } ?>
+
 <!--         TODO: For each restaurant with the same category, echo the column to place under the category -->
     <div class="row mt-3 px-2 row-cols-3 vw-100 justify-content-center">
         <div class="card mx-5 mt-3 p-0 col-4 text-bg-dark">
-            <img class="darken card-img temp" src="/img/png/ratatouille.png" alt="Picture of restaurant Ratatoutille">
+            <img class="darken card-img img-scale" src="/img/png/ratatouille.png" alt="Picture of restaurant Ratatoutille">
             <div class="card-img-overlay d-flex flex-column p-0 mt-3">
                 <h1 class="fw-bold text-center text-blue">Ratatouille</h1>
                 <h6 class="content-tag mx-3 px-3 py-2 text-center">EXAMPLE | EXAMPLE | EXAMPLE</h6>
-                <div class="rating fw-bold text-center">*****</div> <!-- TODO:Image of Stars here later -->
+                <img class="rating align-self-center" src="/img/png/4star.png" alt="4star">
                 <div class="mt-auto d-flex flex-column">
                     <h6 class="content-tag fw-bold text-center mb-3 mx-5 p-2">
                         Spaarne 96, 2011 CL Haarlem<br>
