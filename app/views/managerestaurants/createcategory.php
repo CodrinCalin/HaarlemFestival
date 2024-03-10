@@ -26,7 +26,7 @@ include __DIR__ . '/../header.php';
             <div class="mb-3 me-5 col-3">
                 <label for="order" class="form-label" aria-describedby="category">Sorting Order<span class="text-danger">*</span></label>
                 <input type="number" class="form-control" id="order" name="order" placeholder="1" max="99" min="0" required>
-                <div id="category" class="form-text text-white">Order in which categories appears, lower numbers first.</div>
+                <div id="category" class="form-text text-white">Order in which categories appear, lower numbers first.</div>
             </div>
             <button type="submit" class="btn btn-primary">Add Category</button>
         </form>

@@ -21,8 +21,22 @@ class ManageRestaurantService
         return $this->repository->getCategoryById($categoryId);
     }
 
-    public function updateCategoryById($category) {
+    public function updateCategory($category) {
         $this->getNewInstance();
-        $this->repository->updateCategoryById($category);
+        $this->repository->updateCategory($category);
+    }
+
+    public function deleteCategoryById($categoryId) {
+        $this->getNewInstance();
+        $this->repository->deleteCategoryById($categoryId);
+    }
+
+    public function getRestaurantById($restaurantId) {
+        $this->getNewInstance();
+        return $this->repository->getRestaurantById($restaurantId);
+    }
+    public function deleteRestaurantById($restaurantId) {
+        $this->getNewInstance();
+        $this->repository->deleteRestaurantById($restaurantId);
     }
 }

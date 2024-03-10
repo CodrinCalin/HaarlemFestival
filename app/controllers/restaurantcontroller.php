@@ -18,6 +18,8 @@ class RestaurantController {
     public function index()
     {
         $categoryModel = $this->service->getAllCategories();
+        $restaurantModel = $this->service->getAllRestaurants();
+        $yummyDetails = $this->service->getYummyDetails();
         require __DIR__ . '/../views/restaurant/index.php';
     }
 

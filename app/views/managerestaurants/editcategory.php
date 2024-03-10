@@ -17,7 +17,7 @@ include __DIR__ . '/../header.php';
     <div class="w-50 box">
         <h1 class="col">Edit Category <span class="fw-bold text-info"><?php echo $categoryModel->category ?></span></h1>
         <p><span class="text-danger">*</span> - fields are required to fill.</p>
-        <form action="updateCategoryById" method="post" class="pb-3 box row">
+        <form action="updateCategory" method="post" class="pb-3 box row">
             <input type="hidden" name="id" id="id" value="<?php echo $categoryModel->id ?>">
             <div class="mb-3 me-5 w-50 col-3">
                 <label for="categoryName" class="form-label" aria-describedby="category">Category Name<span class="text-danger">*</span></label>

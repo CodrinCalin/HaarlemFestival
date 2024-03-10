@@ -16,4 +16,14 @@ class RestaurantService
         $this->getNewInstance();
         return $this->repository->getAllCategories();
     }
+
+    public function getAllRestaurants() {
+        $this->getNewInstance();
+        return $this->repository->getAllRestaurants();
+    }
+
+    public function getYummyDetails() {
+        $this->getNewInstance();
+        return $this->repository->getYummyDetails();
+    }
 }

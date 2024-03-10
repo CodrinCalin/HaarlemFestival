@@ -22,9 +22,9 @@ include __DIR__ . '/../header.php';
 <div class="container-fluid vw-100 d-flex justify-content-center flex-column">
     <div class="d-flex justify-content-center flex-column m-5">
         <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">Manage Restaurant Categories</a>
-        <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">Manage Restaurants</a>
-        <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">TBD</a>
-        <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">TBD</a>
+        <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/restaurants">Manage Restaurants</a>
+        <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">Manage Restaurant Sessions</a>
+        <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">Manage Yummy Details</a>
         <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">TBD</a>
     </div>
 </div>
