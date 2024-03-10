@@ -31,9 +31,9 @@ use haarlemdb;
 --
 
 CREATE TABLE `users` (
-     `id` int(11) NOT NULL,
-     `username` varchar(255) NOT NULL,
-     `email` varchar(255) NOT NULL,
+     `id` int(11) UNIQUE NOT NULL,
+     `username` varchar(255) UNIQUE NOT NULL,
+     `email` varchar(255) UNIQUE NOT NULL,
      `password` varchar(1000) NOT NULL,
      `first_name` varchar(255) NULL,
      `last_name` varchar(255) NULL,
@@ -68,6 +68,41 @@ ALTER TABLE `users`
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 COMMIT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resetTokens`
+--
+
+CREATE TABLE `resetTokens` (
+     `id` int(11) AUTO_INCREMENT PRIMARY KEY,
+     `email` varchar(255) NOT NULL,
+     `token` VARCHAR(255) NOT NULL,
+     `expiration` datetime  NOT NULL,
+     `date_created` datetime  DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `resetTokens`
+--
+
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `resetTokens`
+--
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `resetTokens`
+--
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
