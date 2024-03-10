@@ -15,6 +15,7 @@ services:
         working_dir: /app    
         volumes:
             - ./app:/app
+            - ./app/vendor:/app/vendor
     mysql:
         image: mariadb:latest
         environment:
