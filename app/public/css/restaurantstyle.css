@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
 
-body {
-    max-width: 100%;
+* {
     overflow-x: hidden;
+    max-width: 100%;
+}
+.yummy {
+    /*max-width: 100%;*/
     color: white;
     background-color: slategray;
 }
@@ -23,6 +26,7 @@ body {
 
 .text-blue {
     color: #07BEB8;
+    font-family: "Montserrat", sans-serif;
 }
 
 .yummy-text {
@@ -37,7 +41,7 @@ body {
 .date-text {
     font-family: "Montserrat", sans-serif;
     font-size: 3.75rem;
-    transform: rotate(2.5deg) translate(0%, 170%);
+    transform: rotate(2.5deg) translate(0%, 175%);
 }
 
 .caption-text {
@@ -69,8 +73,9 @@ body {
     font-size: 3.75rem;
     background-color: #FFFFD4;
     border-radius: 20px;
-    margin-left: 20dvw;
-    min-width: 60vw;
+    /*min-width: 60vw;*/
+    margin: auto;
+    width: 75%;
 }
 
 .card, .card-img-overlay, .card-img {
@@ -90,4 +95,7 @@ body {
     max-height: 30px !important;
 }
 
+.footer {
+    position: relative !important;
+}
 

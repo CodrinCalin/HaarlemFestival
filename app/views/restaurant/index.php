@@ -4,7 +4,7 @@ include __DIR__ . "/../header.php";
 
 <link href="/css/restaurantstyle.css" rel="stylesheet">
 
-    <div class="container-fluid p-0 m-0">
+    <div class="container-fluid p-0 m-0 yummy">
     <?php
     if($yummyDetails) { ?>
             <img class="darken img-scale" src="/img/png/food-bg.png" alt="People at a festival">
@@ -13,7 +13,7 @@ include __DIR__ . "/../header.php";
             <div class="caption-text position-absolute fw-bold text-center vw-100 z-1">A Food Festival in Haarlem</div>
 
             <div class="details-bg p-4 vw-100 position-relative text-center">
-                <h1 class="yummy-details text-black fw-bold vw-100">Yummy! Food Event Details</h1>
+                <h1 class="yummy-details text-black fw-bold vw-100 p-1">Yummy! Food Event Details</h1>
                 <p class="yummy-details-text text-black vw-50 mt-2 mb-2"><?php echo $yummyDetails->description ?></p>
                 <p class="yummy-details-text text-blue fw-bold vw-50">REMINDER:<br><?php echo $yummyDetails->reminder ?></p>
             </div>
@@ -26,8 +26,8 @@ include __DIR__ . "/../header.php";
     if($categoryModel){
 
         foreach($categoryModel as $category) { ?>
-            <div class='category text-black fw-bold position-relative text-center mt-3'><?php echo $category->category ?></div>
-            <div class="row mt-3 px-2 row-cols-3 vw-100 justify-content-center">
+            <div class='category text-black fw-bold position-relative text-center mt-3 justify-items-center'><?php echo $category->category ?></div>
+            <div class="row mt-3 row-cols-3 w-100 justify-content-center mb-5">
                 <?php foreach($restaurantModel as $restaurant) {
                     if($restaurant->restaurantCategory == $category->category) { ?>
                         <div class="card mx-5 mt-3 p-0 col-4 text-bg-dark">
