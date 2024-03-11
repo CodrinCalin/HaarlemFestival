@@ -197,6 +197,59 @@ CREATE TABLE `resetTokens` (
 -- AUTO_INCREMENT for table `resetTokens`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `texts`
+--
+
+CREATE TABLE `texts` (
+                         `id` int(11) NOT NULL,
+                         `category` varchar(55) NOT NULL,
+                         `text` mediumtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `texts`
+--
+
+INSERT INTO `texts` (`id`, `category`, `text`) VALUES
+   (1, '', "July 2024"),
+   (2, '', "Immerse yourself in the vibrant beats of Haarlem Dance! Join us for an electrifying showcase featuring the finest DJs, where each set promises to transport you through the realms of electronic music. From pulsating bass lines to soaring melodies, get ready to dance the night away in an unforgettable atmosphere. Don\'t miss out on this rhythmic extravaganza!\r\n\r\n\r\n\r\nThe event will take place on the 26, 27 and 28th of July"),
+   (3, '', "Browse through 7 different unique restaurants in the Yummy! event, each restaurant featuring delicious cuisine so you’re guaranteed to find something you like. \r\n\r\nThe 7 different restaurants are categorized with restaurants featuring more seafood and others featuring a more international cuisine, quickly learn more about each different restaurant and make a reservation directly on the same page.\r\n\r\nThe event will take place on the 25, 26, 27, and 28th of July."),
+   (4, '', "Stroll Through History is a walking tour, where we will visit nine of Haarlem’s historic landmarks and learn more about them.\r\n\r\nThe city of Haarlem boast a profoundly rich and captivating history. Haarlem is a very old city with turbulent history and great sites to see. We want to invite people to come to Haarlem and feast their eyes on the splendour of old and new.\r\n\r\nThe event will take place on the 25, 26, 27 and 28th of July.\r\n\r\nThe tour is offered in three languages: English, Dutch and Mandarin."),
+   (5, '', "Explore the wonders of art and history with the Teyler Museum\'s Children Puzzle App! With its engaging historical material and fascinating puzzles, this interactive program is perfect for young brains as it combines education and fun. It gives kids an enjoyable approach to discover the wonders of art."),
+   (6, '', "The city of Haarlem boast a profoundly rich and captivating history. Therefore we will be offering a guided tour through Haarlem, visiting buildings and places that offered an important contribution to Haarlem’s history. During the event stroll through history we will visit nine of Haarlem’s historic landmarks, by foot. Haarlem is a very old city with turbulent history and great sites to see. We want to invite people to come to Haarlem and feast their eyes on the splendour of old and new."),
+   (7, 'history_practicalInformation', 'Duration:\r\n2.5 hours.'),
+   (8, 'history_practicalInformation', 'When:\r\nThursday 25th of July 2024 to Sunday 28 July 2024.'),
+   (9, 'history_practicalInformation', 'Break:\r\n15 minutes, including one free drink per person.'),
+   (10, 'history_practicalInformation', 'Group size:\r\n12 participants and 1 tour guide.'),
+   (11, 'history_practicalInformation', 'Price:\r\n€ 17,50 per person. Or € 60,- for a group of 4.'),
+   (12, '', 'We host the tour in 3 different languages, below you’ll find the schedule for each language.  '),
+   (13, '', 'Church of St. Bavo'),
+   (14, '', 'Grote Markt 22, 2011 RD Haarlem'),
+   (15, '', 'The tour will start at the Church of St. Bavo, at the Grote Markt, in the centre of Haarlem. The exact location will be marked with a big flag.');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `texts`
+--
+ALTER TABLE `texts`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `texts`
+--
+ALTER TABLE `texts`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
