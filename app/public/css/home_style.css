@@ -1,0 +1,144 @@
+
+
+.headerContainer {
+    position: relative;
+    text-align: center;
+}
+
+#homeHeader {
+    color: #41B7B3;
+    text-align: center;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 128px;
+    font-weight: 700;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#headerImage {
+    /*width: 100%;
+
+    height: 100%;*/
+
+    width: auto;
+    height: auto;
+    min-width: 100%;
+/*    min-height: 50%;*/
+    max-height: 500px;
+    overflow: hidden;
+    object-fit: cover;
+
+}
+
+#eventOverview {
+    background-color: #FFFFD4;
+    padding: 50px;
+}
+
+#navFrame {
+    display: inline-flex;
+    padding: 50px 0px 25px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+#navFrameCard {
+    display: list-item;
+    width: 425px;
+    height: 317px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#eventOverview a {
+/*    background-color: #FFFFD4;
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;*/
+
+}
+
+.smtsmtimg {/*
+    width: 425px;
+    height: 275px;*/
+    width: 15%;
+    border-radius: 15px;
+}
+
+.homeButton {
+    width: 725px;
+    height: 100px;
+    border-radius: 15px;
+    background: #47515C;
+    color: #FFF;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.homeButton:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background: #363F48;
+}
+
+.header {
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+p {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+#yummy {
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: #FFCECE;
+}
+
+#history {
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: #FFFFD4;
+}
+
+#dance {
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: #A9E0DE;
+}
+
+#teyler {
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: #CEFFD0;
+}
