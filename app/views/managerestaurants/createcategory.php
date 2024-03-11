@@ -6,7 +6,7 @@ include __DIR__ . '/../header.php';
 
 <div class="container-fluid center align-items-center flex-column mt-3 pt-2">
     <div class="w-50 box">
-        <h1 class="col">Create Category</h1>
+        <h1>Create Category</h1>
         <p><span class="text-danger">*</span> - fields are required to fill.</p>
         <form action="createCategory" method="post" class="pb-3 box row">
             <div class="mb-3 me-5 w-50 col-3">

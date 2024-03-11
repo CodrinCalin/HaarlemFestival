@@ -34,6 +34,22 @@ class ManageRestaurantsController {
         require __DIR__ . '/../views/managerestaurants/restaurants.php';
     }
 
+    public function createRestaurant() {
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+//            $category = new restaurantCategory();
+//
+//            $category->category = $_POST["category"];
+//            $category->order = $_POST["order"];
+//
+//            $this->manageRestaurantService->addCategory($category);
+//
+//            $this->returnToCategory();
+        }else{
+            require __DIR__ . '/../views/managerestaurants/createrestaurant.php';
+        }
+    }
+
     public function createCategory() {
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 

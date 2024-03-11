@@ -97,7 +97,7 @@ INSERT INTO `restaurantCategory` (`id`, `category`, `order`) VALUES
 CREATE TABLE `restaurant` (
     `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` varchar(50) NOT NULL,
-    `tags` varchar(35) NOT NULL,
+    `tags` varchar(65) NOT NULL,
     `rating` int NOT NULL,
     `address` varchar(100) NOT NULL,
     `phoneNumber` varchar(25) NOT NULL,
