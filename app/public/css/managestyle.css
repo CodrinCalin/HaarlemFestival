@@ -29,3 +29,7 @@ body {
     border-radius: 20px;
     padding: 20px;
 }
+
+.max {
+    max-width: 50%;
+}

@@ -12,6 +12,7 @@ class RestaurantController {
     private $service;
 
     function __construct() {
+        session_start();
         $this->service = new RestaurantService();
     }
 

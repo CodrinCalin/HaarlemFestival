@@ -15,6 +15,7 @@ class ManageRestaurantsController {
     private $restaurantService;
 
     function __construct() {
+        session_start();
         $this->manageRestaurantService = new ManageRestaurantService();
         $this->restaurantService = new RestaurantService();
     }

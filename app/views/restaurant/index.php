@@ -1,19 +1,12 @@
 <?php
 include __DIR__ . "/../header.php";
 ?>
-<head>
-    <title>Yummy!</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="/css/restaurantstyle.css" rel="stylesheet">
 
-    <link href="/css/restaurantstyle.css" rel="stylesheet">
-</head>
-
-<body>
-
-    <?php if($yummyDetails) { ?>
-        <div class="container-fluid p-0 m-0">
+    <div class="container-fluid p-0 m-0">
+    <?php
+    if($yummyDetails) { ?>
             <img class="darken img-scale" src="/img/png/food-bg.png" alt="People at a festival">
             <div class="yummy-text position-absolute top-50 start-50 px-5">Yummy!</div>
             <div class="date-text position-absolute fw-bold top-50 start-50"><?php echo $yummyDetails->date ?></div>
@@ -30,12 +23,12 @@ include __DIR__ . "/../header.php";
     } ?>
 
     <?php
-        if($categoryModel){
+    if($categoryModel){
 
         foreach($categoryModel as $category) { ?>
             <div class='category text-black fw-bold position-relative text-center mt-3'><?php echo $category->category ?></div>
             <div class="row mt-3 px-2 row-cols-3 vw-100 justify-content-center">
-            <?php foreach($restaurantModel as $restaurant) {
+                <?php foreach($restaurantModel as $restaurant) {
                     if($restaurant->restaurantCategory == $category->category) { ?>
                         <div class="card mx-5 mt-3 p-0 col-4 text-bg-dark">
                             <img class="darken card-img img-scale" src="/img/png/ratatouille.png" alt="Picture of restaurant <?php echo $restaurant->name ?>">
@@ -53,15 +46,13 @@ include __DIR__ . "/../header.php";
                             </div>
                         </div>
                     <?php } ?>
-            <?php } ?>
+                <?php } ?>
             </div>
         <?php } ?>
-    <?php }else{
-            echo "<h3>Error: No categories found</h3>"; } ?>
-
+    <?php }else{ ?>
+        <h3>Error: No categories found</h3>";
+    <?php } ?>
     </div>
-
-</body>
 
 
 

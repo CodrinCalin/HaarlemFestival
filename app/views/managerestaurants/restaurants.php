@@ -2,21 +2,7 @@
 include __DIR__ . '/../header.php';
 ?>
 
-<head>
-    <title>Yummy!</title>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="/css/managestyle.css" rel="stylesheet">
-    <style>
-        .max {
-            max-width: 50%;
-        }
-    </style>
-</head>
-
-<body>
+<link href="/css/managestyle.css" rel="stylesheet">
 
 <div class="container-fluid center mt-3">
     <h1 class="">Manage Restaurants</h1>
@@ -46,8 +32,6 @@ include __DIR__ . '/../header.php';
         </tbody>
     </table>
 </div>
-
-</body>
 
 <?php
 include __DIR__ . '/../footer.php';

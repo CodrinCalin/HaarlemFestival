@@ -2,16 +2,7 @@
 include __DIR__ . '/../header.php';
 ?>
 
-<head>
-    <title>Yummy!</title>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="/css/managestyle.css" rel="stylesheet">
-</head>
-
-<body>
+<link href="/css/managestyle.css" rel="stylesheet">
 
 <div class="container-fluid center align-items-center flex-column mt-3 pt-2">
     <div class="w-50 box">
@@ -32,10 +23,6 @@ include __DIR__ . '/../header.php';
         </form>
     </div>
 </div>
-
-
-
-</body>
 
 <?php
 include __DIR__ . '/../footer.php';
