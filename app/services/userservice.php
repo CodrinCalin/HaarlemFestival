@@ -56,15 +56,27 @@ class UserService {
         }
     }
 
-    public function checkUsernameExists($usernameInput)
+//  Password Reset
+    public function getUserByEmail($email)
     {
         $this->getNewInstance();
-        return $this->repository->checkUsernameExists($usernameInput);
+        return $this->repository->getUserByEmail($email);
     }
 
-    public function checkEmailExists($emailInput)
+    public function storeResetToken($email, string $token)
     {
         $this->getNewInstance();
-        return $this->repository->checkEmailExists($emailInput);
+        $this->repository->storeResetToken($email, $token);
+    }
+
+    public function getEmailByResetToken($token)
+    {
+        $this->getNewInstance();
+        $this->repository->getEmailByResetToken($token);
+    }
+
+    public function updatePasswordByEmail($email, $newPassword)
+    {
+
     }
 }

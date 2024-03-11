@@ -13,9 +13,37 @@ body {
     margin-bottom: 60px;
 }
 
-/* Form required symbol */
-.required{
-    color: red;
+/* Forms */
+.formContainers {
+    margin-top: 3em;
+    background: darkgrey;
+    padding: 20px;
+    border-radius: 25px;
+    width: 50%;
+}
+
+.modeSwitch li{
+    text-align: center;
+    width: 30%;
+}
+
+.formContent {
+    margin: 20px;
+    text-align: center;
+}
+
+.formContent .inputField{
+    margin: auto;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 70%;
+}
+
+.formContainers button {
+    margin-bottom: 20px;
+    width: 30%;
 }
 
 /* Sticky Footer */
