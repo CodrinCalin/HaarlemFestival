@@ -7,6 +7,14 @@ p {
     font-weight: 500;
 }
 
+.header {
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+}
+
 /*Header*/
 .headerContainer {
     position: relative;
@@ -102,9 +110,52 @@ p {
     font-weight: 700;
 }
 
+.scheduleEvent {
+    background-color: white;
+    border-radius: 15px;
+    /*height: 50px;*/
+}
+
+.schedule p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
 /*events*/
+#yummy, #dance, #history {
+    padding: 100px;
+    height: auto;
+    min-height: 800px;
+}
+
+#yummy {
+    background-color: #CEFFD0;
+}
+
+#history {
+    background-color: #FFFFD4;
+}
+
+#dance {
+    background-color: #E0A9A9;
+}
+
+.eventImage {
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 15px;
+    width: 100%;
+    height: 80dvh;
+}
+
+.eventDescription {
+    padding-right: 6dvw;
+    margin-top: 25px;
+}
+
 .homeButton {
-    width: 725px;
+    width: 40dvw;
     height: 100px;
     border-radius: 15px;
     background: #47515C;
@@ -114,6 +165,8 @@ p {
     font-size: 22px;
     font-weight: 700;
     max-width: 80vw;
+    align-self: flex-end;
+    bottom: 0;
 }
 
 .homeButton:hover {
@@ -121,44 +174,9 @@ p {
     background: #363F48;
 }
 
-.header {
-    color: black;
-    font-family: "Montserrat", sans-serif;
-    font-size: 60px;
-    font-style: normal;
-    font-weight: 700;
-}
-
-
-
-#yummy {
-    padding: 50px;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    background-color: #FFCECE;
-}
-
-#history {
-    padding: 50px;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    background-color: #FFFFD4;
-}
-
-#dance {
-    padding: 50px;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    background-color: #A9E0DE;
-}
-
 #teyler {
-    padding: 50px;
+    padding: 100px;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    background-color: #CEFFD0;
+    background-color: #F5C4FD;
 }

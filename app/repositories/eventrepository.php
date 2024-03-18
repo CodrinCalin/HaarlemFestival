@@ -5,7 +5,7 @@ use App\Models\Event;
 use PDO;
 
 class eventrepository extends Repository {
-    private function getSchedule(): array
+    public function getAllEvents(): array
     {
         $stmt = $this->connection->prepare("SELECT fe.id AS event_id, fe.name AS event_name, fs.date AS event_date
         FROM festivalEvents fe
@@ -43,7 +43,7 @@ class eventrepository extends Repository {
 
     public function getAllDates(): array
     {
-        $events = $this->getSchedule();
+        $events = $this->getAllEvents();
         $dates = array();
         foreach ($events as $event) {
             foreach ($event->dates as $date) {
@@ -51,6 +51,7 @@ class eventrepository extends Repository {
             }
         }
         $dates = array_unique($dates);
+        sort($dates);
         return $dates;
     }
 }

@@ -31,4 +31,9 @@ class homeService {
         $eventRepository = new eventrepository();
         return $eventRepository->getAllDates();
     }
+
+    public function getAllEvents() {
+        $eventRepository = new eventrepository();
+        return $eventRepository->getAllEvents();
+    }
 }

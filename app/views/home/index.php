@@ -36,46 +36,9 @@ $service = new \App\Services\homeService();
     ?>
 </div>
 <div class="events">
-    <div id="dance">
-        <?php
-        $text = $service->getTextById(2);
-        ?>
-        <h1 class="header">
-            Dance!
-        </h1>
-        <p><?=nl2br($text->text)?></p>
-        <button class="homeButton">Learn More About The Event</button>
-    </div>
-    <div id="yummy">
-        <?php
-        $text = $service->getTextById(3);
-        ?>
-        <h1 class="header">
-            Yummy!
-        </h1>
-        <p><?=nl2br($text->text)?></p>
-        <button class="homeButton">Learn More About The Event</button>
-    </div>
-    <div id="history">
-        <?php
-        $text = $service->getTextById(4);
-        ?>
-        <h1 class="header">
-            Stroll Through History
-        </h1>
-        <p><?=nl2br($text->text)?></p>
-        <a href="/history"><button class="homeButton">Learn More About The Event</button></a>
-    </div>
-    <div id="teyler">
-        <?php
-        $text = $service->getTextById(5);
-        ?>
-        <p>Haarlem Festival App</p>
-        <h1 class="header">Interactive Museum <br> Puzzles For Children</h1>
-        <p><?=nl2br($text->text)?></p>
-        <p>Download the app</p>
-        <p>Or use your camera and scan the QR code</p>
-    </div>
+    <?php
+    include __DIR__ . '/eventsIntroduction.php'
+    ?>
 </div>
 <?php
 include __DIR__ . '/../footer.php';
