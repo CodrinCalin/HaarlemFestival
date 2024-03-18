@@ -1,8 +1,9 @@
 <?php
 namespace App\Services;
+use App\Repositories\eventrepository;
 use App\Repositories\textrepository;
 
-class textservice {
+class homeService {
     private $repository;
 
     private function getNewInstance()
@@ -24,5 +25,10 @@ class textservice {
     public function getTextByCategory($category) {
         $this->getNewInstance();
         return $this->repository->getTextByCategory($category);
+    }
+
+    public function getAllDates() {
+        $eventRepository = new eventrepository();
+        return $eventRepository->getAllDates();
     }
 }
