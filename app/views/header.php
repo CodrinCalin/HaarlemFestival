@@ -24,6 +24,7 @@
                         if($authUser->permissions == 2) { ?>
                             <li class="nav-item"><a href="/manageusers" class="nav-link">Manage Users</a></li>
                             <li class="nav-item"><a href="/managerestaurants" class="nav-link">Manage Restaurants</a></li>
+                            <li class="nav-item"><a href="/managehome" class="nav-link">Manage Home</a></li>
                         <?php }?>
                         <li class="nav-item"><a href="/auth/logout" class="nav-link">Log out</a></li>
                     <?php } else{ ?>
