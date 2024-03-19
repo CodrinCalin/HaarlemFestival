@@ -250,6 +250,100 @@ ALTER TABLE `texts`
 ALTER TABLE `texts`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `festivalEvents`
+--
+
+CREATE TABLE `festivalEvents` (
+                                  `id` int(11) NOT NULL,
+                                  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `festivalEvents`
+--
+
+INSERT INTO `festivalEvents` (`id`, `name`) VALUES
+            (1, 'DANCE!'),
+            (2, 'Yummy!'),
+            (3, 'Stroll Through History'),
+            (4, 'The Secret Of Professor Teyler');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `festivalEvents`
+--
+ALTER TABLE `festivalEvents`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `festivalEvents`
+--
+ALTER TABLE `festivalEvents`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `festivalSchedule`
+--
+
+CREATE TABLE `festivalSchedule` (
+                                    `id` int(11) NOT NULL,
+                                    `event` int(11) NOT NULL,
+                                    `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `festivalSchedule`
+--
+
+INSERT INTO `festivalSchedule` (`id`, `event`, `date`) VALUES
+                                                           (1, 1, '2024-07-26 00:00:00'),
+                                                           (2, 1, '2024-07-27 00:00:00'),
+                                                           (3, 1, '2024-07-28 00:00:00'),
+                                                           (4, 2, '2024-07-25 00:00:00'),
+                                                           (5, 2, '2024-07-26 00:00:00'),
+                                                           (6, 2, '2024-07-27 00:00:00'),
+                                                           (7, 2, '2024-07-28 00:00:00'),
+                                                           (8, 3, '2024-07-25 00:00:00'),
+                                                           (9, 3, '2024-07-26 00:00:00'),
+                                                           (10, 3, '2024-07-27 00:00:00'),
+                                                           (11, 3, '2024-07-28 00:00:00'),
+                                                           (12, 4, '2024-07-25 00:00:00'),
+                                                           (13, 4, '2024-07-26 00:00:00'),
+                                                           (14, 4, '2024-07-27 00:00:00'),
+                                                           (15, 4, '2024-07-28 00:00:00');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `festivalSchedule`
+--
+ALTER TABLE `festivalSchedule`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `festivalSchedule`
+--
+ALTER TABLE `festivalSchedule`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
