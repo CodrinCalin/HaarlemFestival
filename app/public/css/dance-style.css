@@ -1,0 +1,111 @@
+/* Custom styles */
+  .full-screen-image {
+  position: relative;
+  height: 100vh; /* 100% of the viewport height */
+  background-color: lightpink; /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  font-size: 4rem; /* Adjust size as needed */
+}
+
+body {
+  background-color: #47515C; /* Website background color */
+}
+/* Custom styles */
+.full-screen-image {
+  position: relative;
+  height: 100vh; /* 100% of the viewport height */
+  background-color: lightpink; /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  font-size: 4rem; /* Adjust size as needed */
+}
+/*middle section of the website with the intro and the 4 artists*/
+
+.placeholder-image {
+  background-color: #ffc0cb; /* Light pink background */
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  margin-bottom: 1rem;
+  border-radius: 20px;
+}
+
+.content-section {
+  background-color: #47515C; /* Background color */
+  color: #FFFFFF; /* Text color */
+  padding: 2rem;
+}
+
+/* Adjust the padding for smaller screens */
+@media (max-width: 768px) {
+  .content-section {
+    padding: 1rem;
+  }
+
+  .table-container {
+    margin-top: -150px; /* Half of your image's height to overlap */
+    background-color: #fff; /* White background for the table */
+    border-radius: 15px; /* Rounded corners for the table container */
+    padding: 1rem;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
+  }
+
+  /* Custom styling for the table */
+  .event-table th, .event-table td {
+    text-align: center;
+  }
+
+  .venue-section {
+    position: relative;
+    margin-bottom: -100px; /* Adjust this value for the overlap */
+  }
+
+  .venue-image
+  {
+    height: 400px;
+    width: 100%;
+    border-radius: 5px; /* Optional, if you want rounded corners */
+    background-color: lightpink;
+  }
+
+  .venue-description {
+    background-color: #fff; /* Or any other color you prefer */
+    padding: 20px;
+    border-radius: 5px; /* Optional, for consistency with the image */
+  }
+
+  /* This will alternate the image and text for each venue */
+  .venue-section:nth-child(even) .venue-description {
+    order: 1; /* Text first */
+  }
+
+  .venue-section:nth-child(odd) .venue-image {
+    order: 1; /* Image first */
+  }
+
+  @media (min-width: 992px) { /* Adjust to your breakpoint preference */
+    .venue-section .row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center; /* This will vertically center the content */
+    }}}

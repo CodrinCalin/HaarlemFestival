@@ -18,11 +18,10 @@ $service = new \App\Services\textservice();
     <h1 class="header">The Events</h1>
     <div class="navFrame">
         <div class="navFrameCard">
-            <a href="#dance">
+            <a href="/dance">
                 <img src="\img\dance_nav.png" class="smtsmtimg">DANCE!
             </a>
         </div>
-
         <a href="#yummy">
             <img src="\img\yummy_nav.png" class="smtsmtimg">Yummy!
         </a>
