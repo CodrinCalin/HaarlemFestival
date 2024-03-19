@@ -154,6 +154,14 @@ p {
     margin-top: 25px;
 }
 
+.eventcontent {
+    display: flex;
+    flex-flow: column;
+    /*margin-bottom: auto;*/
+    justify-content: space-between;
+    /*height: 900px;*/
+}
+
 .homeButton {
     width: 40dvw;
     height: 100px;
@@ -165,8 +173,6 @@ p {
     font-size: 22px;
     font-weight: 700;
     max-width: 80vw;
-    align-self: flex-end;
-    bottom: 0;
 }
 
 .homeButton:hover {
@@ -179,4 +185,8 @@ p {
     justify-content: center;
     align-items: center;
     background-color: #F5C4FD;
+}
+
+#appstore img {
+    margin: 25px 25px 25px 0;
 }

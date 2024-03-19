@@ -27,20 +27,23 @@
     $text = $service->getTextById(5);
     ?>
     <div class="row">
-        <div class="col-sm">
+        <div class="col-6">
             <p>Haarlem Festival App</p>
             <h1 class="header">Interactive Museum <br> Puzzles For Children</h1>
-            <p><?=nl2br($text->text)?></p>
-            <p>Download the app</p>
-            <div class="appstore">
+            <p><br><?=nl2br($text->text)?></p>
+            <p><br>Download the app</p>
+            <div id="appstore">
                 <img src="\img\homepage\googleplay.png">
                 <img src="\img\homepage\appstore.png">
             </div>
-            <p>Or use your camera and scan the QR code</p>
+            <p><br>Or use your camera and scan the QR code</p>
             <img src="\img\homepage\qrcode.svg">
         </div>
+        <div class="col-sm">
+
+        </div>
         <div class="col-4">
-            <img src="\img\homepage\teylerapp.png">
+            <img style="height: auto; max-height: 50dvw; width: auto" src="\img\homepage\teylerapp.png">
         </div>
 
     </div>
