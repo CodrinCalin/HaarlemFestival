@@ -23,7 +23,6 @@ SET time_zone = "+00:00";
 
 use haarlemdb;
 
-
 -- --------------------------------------------------------
 
 --
@@ -31,7 +30,7 @@ use haarlemdb;
 --
 
 CREATE TABLE `users` (
-     `id` int(11) UNIQUE NOT NULL,
+     `id` int(11) UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY,
      `username` varchar(255) UNIQUE NOT NULL,
      `email` varchar(255) UNIQUE NOT NULL,
      `password` varchar(1000) NOT NULL,
@@ -45,28 +44,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `users`
---
-
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `users`
---
-
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `permissions`, `date_created`) VALUES
+      (1, 'system', 'system@haarlem-festival.nl', '$2y$10$PPUquDQo/Hd3GYL7CVyfVeJoY5FXQZMVpBXTFAuB6nZFRpGu3rpBC', NULL, NULL, 0, '2024-03-01 18:04:59'),
+      (2, 'admin', 'admin@haarlem-festival.nl', '$2y$10$yhMvogSFkxkJu8FPfuhs5up6EO9qRL05Nqjzrywc2x0TDA0aiFLSy', NULL, NULL, 1, '2024-03-01 18:02:29');
 
 -- --------------------------------------------------------
 
@@ -180,23 +160,6 @@ CREATE TABLE `resetTokens` (
 -- Dumping data for table `resetTokens`
 --
 
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `resetTokens`
---
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `resetTokens`
---
-
 -- --------------------------------------------------------
 
 --
@@ -204,9 +167,9 @@ CREATE TABLE `resetTokens` (
 --
 
 CREATE TABLE `texts` (
-                         `id` int(11) NOT NULL,
-                         `category` varchar(55) NOT NULL,
-                         `text` mediumtext NOT NULL
+     `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+     `category` varchar(55) NOT NULL,
+     `text` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -229,26 +192,6 @@ INSERT INTO `texts` (`id`, `category`, `text`) VALUES
    (13, '', 'Church of St. Bavo'),
    (14, '', 'Grote Markt 22, 2011 RD Haarlem'),
    (15, '', 'The tour will start at the Church of St. Bavo, at the Grote Markt, in the centre of Haarlem. The exact location will be marked with a big flag.');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `texts`
---
-ALTER TABLE `texts`
-    ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `texts`
---
-ALTER TABLE `texts`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
