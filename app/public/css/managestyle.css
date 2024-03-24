@@ -37,3 +37,8 @@ body {
 .footer {
     position: relative !important;
 }
+
+.text-box {
+    height: 100px;
+    text-wrap: normal;
+}
