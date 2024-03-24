@@ -267,6 +267,34 @@ body, html {
   padding-left: 300px;
 }
 */
+.event-table th, .event-table td {
+  padding: 0.4rem; /* Smaller cell padding */
+  font-size: 0.85rem; /* Smaller font size */
+}
+
+.btn-primary {
+  padding: 0.25rem 0.5rem; /* Smaller button padding */
+  font-size: 0.75rem; /* Smaller button font size */
+}
+
+.img-event-container {
+  overflow: visible; /* Ensures that the overflow will be visible */
+}
+
+.img-event {
+  width: 130%; /* or any size greater than 100% */
+  margin-left: -5%; /* Half of the extra width to keep the image centered */
+  margin-right: -5%; /* Adjust the left and right margins as necessary */
+}
+
+/* Make sure this doesn't cause horizontal scrolling on smaller screens */
+@media (max-width: 768px) {
+  .img-event {
+    width: 100%; /* On smaller screens, revert back to full width */
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 
 
 
@@ -298,6 +326,33 @@ body, html {
   }
 }
 
+.table-container .table {
+  margin: 0; /* Remove any default margin */
+}
+
+.table-container .table th,
+.table-container .table td {
+  padding: 0.5rem; /* Reduce padding inside table cells */
+}
+
+/* You can also decrease the font size for the table content if needed */
+.table-container .table th,
+.table-container .table td {
+  font-size: 0.9rem; /* Adjust font size to make more space */
+}
+
+.table-container {
+  max-width: 100%; /* Ensures the table doesn't exceed the width of its container */
+  overflow-x: auto; /* Allows horizontal scrolling on smaller screens if needed */
+}
+
+/* You might want to ensure that the table itself fills its container */
+.event-table {
+  width: 100%;
+  max-width: 100%; /* Make sure the table doesn't exceed its container */
+}
+
+
 
 /* -------------------------------------------------------------------------------------------------------------------*/
 /*footer*/
@@ -321,6 +376,45 @@ footer a.text-light:hover {
 /* -------------------------------------------------------------------------------------------------------------------*/
 
 
+.table-container .event-table {
+  font-size: 0.8rem; /* Reduce font size to make more space */
+}
+
+/* Ensure the button text is always in one line */
+.btn-primary {
+  white-space: nowrap;
+  font-size: 0.8rem; /* Smaller font size for the button */
+  padding: .375rem .75rem; /* Adjust padding to reduce button size */
+}
+
+/* Additional media query to handle smaller screens */
+@media (max-width: 991px) {
+  .table-container .event-table th,
+  .table-container .event-table td {
+    padding: 0.3rem; /* Even smaller padding on smaller screens */
+    font-size: 0.75rem; /* Even smaller font size for really small screens */
+  }
+
+  /* Adjust the button size for smaller screens */
+  .btn-primary {
+    padding: .25rem .5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* You may also want to adjust column widths in Bootstrap if needed */
+@media (min-width: 768px) {
+  .img-event {
+    max-width: 100%; /* Full width of its container */
+    height: auto; /* Keep the aspect ratio */
+  }
+
+  /* Adjusting table width on medium screens and up */
+  .col-md-6 {
+    flex: 0 0 auto; /* Do not grow or shrink */
+    max-width: 50%; /* Maximum of half the parent's width */
+  }
+}
 
 
 
@@ -374,7 +468,7 @@ footer a.text-light:hover {
   content: ''; /* Pseudo-elements require the content property to display */
   display: block; /* Make it a block to give it width and height */
   height: 4px; /* The thickness of your line */
-  width: 40%; /* The width of your line - this can be adjusted */
+  width: 80%; /* The width of your line - this can be adjusted */
   background-color: white; /* The color of the line */
   border-radius: 10px; /* Rounded edges */
   position: absolute;
