@@ -18,10 +18,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `haarlemdb`
+-- Local Database: `haarlemdb`
+-- Uncomment use below and comment the server use to switch, and vice versa.
+
+/*use haarlemdb;*/
+
+--
+-- Server DB: 'ignas_haarlemdb'
 --
 
-use haarlemdb;
+use ignas_haarlemdb;
 
 -- --------------------------------------------------------
 
