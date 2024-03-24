@@ -16,27 +16,32 @@ services:
         volumes:
             - ./app:/app
             - ./app/vendor:/app/vendor
-    mysql:
-        image: mariadb:latest
-        environment:
-            MYSQL_ROOT_PASSWORD: secret123
-            MYSQL_USER: user
-            MYSQL_PASSWORD: password
-            MYSQL_DATABASE: haarlemdb
-        volumes:
-            - mysqldata:/var/lib/mysql
-            - ./sql:/docker-entrypoint-initdb.d
-        ports:
-            - 3306:3306
-
+# Local DB - Local DB is here in case something happens to DB or for future tests.
+#    mysql:
+#        image: mariadb:latest
+#        environment:
+#            MYSQL_ROOT_PASSWORD: secret123
+#            MYSQL_USER: user
+#            MYSQL_PASSWORD: password
+#            MYSQL_DATABASE: haarlemdb
+#
+#        volumes:
+#            - mysqldata:/var/lib/mysql
+#            - ./sql:/docker-entrypoint-initdb.d
+#        ports:
+#            - 3306:3306
     phpmyadmin:
         image: phpmyadmin:latest
         environment:
-            PMA_HOST: mysql
-            PMA_USER: root
-            PMA_PASSWORD: secret123
+# Local DB - for switching to Local DB uncomment below, and comment the other environment properties.
+#            PMA_HOST: mysql
+#            PMA_USER: root
+#            PMA_PASSWORD: secret123
+# Server DB
+            PMA_HOST: 45.32.235.205
+            PMA_USER: ignas
+            PMA_PASSWORD: 757b3236c44ab612c81cca97
         ports:
             - 8080:80
-
 volumes:
     mysqldata: {}
