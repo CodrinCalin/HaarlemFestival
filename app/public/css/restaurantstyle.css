@@ -95,6 +95,133 @@
     max-height: 30px !important;
 }
 
+.overlay-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    width: 1200px;
+    text-align: center;
+}
+
+.scroll-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.2rem;
+    left: 0;
+    right: 0;
+    top: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+.or-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    left: 0;
+    right: 0;
+    top: 78%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25px;
+}
+
+.scroll-button {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    left: 0;
+    right: 0;
+    top: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+.menu-header {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.75rem;
+    float: right;
+}
+
+.menu-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    float: right;
+    margin-right: 5%;
+}
+
+@media only screen and (max-width: 1920px) {
+    .menu-text {
+        width: 500px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .menu-text {
+        width: 900px;
+    }
+}
+
+.menu-button {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    float: right;
+    width: 500px;
+    margin-top: 50px;
+    margin-right: 10%;
+}
+
+@media only screen and (max-width: 1920px) {
+    .menu-button {
+        top: 105%;
+        width: 300px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .menu-button {
+        top: 90%;
+    }
+}
+
+.display-one {
+    float: left;
+    max-width: 900px;
+    max-height: 600px;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+
+.information-header {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.75rem;
+    float: left;
+}
+
+.information-text {
+    float: left;
+    top: 30%;
+}
+
+.box {
+    background-color: #303436;
+    border-radius: 20px;
+    padding: 20px;
+    width: 600px;
+    height: 250px;
+}
+
+.display-two {
+    float: right;
+    max-width: 900px;
+    max-height: 600px;
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+}
+
 .footer {
     position: relative !important;
 }
