@@ -24,8 +24,7 @@ include __DIR__ . '/../header.php';
         <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">Manage Restaurant Categories</a>
         <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/restaurants">Manage Restaurants</a>
         <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">Manage Restaurant Sessions</a>
-        <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">Manage Yummy Details</a>
-        <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/categories">TBD</a>
+        <a class="btn btn-success m-2 p-3 shrink font" href="/managerestaurants/yummy">Manage Yummy Details</a>
     </div>
 </div>
 

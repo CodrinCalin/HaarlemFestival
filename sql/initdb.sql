@@ -94,7 +94,7 @@ INSERT INTO `restaurantCategory` (`id`, `category`, `order`) VALUES
 CREATE TABLE `restaurant` (
     `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` varchar(50) NOT NULL,
-    `tags` varchar(35) NOT NULL,
+    `tags` varchar(65) NOT NULL,
     `rating` int NOT NULL,
     `address` varchar(100) NOT NULL,
     `phoneNumber` varchar(25) NOT NULL,
@@ -103,10 +103,10 @@ CREATE TABLE `restaurant` (
     `description` text NOT NULL,
     `adultPrice` float NOT NULL,
     `childPrice` float NOT NULL,
-    `previewImage` blob NOT NULL,
-    `frontPageImage` blob NOT NULL,
-    `displayImageOne` blob NOT NULL,
-    `displayImageTwo` blob NOT NULL,
+    `previewImage` text NOT NULL,
+    `frontPageImage` text NOT NULL,
+    `displayImageOne` text NOT NULL,
+    `displayImageTwo` text NOT NULL,
     `category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -146,7 +146,8 @@ ADD CONSTRAINT `FK_RESTAURANT_ID` FOREIGN KEY (`restaurant`) REFERENCES `restaur
 --
 
 CREATE TABLE `yummyDetails` (
-    `date` varchar(50) NOT NULL PRIMARY KEY,
+    `id` int(11) NOT NULL PRIMARY KEY,
+    `date` varchar(25) NOT NULL,
     `description` text NOT NULL,
     `reminder` text NOT NULL
 );
@@ -155,8 +156,8 @@ CREATE TABLE `yummyDetails` (
 -- Dumping data for table `yummyDetails`
 --
 
-INSERT INTO `yummyDetails` (`date`, `description`, `reminder`) VALUES
-    ('July 25th-28th', 'Come and see the participating restaurants at our very own food event at the Haarlem Festival. Featuring all sorts of different cuisines you''re sure to find something you that fits your tastes! Take a quick look at each restaurant and easily find out more about any restaurant and book your very own reservation by clicking "Learn More".', 'A reservation is mandatory to dine at participating restaurants, remember to book before you wish to dine!');
+INSERT INTO `yummyDetails` (`id`, `date`, `description`, `reminder`) VALUES
+    (1, 'July 25th-28th', 'Come and see the participating restaurants at our very own food event at the Haarlem Festival. Featuring all sorts of different cuisines you''re sure to find something you that fits your tastes! Take a quick look at each restaurant and easily find out more about any restaurant and book your very own reservation by clicking "Learn More".', 'A reservation is mandatory to dine at participating restaurants, remember to book before you wish to dine!');
 
 -- --------------------------------------------------------
 

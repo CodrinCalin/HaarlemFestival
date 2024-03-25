@@ -6,7 +6,7 @@ class Restaurant
 {
     public int $id;
     public string $name;
-    private string $tags;
+    public string $tags;
     public int $rating;
     public string $address;
     public string $phoneNumber;
@@ -21,14 +21,24 @@ class Restaurant
     public string $displayImageTwo;
     public string $restaurantCategory;
 
-    public function getTags(): string {
+    public function getTags() {
         $splitTags = explode(',', $this->tags);
         return "$splitTags[0] | $splitTags[1] | $splitTags[2]";
     }
 
-    public function setTags($tags) {
+    public function getTagsArray() {
+        $splitTags = explode(',', $this->tags);
+        return $splitTags;
+    }
+
+    public function addTags($tag) {
         //May need to separate tags by , here later during creation
-        $this->tags = $tags;
+        if(empty($this->tags)) {
+            $this->tags = $tag;
+        }
+        else {
+            $this->tags = "$this->tags,$tag";
+        }
     }
 
 }
