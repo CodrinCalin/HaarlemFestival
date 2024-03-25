@@ -74,14 +74,14 @@ include __DIR__ . '/../header.php';
                 <div class="mb-3">
                     <label for="description" class="form-label" aria-describedby="description">Description<span class="text-danger">*</span></label>
                     <textarea class="form-control text-box" id="description" name="description" placeholder="Description" required></textarea>
-                    <div id="description" class="form-text text-white">Description on the front page.</div>
+                    <div id="description" class="form-text text-white">Description on the front page. (Add &lt;br&gt; for line breaks)</div>
                 </div>
             </div>
             <div class="row p-0">
                 <div class="mb-3">
                     <label for="menuText" class="form-label" aria-describedby="menuText">Menu Text<span class="text-danger">*</span></label>
                     <textarea class="form-control text-box" id="menuText" name="menuText" placeholder="Menu Text" required></textarea>
-                    <div id="menuText" class="form-text text-white">Text describing your menu.</div>
+                    <div id="menuText" class="form-text text-white">Text describing your menu. (Add &lt;br&gt; for line breaks)</div>
                 </div>
             </div>
             <div class="row p-0">
