@@ -1,9 +1,0 @@
-
-MWeb:TableWithoutCaptionCheck" Add a description to this table.(¼ëùÏþÿÿÿÿ
-Z	php:S1131"@Remove the useless trailing whitespaces at the end of this line.(ºŒ¤¶ûÿÿÿÿ
-T	php:S1131 "@Remove the useless trailing whitespaces at the end of this line.(§ù†l
-3php:S113"'Add a new line at the end of this file.
-@	php:S2003"&Replace "include" with "include_once".(¼¼ÕÓýÿÿÿÿ
-@	php:S2003$"&Replace "include" with "include_once".(™ÓÅ«ýÿÿÿÿ
-f	php:S4833"LReplace "include" with namespace import mechanism through the "use" keyword.(¼¼ÕÓýÿÿÿÿ
-f	php:S4833$"LReplace "include" with namespace import mechanism through the "use" keyword.(™ÓÅ«ýÿÿÿÿ

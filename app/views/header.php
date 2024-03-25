@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MVC Blog</title>
+    <title>Haarlem Festival</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -16,8 +16,8 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="/history" class="nav-link">History</a></li>
-                    <li class="nav-item"><a href="/restaurant" class="nav-link">Restaurants</a></li>
-                    <li class="nav-item"><a href="/entertainment" class="nav-link">Entertainment</a></li>
+                    <li class="nav-item"><a href="/restaurant" class="nav-link">Yummy!</a></li>
+                    <li class="nav-item"><a href="/dance" class="nav-link">Dance!</a></li>
                     <?php
                     if(isset($_SESSION["authUser"])) {
                         $authUser = $_SESSION["authUser"];
