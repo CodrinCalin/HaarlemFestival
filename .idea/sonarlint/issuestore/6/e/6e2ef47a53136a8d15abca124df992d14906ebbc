@@ -1,7 +1,0 @@
-
-a	php:S1131"@Remove the useless trailing whitespaces at the end of this line.(æ…—˜üÿÿÿÿ8§µÀÛ1
-kphp:S103"KSplit this 127 characters long line (which is greater than 120 authorized).(æ…—˜üÿÿÿÿ8¨µÀÛ1
-V	php:S1784":Explicitly mention the visibility of this method "getAll".(­ñ¨ü8¨µÀÛ1
-:php:S113"'Add a new line at the end of this file.8¨µÀÛ1
-	php:S1488"^Immediately return this expression instead of assigning it to the temporary variable "$users".(ßÅôüÿÿÿÿ8¨µÀÛ1
-	php:S1488"`Immediately return this expression instead of assigning it to the temporary variable "$results".(€¯õ‹ÿÿÿÿÿ8¨µÀÛ1
