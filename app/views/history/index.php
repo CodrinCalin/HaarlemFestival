@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . '/../header.php';
-$service = new \App\Services\homeService();
+$service = new \App\Services\historyService();
 ?>
 <link href="/css/history_style.css" rel="stylesheet">
 
@@ -16,10 +16,10 @@ $service = new \App\Services\homeService();
 
 <div id="intro">
     <?php
-    $text = $service->getTextById(6);
+    $content = $service->getContentById(1);
     ?>
     <h1>Stroll Through History</h1>
-    <p><?= nl2br($text->text) ?></p>
+    <p><?= nl2br($content->content) ?></p>
     <div class="row">
         <div class="col-sm" onclick="document.getElementById('practicalInformation').scrollIntoView()">
             <div class="imgNav">
@@ -49,56 +49,63 @@ $service = new \App\Services\homeService();
 </div>
 
 <div id="practicalInformation">
-    <!--    --><?php
-    /*    $model = $service->getTextByCategory("history_practicalInformation");
-        foreach ($model as $Text)  {
-            echo $model->id;
-        }
-        */ ?>
     <h1>Practical Information</h1>
     <div class="row">
-        
-    </div>
-
-    <div class="infoCard">
         <?php
-        $text = $service->getTextById(7);
+        $info = $service->getPracticalInformation();
+        foreach ($info as $item) { ?>
+            <div class="col-sm">
+                <div class="infoCard">
+                    <img src="<?= $item->addition ?>" alt="icon">
+                    <p>
+                        <?= nl2br($item->content) ?>
+                    </p>
+                </div>
+            </div>
+        <?php }
         ?>
-        <p><?= nl2br($text->text) ?></p>
     </div>
-    <div class="infoCard">
-        <?php
-        $text = $service->getTextById(8);
-        ?>
-        <p><?= nl2br($text->text) ?></p>
-    </div>
-    <div class="infoCard">
-        <?php
-        $text = $service->getTextById(9);
-        ?>
-        <p><?= nl2br($text->text) ?></p>
-    </div>
-    <div class="infoCard">
-        <?php
-        $text = $service->getTextById(10);
-        ?>
-        <p><?= nl2br($text->text) ?></p>
-    </div>
-    <div class="infoCard">
-        <?php
-        $text = $service->getTextById(11);
-        ?>
-        <p><?= nl2br($text->text) ?></p>
-    </div>
-
 </div>
 <div id="schedule">
+    <?php
+    $content = $service->getContentById(7);
+    ?>
+    <h1>Schedule</h1>
+    <p><?= nl2br($content->content) ?></p>
+    <?php
+    include __DIR__ . '/historySchedule.php';
+    ?>
 
 </div>
 <div id="route">
+    <h1>Route</h1>
+    <div class="row">
+        <div class="col-7">
+            <div id="mapBackground">
+
+            </div>
+
+        </div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-4">
+            <h1 id="meetingPlaceHeader">Meeting Place</h1>
+            <img src="\img\history\history_header.png">
+        </div>
+    </div>
+</div>
+<div id="locations">
+    <h1>Locations</h1>
+    <a href="/history/locationDetails">
+        <button>Learn More</button>
+    </a>
 
 </div>
 <div id="fAQ">
+    <h1>Frequently Asked Questions</h1>
+    <p>Where do we gather?</p>
+    <p>How long does the event last?</p>
 
 </div>
 
