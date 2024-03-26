@@ -352,6 +352,80 @@ body, html {
   max-width: 100%; /* Make sure the table doesn't exceed its container */
 }
 
+.table-container .event-table {
+  font-size: 0.8rem; /* Reduce font size to make more space */
+}
+
+/* Ensure the button text is always in one line */
+.btn-primary {
+  white-space: nowrap;
+  font-size: 0.8rem; /* Smaller font size for the button */
+  padding: .375rem .75rem; /* Adjust padding to reduce button size */
+}
+
+/* Additional media query to handle smaller screens */
+@media (max-width: 991px) {
+  .table-container .event-table th,
+  .table-container .event-table td {
+    padding: 0.3rem; /* Even smaller padding on smaller screens */
+    font-size: 0.75rem; /* Even smaller font size for really small screens */
+  }
+
+  /* Adjust the button size for smaller screens */
+  .btn-primary {
+    padding: .25rem .5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* You may also want to adjust column widths in Bootstrap if needed */
+@media (min-width: 768px) {
+  .img-event {
+    max-width: 100%; /* Full width of its container */
+    height: auto; /* Keep the aspect ratio */
+  }
+
+  /* Adjusting table width on medium screens and up */
+  .col-md-6 {
+    flex: 0 0 auto; /* Do not grow or shrink */
+    max-width: 50%; /* Maximum of half the parent's width */
+  }
+}
+
+.table-container {
+  max-width: 100%; /* Ensures the table doesn't exceed the width of its container */
+  overflow-x: auto; /* Allows horizontal scrolling on smaller screens if needed */
+}
+
+/* You might want to ensure that the table itself fills its container */
+.event-table {
+  width: 100%;
+  max-width: 100%; /* Make sure the table doesn't exceed its container */
+}
+
+.event-table th, .event-table td {
+  padding: 0.4rem; /* Smaller cell padding */
+  font-size: 0.85rem; /* Smaller font size */
+}
+
+.btn-primary {
+  padding: 0.25rem 0.5rem; /* Smaller button padding */
+  font-size: 0.75rem; /* Smaller button font size */
+}
+
+.event-table th, .event-table td {
+  padding: 8px; /* Reduces the padding inside table cells */
+  font-size: 0.9em; /* Smaller font size for the text inside the table */
+}
+
+.btn-primary {
+  white-space: nowrap; /* Ensures the text in the button stays on one line */
+  font-size: 0.8em; /* Adjusts font size for the button */
+  padding: .375rem .75rem; /* Adjusts padding to make the button smaller */
+}
+
+
+
 
 
 /* -------------------------------------------------------------------------------------------------------------------*/

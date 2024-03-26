@@ -164,51 +164,6 @@
                 <h2>Artists That Will Be Present & Time Table</h2>
             </div>
 
-<!--
-        <div class="container my-4">
-            <?php
-/*            $dates = array_keys($eventsByDate); // Assuming $eventsByDate is your events array organized by date
-            foreach ($dates as $index => $date):
-                $events = $eventsByDate[$date];
-                $orderClass = ($index % 2 === 0) ? '' : 'order-md-last'; // For even indexes, image on left; for odd, image on right
-                $imgSrc = "img/danceimages/event-photo-" . ($index + 1) . ".png"; // Construct your image path dynamically
-                */?>
-                <div class="row justify-content-center mb-5 <?php /*= $orderClass */?>">
-                    <div class="col-md-6 d-flex align-items-center justify-content-center">
-                        <img src="<?php /*= $imgSrc */?>" class="img-event" alt="Event image for <?php /*= $date */?>">
-                    </div>
-                    <div class="col-md-6 <?php /*= $orderClass === 'order-md-last' ? 'order-md-first' : '' */?>">
-                        <div class="table-container">
-                            <p>Events Date: <?php /*= $date */?></p>
-                            <table class="table event-table">
-                                <thead>
-                                <tr>
-                                    <th>ARTISTS</th>
-                                    <th>TIME</th>
-                                    <th>PRICE</th>
-                                    <th>TICKETS</th>
-                                    <th>VENUE</th>
-                                    <th></th>  For buy button
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php /*foreach ($events as $event): */?>
-                                    <tr>
-                                        <td><?php /*= $event['artist_name'] */?></td>
-                                        <td><?php /*= $event['time'] . " (" . $event['duration'] . ")" */?></td>
-                                        <td>$<?php /*= $event['price'] */?></td>
-                                        <td><?php /*= $event['tickets_available'] */?></td>
-                                        <td><?php /*= $event['venue_name'] */?></td>
-                                        <td><button class="btn btn-primary">Buy Ticket</button></td>
-                                    </tr>
-                                <?php /*endforeach; */?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            <?php /*endforeach; */?>
-        </div>-->
 
         <div class="container my-4">
             <?php
@@ -220,10 +175,10 @@
                 $imgSrc = "img/danceimages/event-photo-" . ($index + 1) . ".png";
                 ?>
                 <div class="row justify-content-center mb-5">
-                    <div class="col-md-4 d-flex align-items-center justify-content-center <?= $imgOrderClass ?> img-event-container">
+                    <div class="col-md-5 d-flex align-items-center justify-content-center <?= $imgOrderClass ?> img-event-container">
                         <img src="<?= $imgSrc ?>" class="img-event" alt="Event image for <?= $date ?>">
                     </div>
-                    <div class="col-md-8 <?= $tableOrderClass ?>">
+                    <div class="col-md-7 <?= $tableOrderClass ?>">
                         <div class="table-container">
                             <p>Events Date: <?= $date ?></p>
                             <table class="table event-table">

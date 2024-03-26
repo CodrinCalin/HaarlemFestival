@@ -2,7 +2,7 @@
 namespace App\Models;
 
 
-class Event
+class DanceEvent
 {
 
     public $event_id;

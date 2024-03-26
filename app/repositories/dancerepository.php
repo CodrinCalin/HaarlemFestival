@@ -23,7 +23,7 @@ class DanceRepository extends Repository {
         );
         $stmt->execute();
 
-        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\Event');
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\DanceEvent');
 
         $events = $stmt->fetchAll();
 

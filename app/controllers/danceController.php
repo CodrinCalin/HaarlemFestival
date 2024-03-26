@@ -18,7 +18,7 @@ class DanceController
     {
         $danceService = new DanceService();
         $artists = $danceService->getAllArtists();
-        $events = $danceService->getAllEvents();
+        $danceEvents = $danceService->getAllDanceEvents();
         $eventsByDate = $danceService->getAllEventsByDate();
         $venues = $danceService->getAllVenues();
         require __DIR__ . '/../views/dance/index.php';

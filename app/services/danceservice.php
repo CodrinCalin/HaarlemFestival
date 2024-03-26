@@ -16,7 +16,7 @@ class DanceService {
       return $this->repository->getAllArtists();
   }
 
-  function getAllEvents() {
+  function getAllDanceEvents() {
       $this->getNewInstance();
       return $this->repository->getAllEvents();
   }
