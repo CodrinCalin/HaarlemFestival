@@ -7,12 +7,12 @@ class DanceRepository extends Repository {
 
     public function getAllArtists(){
         $stmt = $this->connection->prepare
-        ("SELECT artist_id, name, style FROM artists");
+        ("SELECT artist_id, name, style, card_image_url, title FROM artists");
         $stmt->execute();
 
-        //$stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\artists.php');
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\Artists');
 
-        $artists = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $artists = $stmt->fetchAll();
 
         return $artists;
     }
