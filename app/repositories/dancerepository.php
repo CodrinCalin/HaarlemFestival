@@ -17,6 +17,21 @@ class DanceRepository extends Repository {
         return $artists;
     }
 
+    public function getArtistById($artistId) {
+        $stmt = $this->connection->prepare(
+            "SELECT artist_id, name, style, card_image_url, title FROM artists WHERE artist_id = :artist_id"
+        );
+        $stmt->bindParam(':artist_id', $artistId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\Artists');
+
+        $artist = $stmt->fetch();
+
+        return $artist;
+    }
+
+
     public function getAllEvents() {
         $stmt = $this->connection->prepare(
             "SELECT event_id, date, time, session_type, duration, tickets_available, price, remarks, venue_name, artist_name FROM events"
