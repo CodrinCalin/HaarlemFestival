@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 45.32.235.205
--- Generation Time: Mar 26, 2024 at 06:36 PM
+-- Generation Time: Mar 26, 2024 at 11:05 PM
 -- Server version: 11.3.2-MariaDB-1:11.3.2+maria~ubu2204
 -- PHP Version: 8.2.16
 
@@ -46,6 +46,50 @@ INSERT INTO `artists` (`artist_id`, `name`, `style`, `card_image_url`, `title`) 
                                                                                     (4, 'Tiësto', 'trance, techno, minimal, house en electro', 'img/danceimages/tiesto1.png', NULL),
                                                                                     (5, 'Nicky Romero', 'electrohouse/ progressive house', 'img/danceimages/nicky.png', NULL),
                                                                                     (6, 'Afrojack', 'house', 'img/danceimages/afrojack.png', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dancecontentdetail`
+--
+
+CREATE TABLE `dancecontentdetail` (
+                                      `id` int(11) NOT NULL,
+                                      `main_image_url` varchar(255) NOT NULL,
+                                      `description_image_one` varchar(255) NOT NULL,
+                                      `description_image_two` varchar(255) NOT NULL,
+                                      `description_body_one` text DEFAULT NULL,
+                                      `description_body_two` text DEFAULT NULL,
+                                      `artist_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dancecontentdetail`
+--
+
+INSERT INTO `dancecontentdetail` (`id`, `main_image_url`, `description_image_one`, `description_image_two`, `description_body_one`, `description_body_two`, `artist_id`) VALUES
+    (1, 'img/danceimages/dancedetail/Main_image_armin.png', 'img/danceimages/dancedetail/description_2_armin.png', 'img/danceimages/dancedetail/description_2_armin.png', 'Armin van Buuren, a name synonymous with the evolution of trance and electronic music, was born on December 25, 1976, in Leiden, Netherlands. Growing up in a musical family, Armin found his passion for music early on. He was inspired by the electronic sounds of the \'80s and started making music of his own with a computer when he was just 14 years old.\r\n\r\nArmin\'s dedication to his craft led him to study law at Leiden University, but his love for music never waned. His DJ career began to take off while he was still in school, and he quickly realized that his true calling was in music. In 1999, he scored his first major success with \"Communication,\" which became a hit in the dance music charts worldwide.\r\n\r\nKnown for his uplifting trance productions, Armin van Buuren has become an iconic figure in the EDM scene. His radio show, \"A State of Trance,\" has been instrumental in bringing trance music to a global audience, broadcasting to millions of listeners in over 84 countries. This show has been a launching pad for many tracks that have become staples in the trance community.', 'Armin\'s consistency and presence in the scene are unmatched, with a career spanning over two decades filled with original tracks, remixes, and collaborations with artists like Nadia Ali, Sophie Ellis-Bextor, and Trevor Guthrie. His discography includes hits like \"In and Out of Love,\" \"This Is What It Feels Like,\" and \"Blah Blah Blah,\" showcasing his ability to blend emotive melodies with driving beats.\r\n\r\nArmin van Buuren has been recognized with numerous awards and accolades, including multiple DJ Mag Top 100 DJs poll victories, showcasing his enduring appeal and influence in the world of electronic music. He has performed at the world\'s biggest festivals, including Tomorrowland and Ultra Music Festival, and has headlined countless shows and tours, sharing his love for trance music with a passionate global fanbase.\r\n\r\nAs a producer, DJ, label owner, and ambassador for trance, Armin van Buuren continues to set the standard for what it means to be at the forefront of electronic music. His visionary approach to DJing and music production ensures that his legacy will resonate for generations to come.', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dancecontenthome`
+--
+
+CREATE TABLE `dancecontenthome` (
+                                    `id` int(11) NOT NULL,
+                                    `main_image_url` varchar(255) NOT NULL,
+                                    `introduction_title` varchar(255) NOT NULL,
+                                    `introduction_subtitle` varchar(255) NOT NULL,
+                                    `introduction_text` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dancecontenthome`
+--
+
+INSERT INTO `dancecontenthome` (`id`, `main_image_url`, `introduction_title`, `introduction_subtitle`, `introduction_text`) VALUES
+    (1, 'http://example.com/images/main.jpg', 'Welcome to Haarlem Dance Festival', 'The Ultimate Dance Experience', 'Join us for an unforgettable adventure into the world of dance. Enjoy performances from top artists, workshops, and immersive experiences that will make your summer truly spectacular.');
 
 -- --------------------------------------------------------
 
@@ -439,6 +483,19 @@ ALTER TABLE `artists`
     ADD PRIMARY KEY (`artist_id`);
 
 --
+-- Indexes for table `dancecontentdetail`
+--
+ALTER TABLE `dancecontentdetail`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `artist_id` (`artist_id`);
+
+--
+-- Indexes for table `dancecontenthome`
+--
+ALTER TABLE `dancecontenthome`
+    ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
@@ -531,6 +588,18 @@ ALTER TABLE `artists`
     MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `dancecontentdetail`
+--
+ALTER TABLE `dancecontentdetail`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `dancecontenthome`
+--
+ALTER TABLE `dancecontenthome`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
@@ -605,6 +674,12 @@ ALTER TABLE `venues`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `dancecontentdetail`
+--
+ALTER TABLE `dancecontentdetail`
+    ADD CONSTRAINT `dancecontentdetail_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`);
 
 --
 -- Constraints for table `restaurant`

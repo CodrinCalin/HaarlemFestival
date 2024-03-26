@@ -72,7 +72,20 @@ class DanceRepository extends Repository {
         return $eventsByDate;
     }
 
+    public function getDetailPageContentByArtistId($artistId) {
+        $stmt = $this->connection->prepare(
+            "SELECT id, main_image_url, description_image_one, description_image_two, description_body_one, description_body_two 
+                    FROM dancecontentdetail WHERE artist_id = :artist_id"
+        );
+        $stmt->bindParam(':artist_id', $artistId, PDO::PARAM_INT);
+        $stmt->execute();
 
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\DanceContentDetail');
+
+        $detailpagecontent = $stmt->fetch();
+
+        return $detailpagecontent;
+    }
 
 
     public function getAllTickets(){

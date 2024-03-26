@@ -22,6 +22,7 @@ class DetailController
         $artist = null;
         if ($artistId !== null) {
             $artist = $this->danceService->getArtistById($artistId);
+            $detailpagecontent = $this->danceService->getDetailPageContentByArtistId($artistId);
         }
 
         // Handle the case where no artist was found
