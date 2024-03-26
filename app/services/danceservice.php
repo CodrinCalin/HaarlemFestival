@@ -30,4 +30,9 @@ class DanceService {
       $this->getNewInstance();
       return $this->repository->getAllVenues();
   }
+
+  function getArtistById($artistId) {
+      $this->getNewInstance();
+      return $this->repository->getArtistById($artistId);
+  }
 }

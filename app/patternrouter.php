@@ -1,5 +1,6 @@
 <?php
 namespace App;
+use mysql_xdevapi\Exception;
 
 class PatternRouter
 {
@@ -21,7 +22,6 @@ class PatternRouter
         // Extract controller and method names
         $controllerName = "App\\Controllers\\" . ($parts[0] ?? 'home') . "Controller";
         $methodName = $parts[1] ?? 'index';
-
 
         if(!class_exists($controllerName) || !method_exists($controllerName, $methodName)) {
             http_response_code(404);
