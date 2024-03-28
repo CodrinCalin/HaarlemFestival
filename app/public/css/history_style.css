@@ -57,6 +57,12 @@ h1 {
     font-weight: 700;
 }
 
+@media only screen and (max-width: 1000px) {
+    #title {
+        font-size: 12vw;
+    }
+}
+
 /*Order Tickets Button*/
 #orderTicketsButton{
     align-items: center;
@@ -69,13 +75,13 @@ h1 {
 
 #orderTicketsButton button {
     width: 95dvw;
-    height: 100px;
+    height: 85px;
     border-radius: 15px;
     border: none;
     background: rgba(7, 190, 184, 0.95);
     color: #FFF;
     text-align: center;
-    font-size: 60px;
+    font-size: 42px;
     font-weight: 700;
 }
 
@@ -138,10 +144,10 @@ h1 {
     background: #A9E0DE;
     color: black;
     border-radius: 15px;
-    padding: 25px;
+    padding: 25px 25px 0;
     margin: 0.8dvw;
     text-align: justify;
-    min-height: 375px;
+    min-height: 400px;
     font-size: 20px;
     line-height: 35px;
     display: flex;
@@ -162,10 +168,9 @@ h1 {
     text-align: center;
 }
 
-#schedule p {
+#scheduleDescription {
     font-size: 20px;
-    font-weight: 600;
-    margin: 50px 15px 85px;
+    margin: 50px 15px;
 }
 
 .tab {
@@ -183,15 +188,15 @@ h1 {
 }
 
 .tab button img {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     border-radius: 425px;
     overflow: hidden;
     object-fit: cover;
 }
 
 .tab button:hover {
-    background-color: #ddd;
+    background-color: #b4cbc9;
 }
 
 .tab button.active {
@@ -202,7 +207,7 @@ h1 {
     background-color: #A9E0DE;
     color: black;
     display: none;
-    padding: 6px 12px;
+    padding: 6px 12px 35px;
     border-top: none;
 }
 
@@ -213,10 +218,37 @@ h1 {
 }
 
 .hline {
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     width: 350px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.borderColumn {
+    margin-top: 25px;
+    border-right: 1px solid black;
+    min-width: 250px;
+}
+
+#fullDayOfTheWeek {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+#dayOfTheWeek {
+    font-size: 60px;
+    font-weight: 700;
+    margin: 0 0 25px;
+    line-height: 50px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.bold {
+    font-weight: 600;
 }
 
 /*route*/

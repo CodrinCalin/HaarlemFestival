@@ -71,7 +71,7 @@ $service = new \App\Services\historyService();
     $content = $service->getContentById(7);
     ?>
     <h1>Schedule</h1>
-    <p><?= nl2br($content->content) ?></p>
+    <p id="scheduleDescription"><?= nl2br($content->content) ?></p>
     <?php
     include __DIR__ . '/historySchedule.php';
     ?>
