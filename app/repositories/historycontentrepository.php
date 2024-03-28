@@ -24,6 +24,16 @@ class historycontentrepository extends Repository {
         }
     }
 
+    public function getContentByCategory($category) {
+        $stmt = $this->connection->prepare(
+            "SELECT *
+            FROM historyContent
+            WHERE category=:category");
+        $stmt->execute([':category' => $category]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\Content');
+        return $stmt->fetchAll();
+    }
+
     public function getPracticalInformation(): array
     {
         $stmt = $this->connection->prepare(

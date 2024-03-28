@@ -104,6 +104,9 @@ $service = new \App\Services\historyService();
 </div>
 <div id="fAQ">
     <h1>Frequently Asked Questions</h1>
+    <?php
+    $faq = $service->getFAQ()
+    ?>
     <p>Where do we gather?</p>
     <p>How long does the event last?</p>
 

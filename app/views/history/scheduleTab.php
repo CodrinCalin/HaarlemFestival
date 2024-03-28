@@ -15,8 +15,17 @@ if (count($months) > 1) {
     }
 }
 $headerString = $headerString." ".$tours[0]->startTime->format('Y');
+
+$monthDays = array();
 ?>
 
 <h3><?= $headerString ?></h3>
 <div class="hline"></div>
+<?php
+foreach ($tours as $tour) {
+    if (!in_array($tour->startTime->format('m d'), $monthDays)) {
+        
+    }
+}
+?>
 

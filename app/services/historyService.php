@@ -22,7 +22,13 @@ class historyService {
 
     public function getPracticalInformation() {
         $this->getNewInstance();
-        return $this->repository->getPracticalInformation();
+        return $this->repository->getContentByCategory("practicalInformation");
+    }
+
+    public function getFAQ()
+    {
+        $this->getNewInstance();
+        return $this->repository->getContentByCategory("faq");
     }
 
     public function getTourByLanguage($language) {
