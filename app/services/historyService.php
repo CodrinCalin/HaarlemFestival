@@ -1,13 +1,13 @@
 <?php
 namespace App\Services;
-use App\Repositories\historycontentrepository;
+use App\Repositories\historyrepository;
 
 class historyService {
     private $repository;
 
     private function getNewInstance()
     {
-        $this->repository = new historycontentrepository();
+        $this->repository = new historyrepository();
     }
     public function getAll()
     {
@@ -34,5 +34,15 @@ class historyService {
     public function getTourByLanguage($language) {
         $this->getNewInstance();
         return $this->repository->getTourByLanguage($language);
+    }
+
+    public function getAllHistoryLocations() {
+        $this->getNewInstance();
+        return $this->repository->getAllHistoryLocations();
+    }
+
+    public function fixtable() {
+        $this->getNewInstance();
+        $this->repository->fixtable();
     }
 }

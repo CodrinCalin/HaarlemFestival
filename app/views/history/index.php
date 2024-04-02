@@ -2,6 +2,7 @@
 include __DIR__ . '/../header.php';
 $service = new \App\Services\historyService();
 ?>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="/css/history_style.css" rel="stylesheet">
 
 <div id="titleBlock">
@@ -66,6 +67,7 @@ $service = new \App\Services\historyService();
         ?>
     </div>
 </div>
+
 <div id="schedule">
     <?php
     $content = $service->getContentById(7);
@@ -75,33 +77,46 @@ $service = new \App\Services\historyService();
     <?php
     include __DIR__ . '/historySchedule.php';
     ?>
-
 </div>
+
 <div id="route">
     <h1>Route</h1>
     <div class="row">
-        <div class="col-7">
-            <div id="mapBackground">
+        <?php
+        include __DIR__ . '/historyMap.php';
+        ?>
+        <div class="meetingPlace">
+            <?php
+            $title = $service->getContentById(8);
+            $address = $service->getContentById(9);
+            $description = $service->getContentById(10);
+            ?>
+            <h1>Meeting Place</h1>
+            <div class="meetingPlaceImage">
+                <h3><?=$title->content ?></h3>
+                <img src="\img\history\meetingPlace.png">
 
+                <p>
+                    <i class="fa-sharp fa-solid fa-location-dot"></i>
+                    <?= $address->content ?>
+                </p>
+                <p><?= $description->content ?> </p>
             </div>
-
-        </div>
-        <div class="col-1">
-
-        </div>
-        <div class="col-4">
-            <h1 id="meetingPlaceHeader">Meeting Place</h1>
-            <img src="\img\history\history_header.png">
         </div>
     </div>
 </div>
+
 <div id="locations">
     <h1>Locations</h1>
+    <?php
+    $locations = $service->getAllHistoryLocations();
+    ?>
     <a href="/history/locationDetails">
         <button>Learn More</button>
     </a>
 
 </div>
+
 <div id="fAQ">
     <h1>Frequently Asked Questions</h1>
     <?php
