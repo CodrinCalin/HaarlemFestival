@@ -1,6 +1,5 @@
 <?php
 include __DIR__ . '/../header.php';
-$service = new \App\Services\historyService();
 ?>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="/css/history_style.css" rel="stylesheet">
@@ -95,10 +94,11 @@ $service = new \App\Services\historyService();
             <div class="meetingPlaceImage">
                 <h3><?=$title->content ?></h3>
                 <img src="\img\history\meetingPlace.png">
-
                 <p>
                     <i class="fa-sharp fa-solid fa-location-dot"></i>
-                    <?= $address->content ?>
+                    <a href="https://www.google.com/maps/place/<?= $address->content ?>" target="_blank">
+                        <?= $address->content ?>
+                    </a>
                 </p>
                 <p><?= $description->content ?> </p>
             </div>
@@ -110,22 +110,39 @@ $service = new \App\Services\historyService();
     <h1>Locations</h1>
     <?php
     $locations = $service->getAllHistoryLocations();
+    $currentLocation = 0;
+    include __DIR__ . '/historyLocationDescription.php';
     ?>
-    <a href="/history/locationDetails">
-        <button>Learn More</button>
-    </a>
-
 </div>
+
+
 
 <div id="fAQ">
     <h1>Frequently Asked Questions</h1>
-    <?php
-    $faq = $service->getFAQ()
-    ?>
-    <p>Where do we gather?</p>
-    <p>How long does the event last?</p>
 
+    <?php
+    $faq = $service->getFAQ();
+    foreach ($faq as $question) {
+        ?>
+            <div id="question" class="row">
+                <h3 class="col-1" id="plusMinus" onclick="plusMinusChange()">+</h3>
+                <p class="col-sm"><?= $question->content ?> </p>
+            </div>
+    <?php }
+    ?>
 </div>
+
+<script>
+    function plusMinusChange() {
+        if (document.getElementById("plusMinus").textContent === "+") {
+            document.getElementById("plusMinus").innerHTML = "-";
+        }
+        else if (document.getElementById("plusMinus").textContent === "-") {
+            document.getElementById("plusMinus").innerHTML = "+";
+        }
+
+    }
+</script>
 
 <div id="orderTicketsButton">
     <a href="/historyTickets">

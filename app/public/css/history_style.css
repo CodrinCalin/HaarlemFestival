@@ -17,7 +17,7 @@ h1 {
 }
 
 #headerImage {
-    width:99dvw;
+    width:99vw;
     height:100dvh;
     overflow: hidden;
     object-fit: cover;
@@ -93,7 +93,7 @@ h1 {
 }
 
 #intro p {
-    margin: 6dvh 16dvw 6dvw;
+    margin: 6dvh 8dvw 6dvw;
     font-size: 20px;
 }
 
@@ -152,6 +152,7 @@ h1 {
     line-height: 35px;
     display: flex;
     flex-direction: column;
+    min-width: 225px;
 }
 
 #practicalInformation img {
@@ -230,6 +231,10 @@ h1 {
     min-width: 250px;
 }
 
+.borderColumn:last-child {
+    border: none;
+}
+
 #fullDayOfTheWeek {
     font-size: 20px;
     font-weight: 600;
@@ -269,7 +274,7 @@ h1 {
 #mapBackground {
     padding: 50px;
     width: 100%;
-    height: 875px;
+    min-height: 875px;
     border-radius: 25px;
     background: linear-gradient(180deg, rgba(71, 81, 92, 0.85) 0%, rgba(169, 224, 222, 0.85) 75.52%);
 }
@@ -283,7 +288,16 @@ h1 {
     font-size: 20px;
     padding-top: 20px;
     padding-left: 6dvw;
-    line-height: 12px;
+}
+
+.locationNames p {
+    margin: 0;
+}
+
+@media only screen and (max-width: 725px) {
+    .locationNames .col-6 {
+        width: 100%;
+    }
 }
 
 /*meeting place*/
@@ -296,10 +310,11 @@ h1 {
     text-align: center;
 }
 
-.meetingPlace p {
+.meetingPlace p, .meetingPlace a {
     font-size: 20px;
     margin: 25px;
     text-align: left;
+    color: black;
 }
 
 .meetingPlaceImage {
@@ -346,14 +361,58 @@ h1 {
     padding: 50px 100px 100px;
 }
 
+#locationDescription {
+    background-color: #FFFFD4;
+    border-radius: 15px;
+    color: black;
+    height: 550px;
+}
+
+#locationDescription h1 {
+    line-height: 150px;
+    margin-left: 50px;
+}
+
+#locationDescription p {
+    margin-left: 125px;
+}
+
+#locationDescription button {
+    height: 100px;
+    border-radius: 0 0 0 15px;
+    background-color: #A9E0DE;
+    border: none;
+    color: #000;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
+
 /*faq*/
+#plusMinus {
+    /*display: flex;
+    width: 82.81px;
+    height: 72px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+*/
+    text-align: center;
+    font-size: 60px;
+    font-weight: 500;
+}
+
 #fAQ {
     background-color: #FFFFD4;
     padding: 50px 235px 100px;
+}
+
+#fAQ h1 {
+    margin-bottom: 50px;
     text-align: center;
 }
 
-#fAQ p {
+#question {
     margin: 0;
     border: 3px solid black;
     height: 75px;

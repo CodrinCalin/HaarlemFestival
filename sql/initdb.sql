@@ -510,6 +510,53 @@ ALTER TABLE `historySchedule`
 ALTER TABLE `historySchedule`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
+CREATE TABLE `historyLocation` (
+                                   `id` int(11) NOT NULL,
+                                   `name` varchar(255) NOT NULL,
+                                   `description` mediumtext NOT NULL,
+                                   `address` varchar(255) NOT NULL,
+                                   `latitude` double NOT NULL,
+                                   `longitude` double NOT NULL,
+                                   `text1` mediumtext NOT NULL,
+                                   `text2` mediumtext NOT NULL,
+                                   `text3` mediumtext NOT NULL,
+                                   `text4` mediumtext NOT NULL,
+                                   `text5` mediumtext NOT NULL,
+                                   `img1` varchar(255) NOT NULL,
+                                   `img2` varchar(255) NOT NULL,
+                                   `img3` varchar(255) NOT NULL,
+                                   `img4` varchar(255) NOT NULL,
+                                   `img5` varchar(255) NOT NULL,
+                                   `img6` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `historyLocation`
+--
+
+INSERT INTO `historyLocation` (`id`, `name`, `description`, `address`, `latitude`, `longitude`, `text1`, `text2`, `text3`, `text4`, `text5`, `img1`, `img2`, `img3`, `img4`, `img5`, `img6`) VALUES
+    (1, 'Church Of St. Bavo', 'The St. Bavo Church stands as a testament to the rich history and architectural grandeur of Haarlem. The church is officially named the Grote Kerk, meaning \"Great Church,\" and is dedicated to Saint Bavo, a 7th-century Flemish saint. It is one of the most significant landmarks in the city and a masterpiece of Gothic architecture.', 'Grote Markt 22, 2011 RD Haarlem', 52.38119025306136, 4.637248966612672, 'The Church of St. Bavo is the first location we will be visiting during the tour. The Church of St. Bavo, also knows as the Grote Kerk (Great Church), is dedicated to Saint Bavo, a 7th-century Flemish saint. The Church is the main Protestant Church in Haarlem. It is one of the most significant landmarks in the city and a masterpiece of Gothic architecture.', 'The church has a rich history that dates back to the 14th century. Construction of the church began in the mid-14th century and continued over several centuries, with various architectural styles represented in its structure.\r\n\r\nThe church is known for its impressive Gothic architecture and features such as the towering steeple, which stands as one of the tallest in the Netherlands.\r\n\r\nThe Church of St. Bavo is a symbol of Haarlem\'s cultural heritage and religious history. Its architecture and interior reflect the changing styles and artistic achievements of different periods.\r\n', 'Inside the Church of St. Bavo, visitors can find numerous works of art, including the famous Muller organ, built by Christian Müller in the 18th century. This organ is renowned for its size and musical quality.\r\nThe church houses several notable artworks, including the tomb of Frans Hals, the renowned Dutch Golden Age painter. Hals was buried in the church in 1666.\r\nThe aforementioned Muller organ is a masterpiece of organ building and is a major draw for music enthusiasts and tourists alike.\r\n', 'It is a place of worship and holds regular religious services.\r\n\r\nAdditionally, the church is a venue for concerts and cultural events due to its impressive acoustics and historical significance.\r\n', 'In summary, the Church of St. Bavo in Haarlem is not only a place of worship but also a historical and cultural treasure that contributes significantly to the identity and heritage of the city. Its architecture, artworks, and cultural events make it a central element in Haarlem\'s vibrant cultural landscape.', '', '', '', '', '', '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `historyLocation`
+--
+ALTER TABLE `historyLocation`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `historyLocation`
+--
+ALTER TABLE `historyLocation`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

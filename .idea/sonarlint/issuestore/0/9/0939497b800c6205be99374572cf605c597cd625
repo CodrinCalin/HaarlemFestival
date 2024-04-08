@@ -1,6 +1,17 @@
 
-@	php:S2003"&Replace "include" with "include_once".(¼¼ÕÓıÿÿÿÿ
-@	php:S2003_"&Replace "include" with "include_once".(™ÓÅ«ıÿÿÿÿ
-:php:S125("Remove this commented out code.(º®Ï¶8˜ò¿—ç1
-f	php:S4833"LReplace "include" with namespace import mechanism through the "use" keyword.(¼¼ÕÓıÿÿÿÿ
-f	php:S4833_"LReplace "include" with namespace import mechanism through the "use" keyword.(™ÓÅ«ıÿÿÿÿ
+LWeb:ImgWithoutAltCheck"%Add an "alt" attribute to this image.(±Ôèşÿÿÿÿ
+GWeb:ImgWithoutAltCheck!"%Add an "alt" attribute to this image.(ˆëÎ
+LWeb:ImgWithoutAltCheck'"%Add an "alt" attribute to this image.(·éùÿÿÿÿ
+GWeb:ImgWithoutAltCheck-"%Add an "alt" attribute to this image.(ç³â
+NWeb:ImgWithoutAltChecka"%Add an "alt" attribute to this image.(¡•Í”8ÊçÜé1
+:php:S113"'Add a new line at the end of this file.8Òß²ê1
+G	php:S2003"&Replace "include" with "include_once".(¼¼ÕÓıÿÿÿÿ8Òß²ê1
+G	php:S2003N"&Replace "include" with "include_once".(¿í¦Úûÿÿÿÿ8Òß²ê1
+B	php:S2003V"&Replace "include" with "include_once".(éìÒ“8Òß²ê1
+B	php:S2003r"&Replace "include" with "include_once".(À½Ò–8Òß²ê1
+H	php:S2003š"&Replace "include" with "include_once".(™ÓÅ«ıÿÿÿÿ8Òß²ê1
+m	php:S4833"LReplace "include" with namespace import mechanism through the "use" keyword.(¼¼ÕÓıÿÿÿÿ8Òß²ê1
+m	php:S4833N"LReplace "include" with namespace import mechanism through the "use" keyword.(¿í¦Úûÿÿÿÿ8Òß²ê1
+h	php:S4833V"LReplace "include" with namespace import mechanism through the "use" keyword.(éìÒ“8Òß²ê1
+h	php:S4833r"LReplace "include" with namespace import mechanism through the "use" keyword.(À½Ò–8Òß²ê1
+n	php:S4833š"LReplace "include" with namespace import mechanism through the "use" keyword.(™ÓÅ«ıÿÿÿÿ8Òß²ê1

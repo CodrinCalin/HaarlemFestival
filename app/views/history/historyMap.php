@@ -24,7 +24,7 @@
 </div>
 
 <script>
-    var map = L.map('map').setView([52.38119320033884, 4.636915687632547], 15);
+    var map = L.map('map').setView([52.380744916034196, 4.638064154045008], 16);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -34,12 +34,9 @@
 
         foreach ($locations as $location) {
             ?>
-            var marker = L.marker([<?= $location->latitude ?>, <?= $location->longitude ?>]).addTo(map);
-            marker.on('click', onMarkerClick);
+            var marker = L.marker([<?= $location->latitude ?>, <?= $location->longitude ?>]);
+            marker.bindPopup("<?= $location->name ?>").openPopup();
+            marker.addTo(map);
         <?php }
     ?>
-
-    function onMarkerClick(e) {
-        marker.setOpacity(10);
-    }
 </script>
