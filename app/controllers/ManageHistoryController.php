@@ -3,9 +3,12 @@ namespace App\Controllers;
 
 class ManageHistoryController
 {
+    public $historyService;
+
     function __construct()
     {
         session_start();
+        $this->historyService = new \App\Services\historyService();
     }
 
     public function index()
@@ -18,6 +21,7 @@ class ManageHistoryController
     }
 
     public function manageIntro() {
+        $service = $this->historyService;
         require __DIR__ . '/../views/managehistory/manageIntro.php';
     }
 
@@ -39,5 +43,15 @@ class ManageHistoryController
 
     public function manageFAQs() {
         require __DIR__ . '/../views/managehistory/manageFAQs.php';
+    }
+
+    public function changeIntro() {
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $newText = $_POST["introText"];
+
+            $this->historyService->updateContent(1, $newText);
+
+            header("Location: /managehistory/manageIntro");
+        }
     }
 }
