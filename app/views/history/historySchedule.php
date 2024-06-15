@@ -1,12 +1,12 @@
 <div class="tab">
     <button class="tablinks" onclick="openTab(event, 'English')"  id="defaultOpen">
-        <img src="\img\history\english_flag.png">
+        <img src="\img\history\english_flag.png" alt="English">
     </button>
     <button class="tablinks" onclick="openTab(event, 'Dutch')">
-        <img src="\img\history\dutch_flag.png">
+        <img src="\img\history\dutch_flag.png" alt="Dutch">
     </button>
     <button class="tablinks" onclick="openTab(event, 'Mandarin')">
-        <img src="\img\history\chinese_flag.png">
+        <img src="\img\history\chinese_flag.png" alt="Mandarin">
     </button>
 </div>
 
@@ -29,20 +29,4 @@
     ?>
 </div>
 
-<script>
-    function openTab(evt, language) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(language).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-
-    document.getElementById("defaultOpen").click();
-</script>
+<script src="/js/historySchedule.js"></script>

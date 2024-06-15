@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class Content {
+class HistoryContent {
     public int $id;
     public string $category;
     public string $content;

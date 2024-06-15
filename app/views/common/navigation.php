@@ -23,7 +23,6 @@
                 <?php
                 if(isset($_SESSION["authUser"])) { ?>
                     <?php
-                    echo $_SESSION["authUser"]->username;
                     $authUser = $_SESSION["authUser"];
                     if($authUser->permissions < 2) { ?>
                         <li class="nav-item dropdown <?php echo ($_SERVER['REQUEST_URI'] == '/manage') ? 'bold-nav-link' : ''; ?>">
@@ -35,6 +34,9 @@
                                  aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/manageusers">Manage Users</a>
                                 <a class="dropdown-item" href="/managetickets">Manage Tickets</a>
+                                <a class="dropdown-item" href="/managehistory">Manage History</a>
+                                <a class="dropdown-item" href="/managerestaurants">Manage Restaurants</a>
+
                             </div>
                         </li>
                     <?php }?>
