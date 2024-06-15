@@ -9,7 +9,7 @@ include __DIR__ . '/../header.php';
                 <h2>Reset Password by Email</h2>
             </div>
             <div class="formContent">
-                <form action="forgotPassword" method="post">
+                <form action="forgot_password" method="post">
                     <div class="form-group inputField">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" required>

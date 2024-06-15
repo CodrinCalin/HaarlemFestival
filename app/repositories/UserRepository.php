@@ -95,6 +95,16 @@ class UserRepository extends Repository {
                 ':id' => $updatedUser->id]);
     }
 
+    public function updateUserPassword($email, $newHashedPassword)
+    {
+        $stmt = $this->connection->prepare(
+            "UPDATE `users` SET `password`=:newPassword
+                WHERE email LIKE :email");
+        $stmt->execute([
+            ':email' => $email,
+            ':newPassword' => $newHashedPassword]);
+    }
+
     public function deleteUserById($userId)
     {
         $stmt = $this->connection->prepare(
@@ -104,68 +114,29 @@ class UserRepository extends Repository {
         $stmt->execute([':userId' => $userId]);
     }
 
-//  Password Reset
-public function getUserByEmail($email)
-{
-    try{
-        $stmt = $this->connection->prepare(
-            "SELECT id, username, email, password, first_name, last_name, permissions, date_created
-                    FROM users  
-                    WHERE email LIKE :email");
-        $stmt->execute([':email' => $email]);
+    //  Password Reset
+    public function getUserByEmail($email)
+    {
+        try{
+            $stmt = $this->connection->prepare(
+                "SELECT id, username, email, password, first_name, last_name, permissions, date_created
+                        FROM users  
+                        WHERE email LIKE :email");
+            $stmt->execute([':email' => $email]);
 
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\\Models\\User');
-        $userRetrieved = $stmt->fetch();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\\Models\\User');
+            $userRetrieved = $stmt->fetch();
 
-        if ($userRetrieved) {
-            return $userRetrieved;
-        } else {
-            return null;
+            if ($userRetrieved) {
+                return $userRetrieved;
+            } else {
+                return null;
+            }
+        } catch (PDOException $e){
+            echo "Error: " . $e->getMessage();
         }
-    } catch (PDOException $e){
-        echo "Error: " . $e->getMessage();
     }
-}
 
-public function getEmailByResetToken($token)
-{
-    try{
-        $stmt = $this->connection->prepare(
-            "SELECT id, email, token, expiration, date_created
-                    FROM resetTokens
-                    WHERE token LIKE :token");
-        $stmt->execute([':token' => $token]);
-
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\ResetToken');
-        $emailRetrieved = $stmt->fetch();
-
-        if ($emailRetrieved) {
-            return $emailRetrieved;
-        } else {
-            return null;
-        }
-    } catch (PDOException $e){
-        echo "Error: " . $e->getMessage();
-    }
-}
-
-public function storeResetToken($email, string $token)
-{
-    $expiration = date('Y-m-d H:i:s', strtotime('+1 day')); // Token validity lasts for 1 day
-
-    try {
-        $stmt = $this->connection->prepare(
-        "INSERT INTO resetTokens (email, token, expiration, date_created) 
-                VALUES (:email, :token, :expiration, CURRENT_TIMESTAMP)");
-
-        $stmt->execute([
-            ':email' => $email,
-            ':token' => $token,
-            ':expiration' => $expiration]);
-    } catch (PDOException $e){
-        echo "Error: " . $e->getMessage();
-    }
-}
    public function checkUsernameExists($usernameInput)
     {
         $username = $this->getUserByUsername($usernameInput);
