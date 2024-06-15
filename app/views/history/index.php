@@ -109,40 +109,49 @@ include __DIR__ . '/../header.php';
 <div id="locations">
     <h1>Locations</h1>
     <?php
-    $locations = $service->getAllHistoryLocations();
     $currentLocation = 0;
     include __DIR__ . '/historyLocationDescription.php';
     ?>
 </div>
 
+    <div id="fAQ">
+        <h1>Frequently Asked Questions</h1>
 
-
-<div id="fAQ">
-    <h1>Frequently Asked Questions</h1>
-
-    <?php
-    $faq = $service->getFAQ();
-    foreach ($faq as $question) {
-        ?>
-            <div id="question" class="row">
-                <h3 class="col-1" id="plusMinus" onclick="plusMinusChange()">+</h3>
+        <?php
+        $faq = $service->getFAQ();
+        foreach ($faq as $index => $question) {
+            ?>
+            <div id="question<?= $index ?>" class="question" onclick="toggleAnswer(<?= $index ?>, true)">
+                <h3 class="col-1">+</h3>
                 <p class="col-sm"><?= $question->content ?> </p>
             </div>
-    <?php }
-    ?>
-</div>
+            <div id="questionAnswer<?= $index ?>" style="display: none;" onclick="toggleAnswer(<?= $index ?>, false)">
+                <div class="question">
+                    <h3 class="col-1">-</h3>
+                    <p class="col-sm"><?= $question->content ?> </p>
+                </div>
+                <div class="answer">
+                    <p> <?= $question->addition ?> </p>
+                </div>
+            </div>
+        <?php }
+        ?>
+    </div>
 
-<script>
-    function plusMinusChange() {
-        if (document.getElementById("plusMinus").textContent === "+") {
-            document.getElementById("plusMinus").innerHTML = "-";
-        }
-        else if (document.getElementById("plusMinus").textContent === "-") {
-            document.getElementById("plusMinus").innerHTML = "+";
-        }
+    <script>
+        function toggleAnswer(index, showAnswer) {
+            var question = document.getElementById('question' + index);
+            var answer = document.getElementById('questionAnswer' + index);
 
-    }
-</script>
+            if (showAnswer) {
+                question.style.display = 'none';
+                answer.style.display = 'block';
+            } else {
+                question.style.display = 'flex';
+                answer.style.display = 'none';
+            }
+        }
+    </script>
 
 <div id="orderTicketsButton">
     <a href="/historyTickets">

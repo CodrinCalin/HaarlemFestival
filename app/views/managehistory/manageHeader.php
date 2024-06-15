@@ -5,7 +5,7 @@ include __DIR__ . '/../header.php';
     <div class="mainManageBody">
         <a href="/managehistory"><button class="backButton">< Go Back</button></a>
 
-        <h1>Change Header</h1>
+        <h1>Edit Header</h1>
         <h2>Change header image</h2>
         <div class="row">
             <div class="col-sm">

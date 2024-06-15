@@ -41,9 +41,19 @@ class historyService {
         return $this->repository->getAllHistoryLocations();
     }
 
+    public function getHistoryLocationById($id) {
+        $this->getNewInstance();
+        return $this->repository->getHistoryLocationById($id);
+    }
+
     public function updateContent($contentId, $newText) {
         $this->getNewInstance();
         $this->repository->updateContent($contentId, $newText);
+    }
+
+    public function addContent($content, $addition, $category) {
+        $this->getNewInstance();
+        $this->repository->addContent($content, $addition, $category);
     }
 
     public function fixtable() {

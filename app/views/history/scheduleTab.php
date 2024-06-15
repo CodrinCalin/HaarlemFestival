@@ -56,7 +56,6 @@ $headerString = $headerString." ".$tours[0]->startTime->format('Y');
                             <div class="col-6">
                                 <p>
                                     <?= $item->tourGuide ?>
-
                                 </p>
                             </div>
                         </div>

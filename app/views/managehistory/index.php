@@ -6,25 +6,25 @@ include __DIR__ . '/../header.php';
     <div class="mainManageBody">
         <h1>Manage Stroll Through History page</h1>
         <div>
-            <a href="/managehistory/manageHeader"><button>Change header</button></a>
+            <a href="/managehistory/manageHeader"><button>Edit header</button></a>
         </div>
         <div>
-            <a href="/managehistory/manageIntro"><button>Change introduction</button></a>
+            <a href="/managehistory/manageIntro"><button>Edit introduction</button></a>
         </div>
         <div>
-            <a href="/managehistory/managePracticalInformation"><button>Change practical information</button></a>
+            <a href="/managehistory/managePracticalInformation"><button>Edit practical information</button></a>
         </div>
         <div>
-            <a href="/managehistory/manageSchedule"><button>Change schedule</button></a>
+            <a href="/managehistory/manageSchedule"><button>Edit schedule</button></a>
         </div>
         <div>
-            <a href="/managehistory/manageMeetingPlace"><button>Change meeting place</button></a>
+            <a href="/managehistory/manageMeetingPlace"><button>Edit meeting place</button></a>
         </div>
         <div>
-            <a href="/managehistory/manageLocations"><button>Change locations</button></a>
+            <a href="/managehistory/manageLocations"><button>Edit locations</button></a>
         </div>
         <div>
-            <a href="/managehistory/manageFAQs"><button>Change frequently asked questions</button></a>
+            <a href="/managehistory/manageFAQs"><button>Edit frequently asked questions</button></a>
         </div>
     </div>
 

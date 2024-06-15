@@ -5,8 +5,8 @@ include __DIR__ . '/../header.php';
     <div class="mainManageBody">
         <a href="/managehistory"><button class="backButton">< Go Back</button></a>
 
-        <h1>Change Introduction</h1>
-        <h2>Change text</h2>
+        <h1>Edit Introduction</h1>
+        <h2>Edit text</h2>
         <div class="row">
             <div class="col-sm">
                 <h4>
@@ -18,11 +18,11 @@ include __DIR__ . '/../header.php';
                 <p><?= nl2br($content->content) ?></p>
             </div>
             <div class="col-sm">
-                <form action="changeIntro" method="post">
+                <form action="editContent?id=1" method="post">
 
                     <h4><label for="introText">New text:</label></h4><br>
                     <textarea id="introText" name="introText"> <?= nl2br($content->content) ?> </textarea>
-                    <button type="submit">Change</button>
+                    <button type="submit">Edit</button>
                 </form>
             </div>
         </div>

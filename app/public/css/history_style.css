@@ -218,6 +218,10 @@ h1 {
     margin: 25px 25px 10px;
 }
 
+.tabcontent p {
+    font-size: 20px;
+}
+
 .hline {
     border-top: 1px solid black;
     width: 350px;
@@ -361,23 +365,37 @@ h1 {
     padding: 50px 100px 100px;
 }
 
+.smallCard {
+    display: none;
+}
+
 #locationDescription {
+    position: relative;
     background-color: #FFFFD4;
     border-radius: 15px;
     color: black;
     height: 550px;
+    font-size: 20px;
 }
 
 #locationDescription h1 {
-    line-height: 150px;
     margin-left: 50px;
+    margin-top: 12px;
+    font-size: 4dvw;
 }
 
 #locationDescription p {
-    margin-left: 125px;
+    margin: 0 16px 0 125px;
 }
 
-#locationDescription button {
+.locationSlides {
+    display: none;
+}
+
+#learnMoreLocations {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100px;
     border-radius: 0 0 0 15px;
     background-color: #A9E0DE;
@@ -386,22 +404,104 @@ h1 {
     text-align: center;
     font-size: 32px;
     font-weight: 700;
+    width: 100%;
+    text-decoration: none;
+}
+
+#locationDescription .prev, #locationDescription .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 55px;
+    height: 55px;
+    padding: 16px;
+    margin: -22px 15px 15px;
+    color: white;
+    border-radius: 35px;
+    background-color: rgba(71, 81, 92, 0.85);
+    text-decoration: none;
+    font-size: 36px;
+    line-height: 27px;
+}
+
+#locationDescription .next {
+    right: 0;
+}
+
+#locationDescription .next:hover, #locationDescription .prev:hover {
+    background-color: rgba(71, 81, 92);
+}
+
+.locationSlides img {
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 0 15px 15px 0;
+}
+
+.locationSlides .col-sm {
+    padding: 0;
+}
+
+.locationSlides .col-sm:first-child {
+    padding-left: calc(var(--bs-gutter-x)* .5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 1255px) {
+    #locationDescription {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 1085px) {
+    #locationDescription {
+        height: 650px;
+    }
+
+    .locationSlides img {
+        height: 650px;
+    }
+
+    #locationDescription h1 {
+        font-size: 42px;
+    }
+}
+
+@media only screen and (max-width: 925px) {
+    #locations {
+        background-color: #47515C;
+        color: white;
+        padding: 50px 50px 50px;
+    }
+}
+
+@media only screen and (max-width: 810px) {
+    .smallCard {
+        display: block;
+    }
+
+    .locationSlides .row {
+        display: none;
+    }
+
+    #learnMoreLocations {
+        border-radius: 0 0 15px 15px;
+    }
+
+    #locationDescription {
+        height: auto;
+    }
+
+    .smallCard p {
+        padding-bottom: 25px;
+    }
 }
 
 /*faq*/
-#plusMinus {
-    /*display: flex;
-    width: 82.81px;
-    height: 72px;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-*/
-    text-align: center;
-    font-size: 60px;
-    font-weight: 500;
-}
-
 #fAQ {
     background-color: #FFFFD4;
     padding: 50px 235px 100px;
@@ -412,9 +512,106 @@ h1 {
     text-align: center;
 }
 
-#question {
-    margin: 0;
+#question0 {
     border: 3px solid black;
-    height: 75px;
+}
+
+#questionAnswer0 .question {
+    border: 3px solid black;
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+}
+
+.question, .answer {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.answer {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#fAQ p {
+    padding-top: 26px;
+    padding-bottom: 10px;
+    min-height: 72px;
+    font-size: 20px;
+}
+
+#fAQ h3 {
+    height: 72px;
+    text-align: center;
+    font-size: 60px;
+    min-width: 50px;
+}
+
+@media only screen and (max-width: 1500px) {
+    #fAQ {
+        padding-left: 14vw;
+        padding-right: 14vw;
+    }
+}
+
+/* location detail page */
+#locationDetailPage p {
+    font-size: 20px;
+}
+
+#locationIntro {
+    height: 665px;
+    background: #47515C;
+}
+
+#locationIntoColourBlock {
+    height: 175px;
+    background: rgba(65, 183, 179, 0.30);
+}
+
+#locationIntro p {
+    color: white;
+    font-size: 20px;
+}
+
+#locationDetails {
+    background: #FFFFD4;
+}
+
+#locationDetailsContent {
+    background: rgba(169, 224, 222, 0.50);
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+#locationButtons {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 20vw;
+}
+
+#locationButtons a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    border-radius: 15px;
+    background: #47515C;
+    padding: 30px;
+}
+
+@media only screen and (max-width: 1100px) {
+    #locationButtons {
+        padding: 60px 10vw;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    #locationButtons a {
+        font-size: 20px;
+        padding: 20px;
+    }
 }
 

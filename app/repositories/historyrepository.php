@@ -72,6 +72,21 @@ class historyrepository extends Repository {
         return $stmt->fetchAll();
     }
 
+    public function getHistoryLocationById($id) {
+        $stmt = $this->connection->prepare(
+            "SELECT *
+            FROM historyLocation
+            WHERE id=:id");
+        $stmt->execute([':id' => $id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\HistoryLocation');
+        $locationRetrieved = $stmt->fetch();
+        if ($locationRetrieved) {
+            return $locationRetrieved;
+        } else {
+            return null;
+        }
+    }
+
     public function updateContent($id, $newText) {
         $stmt = $this->connection->prepare(
             "UPDATE historyContent
@@ -79,6 +94,13 @@ class historyrepository extends Repository {
             WHERE id = :id"
         );
         $stmt->execute([':id' => $id, ':text' => $newText]);
+    }
+
+    public function addContent($content, $addition, $category) {
+        $stmt = $this->connection->prepare(
+            "INSERT INTO historyContent (content, addition, category)
+                    VALUES (:content, :addition, :category)");
+        $stmt->execute([':content' => $content, ':addition' => $addition, ':category' => $category]);
     }
 
 /*    function fixtable() {

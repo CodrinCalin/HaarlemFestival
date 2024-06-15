@@ -19,6 +19,7 @@ class HistoryController {
 
     public function locationDetails()
     {
+        $service = $this->historyService;
         require __DIR__ . '/../views/history/locationDetails.php';
     }
 }
