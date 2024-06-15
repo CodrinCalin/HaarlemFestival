@@ -1,5 +1,0 @@
-
-mphp:S116	"TRename this field "$first_name" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(гюуоьяяяя
-lphp:S116
-"SRename this field "$last_name" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(ЏІуїшяяяя
-jphp:S116"VRename this field "$date_created" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(ЬШѓ€

@@ -18,6 +18,11 @@ class PatternRouter
         // Explode the URI by '/' or '?'
         $parts = preg_split('/[\/\?]/', $uri, -1, PREG_SPLIT_NO_EMPTY);
 
+        if($parts && $parts[0] == "404"){
+           include __DIR__ . '/views/common/404.php';
+           return;
+        }
+
         // Extract controller and method names
         $controllerName = "App\\Controllers\\" . ($parts[0] ?? 'home') . "Controller";
         $methodName = $parts[1] ?? 'index';

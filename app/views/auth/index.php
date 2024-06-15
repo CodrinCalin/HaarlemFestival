@@ -19,17 +19,21 @@ include __DIR__ . '/../header.php';
                 <form action="auth/login" method="post">
                     <div class="form-group inputField">
                         <label for="inputUsername">Username</label>
-                        <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" required>
+                        <input type="text"
+                               class="form-control" id="inputUsername"
+                               name="username" placeholder="Username" required>
                     </div>
                     <div class="form-group inputField">
                         <label for="inputPassword">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="*********" required>
+                        <input type="password"
+                               class="form-control" id="inputPassword"
+                               name="password" placeholder="*********" required>
                     </div>
                     <div class="row justify-content-center">
                         <button type="submit" class="btn btn-success">Log in</button>
                     </div>
                     <div>
-                        <p>Forgot password? -> <a href="/auth/forgotPassword">Change Password</a></p>
+                        <p>Forgot password? -> <a href="/auth/forgot_password">Change Password</a></p>
                     </div>
                 </form>
             </div>
