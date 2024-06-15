@@ -1,11 +1,0 @@
-
-U	php:S1131"@Remove the useless trailing whitespaces at the end of this line.(“„ïŠ
-U	php:S1131"@Remove the useless trailing whitespaces at the end of this line.(ßŞÁ
-Z	php:S1131"@Remove the useless trailing whitespaces at the end of this line.(òÌåãùÿÿÿÿ
-^	php:S1784"DExplicitly mention the visibility of this constructor "__construct".(‡¸Úœùÿÿÿÿ
-3php:S113"'Add a new line at the end of this file.
-@	php:S1481"+Remove this unused "$model" local variable.(ÛªÛ»
-;	php:S2003"&Replace "require" with "require_once".(—Ãì÷
-;	php:S2003"&Replace "require" with "require_once".(˜å±»
-a	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(—Ãì÷
-a	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(˜å±»
