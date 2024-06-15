@@ -1,7 +1,7 @@
 <?php
 include __DIR__ . '/../header.php';
-$service = new \App\Services\historyService();
 ?>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="/css/history_style.css" rel="stylesheet">
 
 <div id="titleBlock">
@@ -66,48 +66,92 @@ $service = new \App\Services\historyService();
         ?>
     </div>
 </div>
+
 <div id="schedule">
     <?php
     $content = $service->getContentById(7);
     ?>
     <h1>Schedule</h1>
-    <p><?= nl2br($content->content) ?></p>
+    <p id="scheduleDescription"><?= nl2br($content->content) ?></p>
     <?php
     include __DIR__ . '/historySchedule.php';
     ?>
-
 </div>
+
 <div id="route">
     <h1>Route</h1>
     <div class="row">
-        <div class="col-7">
-            <div id="mapBackground">
-
+        <?php
+        include __DIR__ . '/historyMap.php';
+        ?>
+        <div class="meetingPlace">
+            <?php
+            $title = $service->getContentById(8);
+            $address = $service->getContentById(9);
+            $description = $service->getContentById(10);
+            ?>
+            <h1>Meeting Place</h1>
+            <div class="meetingPlaceImage">
+                <h3><?=$title->content ?></h3>
+                <img src="\img\history\meetingPlace.png">
+                <p>
+                    <i class="fa-sharp fa-solid fa-location-dot"></i>
+                    <a href="https://www.google.com/maps/place/<?= $address->content ?>" target="_blank">
+                        <?= $address->content ?>
+                    </a>
+                </p>
+                <p><?= $description->content ?> </p>
             </div>
-
-        </div>
-        <div class="col-1">
-
-        </div>
-        <div class="col-4">
-            <h1 id="meetingPlaceHeader">Meeting Place</h1>
-            <img src="\img\history\history_header.png">
         </div>
     </div>
 </div>
+
 <div id="locations">
     <h1>Locations</h1>
-    <a href="/history/locationDetails">
-        <button>Learn More</button>
-    </a>
-
+    <?php
+    $currentLocation = 0;
+    include __DIR__ . '/historyLocationDescription.php';
+    ?>
 </div>
-<div id="fAQ">
-    <h1>Frequently Asked Questions</h1>
-    <p>Where do we gather?</p>
-    <p>How long does the event last?</p>
 
-</div>
+    <div id="fAQ">
+        <h1>Frequently Asked Questions</h1>
+
+        <?php
+        $faq = $service->getFAQ();
+        foreach ($faq as $index => $question) {
+            ?>
+            <div id="question<?= $index ?>" class="question" onclick="toggleAnswer(<?= $index ?>, true)">
+                <h3 class="col-1">+</h3>
+                <p class="col-sm"><?= $question->content ?> </p>
+            </div>
+            <div id="questionAnswer<?= $index ?>" style="display: none;" onclick="toggleAnswer(<?= $index ?>, false)">
+                <div class="question">
+                    <h3 class="col-1">-</h3>
+                    <p class="col-sm"><?= $question->content ?> </p>
+                </div>
+                <div class="answer">
+                    <p> <?= $question->addition ?> </p>
+                </div>
+            </div>
+        <?php }
+        ?>
+    </div>
+
+    <script>
+        function toggleAnswer(index, showAnswer) {
+            var question = document.getElementById('question' + index);
+            var answer = document.getElementById('questionAnswer' + index);
+
+            if (showAnswer) {
+                question.style.display = 'none';
+                answer.style.display = 'block';
+            } else {
+                question.style.display = 'flex';
+                answer.style.display = 'none';
+            }
+        }
+    </script>
 
 <div id="orderTicketsButton">
     <a href="/historyTickets">
