@@ -14,6 +14,7 @@ if ($locationId == count($service->getAllHistoryLocations())) {
 
 include __DIR__ . '/../header.php'
 ?>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="/css/history_style.css" rel="stylesheet">
 
 <div id="titleBlock">
@@ -73,7 +74,7 @@ include __DIR__ . '/../header.php'
         </div>
         <div id="locationButtons">
             <a href="/history/locationDetails?id=<?= $previousLocation ?>"> Previous Location </a>
-            <a href="/history"> Home </a>
+            <a href="/history"> <i class="fa-solid fa-house"></i> </a>
             <a href="/history/locationDetails?id=<?= $nextLocation ?>"> Next Location </a>
         </div>
     </div>
