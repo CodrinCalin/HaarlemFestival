@@ -15,19 +15,19 @@ class PatternRouter
     {
         $uri = $this->stripParameters($uri);
 
-        $explodedUri = explode('/', $uri);
+        // Explode the URI by '/' or '?'
+        $parts = preg_split('/[\/\?]/', $uri, -1, PREG_SPLIT_NO_EMPTY);
 
-        if (!isset($explodedUri[0]) || empty($explodedUri[0])) {
-            $explodedUri[0] = 'home';
+        if($parts && $parts[0] == "404"){
+           include __DIR__ . '/views/common/404.php';
+           return;
         }
-        $controllerName = "App\\Controllers\\" . $explodedUri[0] . "controller";
 
-        if (!isset($explodedUri[1]) || empty($explodedUri[1])) {
-            $explodedUri[1] = 'index';
-        }
-        $methodName = $explodedUri[1];
+        // Extract controller and method names
+        $controllerName = "App\\Controllers\\" . ($parts[0] ?? 'home') . "Controller";
+        $methodName = $parts[1] ?? 'index';
 
-        // Controller/method matching the URL not found
+
         if(!class_exists($controllerName) || !method_exists($controllerName, $methodName)) {
             http_response_code(404);
             return;

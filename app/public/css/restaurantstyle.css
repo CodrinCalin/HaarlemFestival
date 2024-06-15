@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
+
+* {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+.yummy {
+    /*max-width: 100%;*/
+    color: white;
+    background-color: slategray;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+}
+
+.img-scale {
+    height: 100dvh;
+    width: 100dvw;
+}
+
+.darken {
+    filter: brightness(50%);
+}
+
+.text-blue {
+    color: #07BEB8;
+    font-family: "Montserrat", sans-serif;
+}
+
+.yummy-text {
+    font-family: "Sansita", sans-serif;
+    font-weight: 800;
+    font-size: 15rem;
+    transform: rotate(2.5deg) translate(-50%, -50%);
+    background-color: #07BEB8;
+    border-radius: 5%;
+}
+
+.date-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.75rem;
+    transform: rotate(2.5deg) translate(0%, 175%);
+}
+
+.caption-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 5rem;
+    transform: translateY(-125%);
+}
+
+.details-bg {
+    background-color: #FFFFD4;
+}
+
+.yummy-details {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.75rem;
+}
+
+.yummy-details-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.6rem;
+    margin-left: 20dvw;
+    margin-right: 20dvw;
+}
+
+.category {
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    font-size: 3.75rem;
+    background-color: #FFFFD4;
+    border-radius: 20px;
+    /*min-width: 60vw;*/
+    margin: auto;
+    width: 75%;
+}
+
+.card, .card-img-overlay, .card-img {
+    max-width: 500px;
+    max-height: 1000px;
+    border-radius: 20px;
+}
+
+.content-tag {
+    font-family: "Montserrat", sans-serif;
+    background-color: #CA2B3D;
+    border-radius: 20px;
+}
+
+.rating {
+    max-width: 180px !important;
+    max-height: 30px !important;
+}
+
+.overlay-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    width: 1200px;
+    text-align: center;
+}
+
+.scroll-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.2rem;
+    left: 0;
+    right: 0;
+    top: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+.or-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    left: 0;
+    right: 0;
+    top: 78%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25px;
+}
+
+.scroll-button {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    left: 0;
+    right: 0;
+    top: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+.menu-header {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.75rem;
+    float: right;
+}
+
+.menu-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    float: right;
+    margin-right: 5%;
+}
+
+@media only screen and (max-width: 1920px) {
+    .menu-text {
+        width: 500px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .menu-text {
+        width: 900px;
+    }
+}
+
+.menu-button {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    float: right;
+    width: 500px;
+    margin-top: 50px;
+    margin-right: 10%;
+}
+
+@media only screen and (max-width: 1920px) {
+    .menu-button {
+        top: 105%;
+        width: 300px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .menu-button {
+        top: 90%;
+    }
+}
+
+.display-one {
+    float: left;
+    max-width: 900px;
+    max-height: 600px;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+
+.information-header {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.75rem;
+    float: left;
+}
+
+.information-text {
+    float: left;
+    top: 30%;
+}
+
+.box {
+    background-color: #303436;
+    border-radius: 20px;
+    padding: 20px;
+    width: 600px;
+    height: 250px;
+}
+
+.display-two {
+    float: right;
+    max-width: 900px;
+    max-height: 600px;
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+}
+
+.footer {
+    position: relative !important;
+}
+

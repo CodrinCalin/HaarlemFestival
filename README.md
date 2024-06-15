@@ -27,3 +27,10 @@ Or run:
 ```bash
 docker-compose down
 ```
+
+## Login Credentials
+
+Accounts available:
+#### Admin - for editing pages, editing user credentials
+* Username: admin, 
+* Password: admin
