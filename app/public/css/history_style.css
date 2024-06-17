@@ -1,0 +1,617 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+/*Title Block*/
+#titleBlock{
+    position: relative;
+    text-align: center;
+}
+
+#headerImage {
+    width:99vw;
+    height:100dvh;
+    overflow: hidden;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+#titleBlock div {
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: space-around;
+    width: 100%;
+    height: 50dvh;
+}
+
+#title {
+    color: #FFF;
+    text-align: center;
+    font-size: 128px;
+    font-weight: 700;
+    width: 100%;
+}
+
+#discoverButton {
+    width: 250px;
+    height: 50px;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 3px solid #07BEB8;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 1000px) {
+    #title {
+        font-size: 12vw;
+    }
+}
+
+/*Order Tickets Button*/
+#orderTicketsButton{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    bottom: 10px;
+    z-index: 9999;
+}
+
+#orderTicketsButton button {
+    width: 95dvw;
+    height: 85px;
+    border-radius: 15px;
+    border: none;
+    background: rgba(7, 190, 184, 0.95);
+    color: #FFF;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+/*intro*/
+#intro {
+    padding: 15px 50px;
+    background-color: #FFFFD4;
+    color: black;
+}
+
+#intro p {
+    margin: 6dvh 8dvw 6dvw;
+    font-size: 20px;
+}
+
+#intro .col-sm {
+    text-align: center;
+    margin-bottom: 50px;
+
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+}
+
+.imgNav {
+    width: 250px;
+    height: 250px;
+    padding: 25px;
+    border: none;
+    border-radius: 50%;
+    background-color: #A9E0DE;
+    margin: 0 auto 25px;
+    text-align: center;
+}
+
+.imgNav:hover {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.imgNav img {
+    width: 200px;
+    height: 200px;
+}
+
+/*practical information*/
+#practicalInformation {
+    background: #47515C;
+    color: white;
+    padding: 50px 100px 100px;
+    text-align: center;
+}
+
+#practicalInformation h1 {
+    margin-bottom: 75px;
+}
+
+.infoCard {
+    background: #A9E0DE;
+    color: black;
+    border-radius: 15px;
+    padding: 25px 25px 0;
+    margin: 0.8dvw;
+    text-align: justify;
+    min-height: 400px;
+    font-size: 20px;
+    line-height: 35px;
+    display: flex;
+    flex-direction: column;
+    min-width: 225px;
+}
+
+#practicalInformation img {
+    width: 125px;
+    height: 125px;
+    margin: 10px auto 35px;
+}
+
+/*schedule*/
+#schedule {
+    background-color: #47515C;
+    padding-top: 50px;
+    color: white;
+    text-align: center;
+}
+
+#scheduleDescription {
+    font-size: 20px;
+    margin: 50px 15px;
+}
+
+.tab {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tab button {
+    width: 31dvw;
+    background-color: rgba(169, 224, 222, 0.50);
+    border: none;
+    padding: 25px;
+    border-radius: 15px 15px 0 0;
+}
+
+.tab button img {
+    width: 75px;
+    height: 75px;
+    border-radius: 425px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.tab button:hover {
+    background-color: #b4cbc9;
+}
+
+.tab button.active {
+    background-color: #A9E0DE;
+}
+
+.tabcontent {
+    background-color: #A9E0DE;
+    color: black;
+    display: none;
+    padding: 6px 12px 35px;
+    border-top: none;
+}
+
+.tabcontent h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 25px 25px 10px;
+}
+
+.tabcontent p {
+    font-size: 20px;
+}
+
+.hline {
+    border-top: 1px solid black;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.borderColumn {
+    margin-top: 25px;
+    border-right: 1px solid black;
+    min-width: 250px;
+}
+
+.borderColumn:last-child {
+    border: none;
+}
+
+#fullDayOfTheWeek {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+#dayOfTheWeek {
+    font-size: 60px;
+    font-weight: 700;
+    margin: 0 0 25px;
+    line-height: 50px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+/*route*/
+#route {
+    background-color: #FFFFD4;
+    padding: 25px 100px;
+}
+
+.mapContainer {
+    width: 55%;
+}
+
+#map {
+    width: 100%;
+    height: 625px;
+}
+
+#mapBackground {
+    padding: 50px;
+    width: 100%;
+    min-height: 875px;
+    border-radius: 25px;
+    background: linear-gradient(180deg, rgba(71, 81, 92, 0.85) 0%, rgba(169, 224, 222, 0.85) 75.52%);
+}
+
+#route .col-4 img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.locationNames {
+    font-size: 20px;
+    padding-top: 20px;
+    padding-left: 6dvw;
+}
+
+.locationNames p {
+    margin: 0;
+}
+
+@media only screen and (max-width: 725px) {
+    .locationNames .col-6 {
+        width: 100%;
+    }
+}
+
+/*meeting place*/
+.meetingPlace {
+    width: 45%;
+    padding-left: 5dvw;
+}
+
+.meetingPlace h1 {
+    text-align: center;
+}
+
+.meetingPlace p, .meetingPlace a {
+    font-size: 20px;
+    margin: 25px;
+    text-align: left;
+    color: black;
+}
+
+.meetingPlaceImage {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.meetingPlace img {
+    display: block;
+    width: 100%;
+    height: 500px;
+    border-radius: 25px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.meetingPlaceImage h3 {
+    border-radius: 25px 25px 0 0;
+    position: absolute;
+    background: rgba(71, 81, 92, 0.65);
+    width: 100%;
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 700;
+    padding: 25px
+}
+
+@media only screen and (max-width: 1450px) {
+    .mapContainer {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .meetingPlace {
+        width: 100%;
+    }
+}
+
+/*locations*/
+#locations {
+    background-color: #47515C;
+    color: white;
+    padding: 50px 100px 100px;
+}
+
+.smallCard {
+    display: none;
+}
+
+#locationDescription {
+    position: relative;
+    background-color: #FFFFD4;
+    border-radius: 15px;
+    color: black;
+    height: 550px;
+    font-size: 20px;
+}
+
+#locationDescription h1 {
+    margin-left: 50px;
+    margin-top: 12px;
+    font-size: 4dvw;
+}
+
+#locationDescription p {
+    margin: 0 16px 0 125px;
+}
+
+.locationSlides {
+    display: none;
+}
+
+#learnMoreLocations {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    border-radius: 0 0 0 15px;
+    background-color: #A9E0DE;
+    border: none;
+    color: #000;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    width: 100%;
+    text-decoration: none;
+}
+
+#locationDescription .prev, #locationDescription .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 55px;
+    height: 55px;
+    padding: 16px;
+    margin: -22px 15px 15px;
+    color: white;
+    border-radius: 35px;
+    background-color: rgba(71, 81, 92, 0.85);
+    text-decoration: none;
+    font-size: 36px;
+    line-height: 27px;
+}
+
+#locationDescription .next {
+    right: 0;
+}
+
+#locationDescription .next:hover, #locationDescription .prev:hover {
+    background-color: rgba(71, 81, 92);
+}
+
+.locationSlides img {
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 0 15px 15px 0;
+}
+
+.locationSlides .col-sm {
+    padding: 0;
+}
+
+.locationSlides .col-sm:first-child {
+    padding-left: calc(var(--bs-gutter-x)* .5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 1255px) {
+    #locationDescription {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 1085px) {
+    #locationDescription {
+        height: 650px;
+    }
+
+    .locationSlides img {
+        height: 650px;
+    }
+
+    #locationDescription h1 {
+        font-size: 42px;
+    }
+}
+
+@media only screen and (max-width: 925px) {
+    #locations {
+        background-color: #47515C;
+        color: white;
+        padding: 50px 50px 50px;
+    }
+}
+
+@media only screen and (max-width: 810px) {
+    .smallCard {
+        display: block;
+    }
+
+    .locationSlides .row {
+        display: none;
+    }
+
+    #learnMoreLocations {
+        border-radius: 0 0 15px 15px;
+    }
+
+    #locationDescription {
+        height: auto;
+    }
+
+    .smallCard p {
+        padding-bottom: 25px;
+    }
+}
+
+/*faq*/
+#fAQ {
+    background-color: #FFFFD4;
+    padding: 50px 235px 100px;
+}
+
+#fAQ h1 {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+#question0 {
+    border: 3px solid black;
+}
+
+#questionAnswer0 .question {
+    border: 3px solid black;
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+}
+
+.question, .answer {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.answer {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#fAQ p {
+    padding-top: 26px;
+    padding-bottom: 10px;
+    min-height: 72px;
+    font-size: 20px;
+}
+
+#fAQ h3 {
+    height: 72px;
+    text-align: center;
+    font-size: 60px;
+    min-width: 50px;
+}
+
+@media only screen and (max-width: 1500px) {
+    #fAQ {
+        padding-left: 14vw;
+        padding-right: 14vw;
+    }
+}
+
+/* location detail page */
+#locationDetailPage p {
+    font-size: 20px;
+}
+
+#locationIntro {
+    height: 665px;
+    background: #47515C;
+}
+
+#locationIntoColourBlock {
+    height: 175px;
+    background: rgba(65, 183, 179, 0.30);
+}
+
+#locationIntro p {
+    color: white;
+    font-size: 20px;
+}
+
+#locationDetails {
+    background: #FFFFD4;
+}
+
+#locationDetailsContent {
+    background: rgba(169, 224, 222, 0.50);
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+#locationButtons {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 20vw;
+}
+
+#locationButtons a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    border-radius: 15px;
+    background: #47515C;
+    padding: 30px;
+}
+
+@media only screen and (max-width: 1100px) {
+    #locationButtons {
+        padding: 60px 10vw;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    #locationButtons a {
+        font-size: 20px;
+        padding: 20px;
+    }
+}
+

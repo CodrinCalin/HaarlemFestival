@@ -6,7 +6,7 @@ include __DIR__ . '/../header.php';
 
 <div class="container-fluid center mt-3">
     <h1 class="">Manage Restaurants</h1>
-    <a class="btn btn-success ms-5 py-3" href="">Create New Restaurant</a>
+    <a class="btn btn-success ms-5 py-3" href="/managerestaurants/createRestaurant">Create New Restaurant</a>
 </div>
 <div class="container-fluid mt-3 max">
     <table class="table table-striped-rows">

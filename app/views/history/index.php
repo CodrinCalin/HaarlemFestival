@@ -1,95 +1,163 @@
 <?php
 include __DIR__ . '/../header.php';
-$service = new \App\Services\textservice();
 ?>
-<style>
-    #practicalInformation {
-        background: #47515C;
-        color: white;
-    }
-    .infoCard {
-        background: #A9E0DE;
-        color: black;
-        border-radius: 15px;
-        padding: 15px;
-        margin: 15px;
-    }
-</style>
-<div>
-    <h1>Stroll Through History</h1>
-    <button><a href="#intro">Discover The Event</a></button>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="/css/history_style.css" rel="stylesheet">
 
+<div id="titleBlock">
+    <img src="\img\history\history_header.png" alt="header image" id="headerImage">
+    <div>
+        <p id="title">Stroll Through History</p>
+        <a onclick="document.getElementById('intro').scrollIntoView()">
+            <button id="discoverButton">Discover The Event</button>
+        </a>
+    </div>
 </div>
+
 <div id="intro">
     <?php
-    $text = $service->getTextById(6);
+    $content = $service->getContentById(1);
     ?>
     <h1>Stroll Through History</h1>
-    <p><?=nl2br($text->text)?></p>
-    <div class="links">
-        <ul>
-            <li id="practicalInformationLink"><a href="#practicalInformation">Practical information</a></li>
-            <li id="scheduleLink"><a href="#schedule">Schedule</a></li>
-            <li id="routeLink"><a href="#route">Route</a></li>
-            <li id="fAQLink"><a href="#fAQ">Frequently Asked Question</a></li>
-        </ul>
+    <p><?= nl2br($content->content) ?></p>
+    <div class="row">
+        <div class="col-sm" onclick="document.getElementById('practicalInformation').scrollIntoView()">
+            <div class="imgNav">
+                <img src="\img\history\practicalInformation_nav.png">
+            </div>
+            Practical information
+        </div>
+        <div class="col-sm" onclick="document.getElementById('schedule').scrollIntoView()">
+            <div class="imgNav">
+                <img src="\img\history\schedule_nav.png">
+            </div>
+            Schedule
+        </div>
+        <div class="col-sm" onclick="document.getElementById('route').scrollIntoView()">
+            <div class="imgNav">
+                <img src="\img\history\route_nav.png">
+            </div>
+            Route
+        </div>
+        <div class="col-sm" onclick="document.getElementById('fAQ').scrollIntoView()">
+            <div class="imgNav">
+                <img src="\img\history\fAQ_nav.png">
+            </div>
+            Frequently Asked Question
+        </div>
     </div>
 </div>
+
 <div id="practicalInformation">
-<!--    --><?php
-/*    $model = $service->getTextByCategory("history_practicalInformation");
-    foreach ($model as $Text)  {
-        echo $model->id;
-    }
-    */?>
     <h1>Practical Information</h1>
-
-    <div class="infoCard">
+    <div class="row">
         <?php
-        $text = $service->getTextById(7);
+        $info = $service->getPracticalInformation();
+        foreach ($info as $item) { ?>
+            <div class="col-sm">
+                <div class="infoCard">
+                    <img src="<?= $item->addition ?>" alt="icon">
+                    <p>
+                        <?= nl2br($item->content) ?>
+                    </p>
+                </div>
+            </div>
+        <?php }
         ?>
-        <p><?=nl2br($text->text)?></p>
     </div>
-    <div class="infoCard">
-        <?php
-        $text = $service->getTextById(8);
-        ?>
-        <p><?=nl2br($text->text)?></p>
-    </div>
-    <div class="infoCard">
-        <?php
-        $text = $service->getTextById(9);
-        ?>
-        <p><?=nl2br($text->text)?></p>
-    </div>
-    <div class="infoCard">
-        <?php
-        $text = $service->getTextById(10);
-        ?>
-        <p><?=nl2br($text->text)?></p>
-    </div>
-    <div class="infoCard">
-        <?php
-        $text = $service->getTextById(11);
-        ?>
-        <p><?=nl2br($text->text)?></p>
-    </div>
-
 </div>
+
 <div id="schedule">
-
+    <?php
+    $content = $service->getContentById(7);
+    ?>
+    <h1>Schedule</h1>
+    <p id="scheduleDescription"><?= nl2br($content->content) ?></p>
+    <?php
+    include __DIR__ . '/historySchedule.php';
+    ?>
 </div>
+
 <div id="route">
-
+    <h1>Route</h1>
+    <div class="row">
+        <?php
+        include __DIR__ . '/historyMap.php';
+        ?>
+        <div class="meetingPlace">
+            <?php
+            $title = $service->getContentById(8);
+            $address = $service->getContentById(9);
+            $description = $service->getContentById(10);
+            ?>
+            <h1>Meeting Place</h1>
+            <div class="meetingPlaceImage">
+                <h3><?=$title->content ?></h3>
+                <img src="\img\history\meetingPlace.png">
+                <p>
+                    <i class="fa-sharp fa-solid fa-location-dot"></i>
+                    <a href="https://www.google.com/maps/place/<?= $address->content ?>" target="_blank">
+                        <?= $address->content ?>
+                    </a>
+                </p>
+                <p><?= $description->content ?> </p>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
 
+<div id="locations">
+    <h1>Locations</h1>
+    <?php
+    $currentLocation = 0;
+    include __DIR__ . '/historyLocationDescription.php';
+    ?>
 </div>
-<div id="fAQ">
 
+    <div id="fAQ">
+        <h1>Frequently Asked Questions</h1>
+
+        <?php
+        $faq = $service->getFAQ();
+        foreach ($faq as $index => $question) {
+            ?>
+            <div id="question<?= $index ?>" class="question" onclick="toggleAnswer(<?= $index ?>, true)">
+                <h3 class="col-1">+</h3>
+                <p class="col-sm"><?= $question->content ?> </p>
+            </div>
+            <div id="questionAnswer<?= $index ?>" style="display: none;" onclick="toggleAnswer(<?= $index ?>, false)">
+                <div class="question">
+                    <h3 class="col-1">-</h3>
+                    <p class="col-sm"><?= $question->content ?> </p>
+                </div>
+                <div class="answer">
+                    <p> <?= $question->addition ?> </p>
+                </div>
+            </div>
+        <?php }
+        ?>
+    </div>
+
+    <script>
+        function toggleAnswer(index, showAnswer) {
+            var question = document.getElementById('question' + index);
+            var answer = document.getElementById('questionAnswer' + index);
+
+            if (showAnswer) {
+                question.style.display = 'none';
+                answer.style.display = 'block';
+            } else {
+                question.style.display = 'flex';
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+
+<div id="orderTicketsButton">
+    <a href="/historyTickets">
+        <button>Order Tickets</button>
+    </a>
 </div>
-
-
 
 <?php
 include __DIR__ . '/../footer.php';

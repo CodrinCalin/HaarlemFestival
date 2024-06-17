@@ -33,3 +33,12 @@ body {
 .max {
     max-width: 50%;
 }
+
+.footer {
+    position: relative !important;
+}
+
+.text-box {
+    height: 100px;
+    text-wrap: normal;
+}
