@@ -10,11 +10,13 @@ class Artists
     public $style;
     public $card_image_url;
     public $title;
-    function __construct($artist_id = null, $name = null, $style = null, $card_image_url = null){
+    public $artist_main_img_url;
+    function __construct($artist_id = null, $name = null, $style = null, $card_image_url = null, $artist_main_img_url = null){
       $this->artist_id = $artist_id;  
       $this->name = $name;
       $this->style = $style;
       $this->card_image_url = $card_image_url;
+      $this->artist_main_img_url = $artist_main_img_url;
     }
 
     public function getId() { 

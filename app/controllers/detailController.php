@@ -23,6 +23,7 @@ class DetailController
         if ($artistId !== null) {
             $artist = $this->danceService->getArtistById($artistId);
             $detailpagecontent = $this->danceService->getDetailPageContentByArtistId($artistId);
+            $events = $this->danceService->getDanceEventsByArtist($artist->name);
         }
 
         // Handle the case where no artist was found
@@ -34,4 +35,3 @@ class DetailController
         require __DIR__ . '/../views/dance/aboutartist.php';
     }
 }
-

@@ -227,9 +227,7 @@ body, html {
   height: 100vh;
 }
 
-.header .overlay-text {
-  /* Add styles for your overlay text here */
-}
+
 
 /* Main content styles */
 .main-content {
@@ -253,24 +251,10 @@ body, html {
   /* Add more styles as per your Figma design */
 }
 
-.card-image {
-
-}
-
 
 /* -------------------------------------------------------------------------------------------------------------------*/
 /* Image event styles */
-/*
-.img-event {
-  max-width: 150%; !* Limits the image width to its parent container *!
-  max-height: 150%; !* Adjust max-height as needed *!
-  width: auto; !* Maintain aspect ratio *!
-  height: auto; !* Maintain aspect ratio *!
-  object-fit: contain; !* Ensures the image is contained within its element *!
-  padding-right: 300px;
-  padding-left: 300px;
-}
-*/
+
 .event-table th, .event-table td {
   padding: 0.4rem; /* Smaller cell padding */
   font-size: 0.85rem; /* Smaller font size */
@@ -418,14 +402,14 @@ body, html {
 }
 
 .event-table th, .event-table td {
-  padding: 8px; /* Reduces the padding inside table cells */
-  font-size: 0.9em; /* Smaller font size for the text inside the table */
+  padding: 8px; 
+  font-size: 0.9em; 
 }
 
 .btn-primary {
-  white-space: nowrap; /* Ensures the text in the button stays on one line */
-  font-size: 0.8em; /* Adjusts font size for the button */
-  padding: .375rem .75rem; /* Adjusts padding to make the button smaller */
+  white-space: nowrap;
+  font-size: 0.8em; 
+  padding: .375rem .75rem; 
 }
 
 
@@ -437,9 +421,9 @@ body, html {
 
 
 .footer-icon {
-  width: 32px; /* or your preferred size */
-  height: 32px; /* or your preferred size */
-  margin-right: 10px; /* Adjust the spacing between icons */
+  width: 32px; 
+  height: 32px; 
+  margin-right: 10px; 
 }
 
 /* Style adjustments for the footer links to remove underline and adjust on hover */
@@ -480,7 +464,6 @@ footer a.text-light:hover {
   }
 }
 
-/* You may also want to adjust column widths in Bootstrap if needed */
 @media (min-width: 768px) {
   .img-event {
     max-width: 100%; /* Full width of its container */
@@ -493,12 +476,6 @@ footer a.text-light:hover {
     max-width: 50%; /* Maximum of half the parent's width */
   }
 }
-
-
-
-
-
-
 
 /* Table styles to match your design */
 .table {
@@ -513,9 +490,6 @@ footer a.text-light:hover {
   /* Add more th styles here */
 }
 
-.table td {
-  /* Add styles for table cells here */
-}
 
 /* Buttons with rounded corners and modern styles */
 .btn {
@@ -531,7 +505,6 @@ footer a.text-light:hover {
 
 .btn:hover {
   background-color: #0056b3; /* Slightly darker blue on hover */
-  /* Add more hover styles here */
 }
 
 /* This class should be added to the container element that wraps the text */
@@ -561,12 +534,9 @@ footer a.text-light:hover {
   /* Reduce font sizes, padding, and other styles for smaller screens */
   .section-title {
     font-size: 2rem; /* Smaller font size for mobile */
-  }
-
-  /* Add more responsive styles here */
+  } 
 }
 
-/* Add any additional custom classes you have used in your HTML */
 
 /* Responsive adjustments using a media query for smaller screens */
 @media (max-width: 768px) {
@@ -576,3 +546,21 @@ footer a.text-light:hover {
 }
 
 
+
+/*------------------special ticket card--------------------*/
+
+.special_ticket_card {
+  background-color: rgba(0, 0, 0, 0.7); /* Dark color with opacity */
+  color: white; /* White text color */
+}
+.special_ticket_card .card-body {
+  padding: 20px;
+}
+.special_ticket_card .card-footer {
+  background-color: transparent;
+  border-top: none;
+}
+.special_ticket_card .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}

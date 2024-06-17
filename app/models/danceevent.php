@@ -12,12 +12,11 @@ class DanceEvent
     public $duration;
     public $tickets_available;
     public $price;
-    public $remarks;
     public $venue_name;
     public $artist_name;
 
 
-    public function __construct($event_id = null, $date = null, $time = null, $session_type = null, $duration = null, $tickets_available = null, $price = null, $remarks = null, $venue_name = null, $artist_name = null)
+    public function __construct($event_id = null, $date = null, $time = null, $session_type = null, $duration = null, $tickets_available = null, $price = null, $venue_name = null, $artist_name = null)
     {
         $this->event_id = $event_id;
         $this->date = $date;
@@ -26,7 +25,6 @@ class DanceEvent
         $this->duration = $duration;
         $this->tickets_available = $tickets_available;
         $this->price = $price;
-        $this->remarks = $remarks;
         $this->venue_name = $venue_name;
         $this->artist_name = $artist_name;
     }
@@ -59,11 +57,7 @@ class DanceEvent
     public function getPrice() {
         return $this->price;
     }
-
-    public function getRemarks() {
-        return $this->remarks;
-    }
-
+    
     public function getVenueName() {
         return $this->venue_name;
     }

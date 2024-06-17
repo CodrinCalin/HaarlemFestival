@@ -20,7 +20,9 @@ class DanceController
         $artists = $danceService->getAllArtists();
         $danceEvents = $danceService->getAllDanceEvents();
         $eventsByDate = $danceService->getAllEventsByDate();
+        $specialTickets = $danceService->getAllSpecialTickets();
         $venues = $danceService->getAllVenues();
+
         require __DIR__ . '/../views/dance/index.php';
     }
 }

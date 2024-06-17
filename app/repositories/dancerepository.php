@@ -19,7 +19,7 @@ class DanceRepository extends Repository {
 
     public function getArtistById($artistId) {
         $stmt = $this->connection->prepare(
-            "SELECT artist_id, name, style, card_image_url, title FROM artists WHERE artist_id = :artist_id"
+            "SELECT artist_id, name, style, card_image_url, title, artist_main_img_url FROM artists WHERE artist_id = :artist_id"
         );
         $stmt->bindParam(':artist_id', $artistId, PDO::PARAM_INT);
         $stmt->execute();
@@ -32,9 +32,9 @@ class DanceRepository extends Repository {
     }
 
 
-    public function getAllEvents() {
+    public function getAllDanceEvents() {
         $stmt = $this->connection->prepare(
-            "SELECT event_id, date, time, session_type, duration, tickets_available, price, remarks, venue_name, artist_name FROM events"
+            "SELECT event_id, date, time, session_type, duration, tickets_available, price, venue_name, artist_name FROM danceEvents"
         );
         $stmt->execute();
 
@@ -58,7 +58,7 @@ class DanceRepository extends Repository {
 
     public function getAllEventsByDate() {
         $stmt = $this->connection->prepare(
-            "SELECT event_id, date, time, session_type, duration, tickets_available, price, remarks, venue_name, artist_name FROM events ORDER BY date ASC;"
+            "SELECT event_id, date, time, session_type, duration, tickets_available, price, venue_name, artist_name FROM danceEvents ORDER BY date ASC;"
         );
 
         $stmt->execute();
@@ -73,19 +73,56 @@ class DanceRepository extends Repository {
     }
 
     public function getDetailPageContentByArtistId($artistId) {
-        $stmt = $this->connection->prepare(
-            "SELECT id, main_image_url, description_image_one, description_image_two, description_body_one, description_body_two 
-                    FROM dancecontentdetail WHERE artist_id = :artist_id"
+        // Fetch content descriptions
+        $stmt1 = $this->connection->prepare(
+            "SELECT id, artist_id, description_image, description_body 
+             FROM danceContentDetail WHERE artist_id = :artist_id"
         );
-        $stmt->bindParam(':artist_id', $artistId, PDO::PARAM_INT);
+        $stmt1->bindParam(':artist_id', $artistId, PDO::PARAM_INT);
+        $stmt1->execute();
+        $stmt1->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\DanceContentDetail');
+        $contentDescriptions = $stmt1->fetchAll();
+    
+        // Fetch notable tracks
+        $stmt2 = $this->connection->prepare(
+            "SELECT id, artist_id, track_image, track_title, track_url 
+             FROM notableTracks WHERE artist_id = :artist_id"
+        );
+        $stmt2->bindParam(':artist_id', $artistId, PDO::PARAM_INT);
+        $stmt2->execute();
+        $stmt2->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\NotableTrack');
+        $notableTracks = $stmt2->fetchAll();
+    
+        return [
+            'contentDescriptions' => $contentDescriptions,
+            'notableTracks' => $notableTracks
+        ];
+    }
+
+    public function getDanceEventsByArtist($artist_name) {
+        $stmt = $this->connection->prepare(
+            "SELECT event_id, date, time, session_type, duration, tickets_available, price, venue_name, artist_name 
+             FROM danceEvents 
+             WHERE artist_name LIKE :artist_name"
+        );
+        $artistNameParam = '%' . $artist_name . '%';
+        $stmt->bindParam(':artist_name', $artistNameParam, PDO::PARAM_STR);
         $stmt->execute();
 
-        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\DanceContentDetail');
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\DanceEvent');
 
-        $detailpagecontent = $stmt->fetch();
-
-        return $detailpagecontent;
+        return $stmt->fetchAll();
     }
+
+    public function getAllSpecialTickets() {
+        $stmt = $this->connection->prepare(
+            "SELECT id, ticket_name, ticket_price, ticket_information FROM specialTickets"
+        );
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\SpecialTicket');
+        return $stmt->fetchAll();
+    }
+    
 
 
     public function getAllTickets(){

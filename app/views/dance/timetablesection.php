@@ -50,4 +50,27 @@
     <?php endforeach; ?>
 </div>
 
-
+ <!-- Special Tickets Section -->
+ <div class="container my-4 text-right">
+    <div class="content-section text-center">
+        <h2>Interested In Participating To Multiple Events?</h2>
+        <h2>Here are our special tickets:</h2>
+        <div class="row">
+            <?php foreach ($specialTickets as $ticket) : ?>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 text-left special_ticket_card">
+                        <div class="card-body">
+                            <h3 class="card-title"><?= htmlspecialchars($ticket->ticket_name, ENT_QUOTES, 'UTF-8') ?></h3>
+                            <p class="card-text"><?= htmlspecialchars($ticket->ticket_information, ENT_QUOTES, 'UTF-8') ?></p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn-primary mt-3">
+                                Buy <?= htmlspecialchars($ticket->ticket_name, ENT_QUOTES, 'UTF-8') ?> (<?= htmlspecialchars($ticket->ticket_price, ENT_QUOTES, 'UTF-8') ?>)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
