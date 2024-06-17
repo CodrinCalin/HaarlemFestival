@@ -7,6 +7,7 @@ use App\Models\restaurantCategory;
 use App\Models\yummyDetails;
 use App\Services\ManageRestaurantService;
 use App\Services\RestaurantService;
+use App\Services\ImageService;
 use http\Header;
 use mysql_xdevapi\Exception;
 
@@ -14,11 +15,13 @@ class ManageRestaurantsController {
 
     private $manageRestaurantService;
     private $restaurantService;
+    private $imageService;
 
     function __construct() {
         session_start();
         $this->manageRestaurantService = new ManageRestaurantService();
         $this->restaurantService = new RestaurantService();
+        $this->imageService = new ImageService();
     }
 
     public function index() {
@@ -61,11 +64,13 @@ class ManageRestaurantsController {
 
             $restaurant->restaurantCategory = $_POST["category"];
 
-            //TODO: Handle Image Logic
-            $restaurant->previewImage = "haha";
-            $restaurant->frontPageImage = "haha1";
-            $restaurant->displayImageOne = "haha2";
-            $restaurant->displayImageTwo = "haha3";
+            //Set all images to default first
+            $restaurant->previewImage = "default.png";
+            $restaurant->frontPageImage = "default.png";
+            $restaurant->displayImageOne = "default.png";
+            $restaurant->displayImageTwo = "default.png";
+
+            $restaurant = $this->setRestaurantImages($restaurant);
 
             $this->manageRestaurantService->addRestaurant($restaurant);
 
@@ -122,11 +127,7 @@ class ManageRestaurantsController {
 
                 $restaurant->restaurantCategory = $_POST["category"];
 
-                //TODO: Handle Image Logic, check if received image and then update
-                $restaurant->previewImage = "haha";
-                $restaurant->frontPageImage = "haha1";
-                $restaurant->displayImageOne = "haha2";
-                $restaurant->displayImageTwo = "haha3";
+                $restaurant = $this->setRestaurantImages($restaurant);
 
                 $this->manageRestaurantService->updateRestaurant($restaurant);
 
@@ -137,6 +138,30 @@ class ManageRestaurantsController {
         } else {
             echo "<h1>Restaurant does not exist with the provided Id!</h1>";
         }
+    }
+
+    private function setRestaurantImages($restaurant) {
+        if($_FILES!=null){
+
+            if($_FILES["previewImage"]["error"] !== UPLOAD_ERR_NO_FILE){
+                if($restaurant->previewImage !== "default.png") { $this->imageService->deleteImage($restaurant->previewImage, "img/restaurant/");}
+                $restaurant->previewImage = $this->imageService->uploadImage($_FILES["previewImage"], "img/restaurant/");
+            }
+
+            if($_FILES["frontPageImage"]["error"] !== UPLOAD_ERR_NO_FILE){
+                if($restaurant->frontPageImage !== "default.png") { $this->imageService->deleteImage($restaurant->frontPageImage, "img/restaurant/");}
+                $restaurant->frontPageImage = $this->imageService->uploadImage($_FILES["frontPageImage"], "img/restaurant/"); }
+
+            if($_FILES["displayImageOne"]["error"] !== UPLOAD_ERR_NO_FILE){
+                if($restaurant->displayImageOne !== "default.png") { $this->imageService->deleteImage($restaurant->displayImageOne, "img/restaurant/");}
+                $restaurant->displayImageOne = $this->imageService->uploadImage($_FILES["displayImageOne"], "img/restaurant/"); }
+
+            if($_FILES["displayImageTwo"]["error"] !== UPLOAD_ERR_NO_FILE){
+                if($restaurant->displayImageTwo !== "default.png") { $this->imageService->deleteImage($restaurant->displayImageTwo, "img/restaurant/");}
+                $restaurant->displayImageTwo = $this->imageService->uploadImage($_FILES["displayImageTwo"], "img/restaurant/"); }
+        }
+
+        return $restaurant;
     }
 
     public function createCategory() {

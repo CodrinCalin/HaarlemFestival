@@ -29,7 +29,7 @@ INCLUDE __DIR__ . '/../header.php';
         </div>
 
         <div class="vw-100 position-relative">
-            <img class="darken img-scale" src="/img/ratatouillebg.jpg" alt="People at a festival">
+            <img class="darken img-scale" src="/img/restaurant/<?php echo $restaurantModel->frontPageImage ?>" alt="People at a festival">
             <div class="overlay-text position-absolute"><?php echo $restaurantModel->description ?></div>
             <div class="scroll-text position-absolute fw-bold">Scroll Down to Learn More</div>
             <div class="or-text position-absolute">or</div>
@@ -37,7 +37,7 @@ INCLUDE __DIR__ . '/../header.php';
         </div>
 
         <div class="vw-100 position-relative pt-5">
-            <img class="display-one col-6" src="/img/ratatouille1.jpg" alt="Image of Food">
+            <img class="display-one col-6" src="/img/restaurant/<?php echo $restaurantModel->displayImageOne ?>" alt="Image of Food">
             <div class="menu-header col-6 text-blue fw-bold d-flex justify-content-center">Food and Menu</div>
             <div class="menu-text"><?php echo $restaurantModel->menuText ?></div>
             <a href="<?php echo $restaurantModel->menuLink ?>" class="menu-button btn btn-outline-info">View Menu</a>
@@ -52,7 +52,7 @@ INCLUDE __DIR__ . '/../header.php';
                 <div>Timeslots: <span>17:00 | 17:00 | 17:00</span></div>
                 <div>Price: €<span><?php echo $restaurantModel->adultPrice ?> <br> €<?php echo $restaurantModel->childPrice ?> for children under 12</span></div>
             </div>
-            <img class="display-two col-6" src="/img/ratatouille2.png" alt="Image of Food">
+            <img class="display-two col-6" src="/img/restaurant/<?php echo $restaurantModel->displayImageTwo ?>" alt="Image of the restaurant">
         </div>
 
         <div class="vw-100 position-relative pt-5">
