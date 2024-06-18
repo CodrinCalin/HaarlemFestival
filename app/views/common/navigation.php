@@ -35,6 +35,7 @@
                                 <a class="dropdown-item" href="/manageusers">Manage Users</a>
                                 <a class="dropdown-item" href="/managetickets">Manage Tickets</a>
                                 <a class="dropdown-item" href="/managehistory">Manage History</a>
+                                <a class="dropdown-item" href="/managedance">Manage Dance</a>
                                 <a class="dropdown-item" href="/managerestaurants">Manage Restaurants</a>
 
                             </div>

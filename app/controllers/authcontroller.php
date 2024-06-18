@@ -10,8 +10,7 @@ use App\Services\UserService;
 use App\Logic\MailerLogic;
 use mysql_xdevapi\Exception;
 
-class AuthController
-{
+class AuthController extends Controller {
     // <editor-fold desc="Initialization = Variables and Constructor">
     private $userService;
     private $tokenService;
@@ -19,7 +18,7 @@ class AuthController
 
     function __construct()
     {
-        session_start();
+        parent::__construct();
         $this->userService = new UserService();
         $this->tokenService = new ResetTokenService();
         $this->mailerLogic = new MailerLogic();
