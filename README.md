@@ -1,5 +1,5 @@
-# Basic PHP MVC demo
-This repository demonstrates how the MVC design pattern can be implemented using PHP.
+# Festival Web application
+This is a docker PHP project based around Haarlem Festival for Inholland University.
 
 It contains a docker configuration with:
 * NGINX webserver
@@ -9,18 +9,17 @@ It contains a docker configuration with:
 
 ## Installation
 
-1. Install Docker Desktop on Windows or Mac, or Docker Engine on Linux.
-1. Clone the project
+### Startup
 
-## Usage
-
-In a terminal, run:
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+2. Clone the project
+3. At the root of the project, open a terminal and run:
 ```bash
-docker-compose up
+docker-compose up --build
 ```
+4. You can open http://localhost for the main page or localhost:8080 (PHPMyAdmin Database access)
 
-NGINX will now serve files in the app/public folder. Visit localhost in your browser to check.
-PHPMyAdmin is accessible on localhost:8080
+### Close project
 
 If you want to stop the containers, press Ctrl+C. 
 Or run:
@@ -28,9 +27,19 @@ Or run:
 docker-compose down
 ```
 
+### Testing Payment
+
+1. First setup Stripe login in local environment, open another terminal and type:
+```bash
+docker run --rm -it stripe/stripe-cli login
+```
+2. 
+
 ## Login Credentials
 
 Accounts available:
+
 #### Admin - for editing pages, editing user credentials
-* Username: admin, 
-* Password: admin
+
+* **Username:** _admin_
+* **Password:** _admin_

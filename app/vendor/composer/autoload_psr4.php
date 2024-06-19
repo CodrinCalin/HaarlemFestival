@@ -6,11 +6,14 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Stripe\\' => array($vendorDir . '/stripe/stripe-php/lib'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'App\\Views\\' => array($baseDir . '/views'),
     'App\\Services\\' => array($baseDir . '/services'),
     'App\\Repositories\\' => array($baseDir . '/repositories'),
     'App\\Models\\' => array($baseDir . '/models'),
+    'App\\Logic\\' => array($baseDir . '/logic'),
+    'App\\Exception\\' => array($baseDir . '/exception'),
     'App\\Controllers\\' => array($baseDir . '/controllers'),
     'App\\' => array($baseDir . '/'),
 );
