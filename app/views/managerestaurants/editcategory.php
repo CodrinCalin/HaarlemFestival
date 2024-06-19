@@ -11,7 +11,7 @@ include __DIR__ . '/../header.php';
         <form action="updateCategory" method="post" class="pb-3 box row">
             <input type="hidden" name="id" id="id" value="<?php echo $categoryModel->id ?>">
             <div class="mb-3 me-5 w-50 col-3">
-                <label for="categoryName" class="form-label" aria-describedby="category">Category Name<span class="text-danger">*</span></label>
+                <label for="category" class="form-label" aria-describedby="category">Category Name<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="category" name="category" placeholder="Name of the Category" value="<?php echo $categoryModel->category ?>" maxlength="20" required>
                 <div id="category" class="form-text text-white">Max 20 chars.</div>
             </div>

@@ -16,6 +16,7 @@ services:
         volumes:
             - ./app:/app
             - ./app/vendor:/app/vendor
+            - ./config/php/php.ini:/usr/local/etc/php/conf.d/php.ini
     stripe:
         image: stripe/stripe-cli:latest
         entrypoint: [ "stripe", "listen", "--forward-to", "http://php/payment/handleStripeWebhook" ]

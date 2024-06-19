@@ -8,7 +8,7 @@ include __DIR__ . '/../header.php';
     <div class="w-50 box mb-5">
         <h1>Create Restaurant</h1>
         <p><span class="text-danger">*</span> - fields are required to fill.</p>
-        <form action="createRestaurant" method="post" class="pb-3 box row">
+        <form action="createRestaurant" method="post" enctype="multipart/form-data" class="pb-3 box row">
             <div class="row p-0 align-self-center">
                 <div class="mb-3 col-6">
                     <label for="restaurantName" class="form-label" aria-describedby="restaurant">Restaurant Name<span class="text-danger">*</span></label>

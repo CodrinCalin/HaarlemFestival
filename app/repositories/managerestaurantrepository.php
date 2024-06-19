@@ -5,7 +5,7 @@ use PDO;
 
 class ManageRestaurantRepository extends Repository {
 
-    function addCategory($restaurantCategory) {
+    public function addCategory($restaurantCategory) {
         $stmt = $this->connection->prepare
         ("INSERT INTO `restaurantCategory` (category, `order`) 
                 VALUES (:category, :order)");
@@ -16,7 +16,7 @@ class ManageRestaurantRepository extends Repository {
 
     }
 
-    function getCategoryById($categoryId) {
+    public function getCategoryById($categoryId) {
         $stmt = $this->connection->prepare
         ("SELECT id, category, `order` FROM `restaurantCategory` WHERE id=:categoryId");
 
@@ -33,7 +33,7 @@ class ManageRestaurantRepository extends Repository {
         }
     }
 
-    function getCategoryIdByName($categoryName) {
+    public function getCategoryIdByName($categoryName) {
         $stmt = $this->connection->prepare
         ("SELECT id FROM `restaurantCategory` WHERE category=:categoryName");
 
@@ -44,7 +44,7 @@ class ManageRestaurantRepository extends Repository {
         return $categoryId;
     }
 
-    function updateCategory($category) {
+    public function updateCategory($category) {
         $stmt = $this->connection->prepare
         ("UPDATE `restaurantCategory` SET category=:category, `order`=:order WHERE id=:id");
 
@@ -55,14 +55,14 @@ class ManageRestaurantRepository extends Repository {
         ]);
     }
 
-    function deleteCategoryById($categoryId) {
+    public function deleteCategoryById($categoryId) {
         $stmt = $this->connection->prepare
         ("DELETE FROM `restaurantCategory` WHERE `id`=:categoryId");
 
          $stmt->execute([':categoryId' => $categoryId]);
     }
 
-    function addRestaurant($restaurant) {
+    public function addRestaurant($restaurant) {
         $stmt = $this->connection->prepare
         ("INSERT INTO `restaurant` (name, tags, rating, address, phoneNumber, menuLink, menuText, description, adultPrice, childPrice, previewImage, frontPageImage, displayImageOne, displayImageTwo, category) 
                 VALUES (:name, :tags, :rating, :address, :phoneNumber, :menuLink, :menuText, :description, :adultPrice, :childPrice, :previewImage, :frontPageImage, :displayImageOne, :displayImageTwo, :category)");
@@ -85,7 +85,7 @@ class ManageRestaurantRepository extends Repository {
             ':category' => $restaurant->restaurantCategory
         ]);
     }
-    function getRestaurantById($restaurantId) {
+    public function getRestaurantById($restaurantId) {
         $stmt = $this->connection->prepare
         ("SELECT r.id, r.name, r.tags, r.rating, r.address, r.phoneNumber, r.menuLink, r.menuText, r.description, r.adultPrice, r.childPrice, r.previewImage, r.frontPageImage, r.displayImageOne, r.displayImageTwo,
                 c.category AS restaurantCategory
@@ -106,7 +106,7 @@ class ManageRestaurantRepository extends Repository {
         }
     }
 
-    function updateRestaurant($restaurant) {
+    public function updateRestaurant($restaurant) {
         $stmt = $this->connection->prepare
         ("UPDATE `restaurant` SET name=:name, tags=:tags, rating=:rating, address=:address, phoneNumber=:phoneNumber, menuLink=:menuLink, menuText=:menuText, description=:description,
                 adultPrice=:adultPrice, childPrice=:childPrice, previewImage=:previewImage, frontPageImage=:frontPageImage, displayImageOne=:displayImageOne, displayImageTwo=:displayImageTwo, category=:category
@@ -158,6 +158,31 @@ class ManageRestaurantRepository extends Repository {
             ':description' => $details->description,
             ':reminder' => $details->reminder
         ]);
+    }
+
+    public function reserveSeat($timeslot) {
+        $stmt = $this->connection->prepare
+        ("UPDATE `restaurantTimes` SET seatsLeft=:seatsLeft where id=:id");
+
+        $stmt->execute([
+            ':seatsLeft' => $timeslot->seatsLeft,
+            ':id' => $timeslot->id
+        ]);
+    }
+
+    public function addReservation($reservation) {
+        $stmt = $this->connection->prepare
+        ("INSERT INTO `restaurantReservation` (date, time, restaurant, comment, adults, children, totalPrice)
+                VALUES (:date, :time, :restaurantId, :comment, :adults, :children, :totalPrice)");
+
+        $stmt->execute([
+            ':date' => $reservation->date,
+            ':time' => $reservation->time,
+            ':restaurantId' => $reservation->restaurantId,
+            ':comment' => $reservation->comment,
+            ':adults' => $reservation->adults,
+            ':children' => $reservation->children,
+            ':totalPrice' => $reservation->totalPrice]);
     }
 
 }
