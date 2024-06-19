@@ -8,7 +8,7 @@ include __DIR__ . '/../header.php';
     <div class="w-50 box mb-5">
         <h1>Edit Restaurant <span class="fw-bold text-info"><?php echo $restaurantModel->name ?></span></h1>
         <p><span class="text-danger">*</span> - fields are required to fill.</p>
-        <form action="updateRestaurant" method="post" class="pb-3 box row">
+        <form action="updateRestaurant" method="post" enctype="multipart/form-data" class="pb-3 box row">
             <input type="hidden" name="id" id="id" value="<?php echo $restaurantModel->id ?>">
             <div class="row p-0 align-self-center">
                 <div class="mb-3 col-6">

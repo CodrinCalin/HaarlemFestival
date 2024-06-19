@@ -17,6 +17,9 @@ class TicketDance extends Ticket
     public function getArtist(){
         return $this->artist;
     }
+    public function getFullTicketName(){
+        return $this->getType() . " - " . $this->name . " (". $this->getCategory() .")";
+    }
     // </editor-fold>
 
     // <editor-fold desc="Setters">

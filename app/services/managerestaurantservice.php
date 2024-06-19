@@ -63,4 +63,14 @@ class ManageRestaurantService
         $this->getNewInstance();
         $this->repository->updateYummyDetails($details);
     }
+
+    public function reserveSeat($timeslot) {
+        $this->getNewInstance();
+        $this->repository->reserveSeat($timeslot);
+    }
+
+    public function addReservation($reservation) {
+        $this->getNewInstance();
+        $this->repository->addReservation($reservation);
+    }
 }

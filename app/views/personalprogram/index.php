@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . '/../header.php';
-$cart = \App\lib\SessionManager::getCart();
+$cart = \App\lib\CartManager::getCart();
 
 $cartIsEmpty = empty($cart->getItems());
 ?>
@@ -24,10 +24,7 @@ $cartIsEmpty = empty($cart->getItems());
                 <div id="shoppingCartAgenda" class="d-none">
                     <?php include_once __DIR__ . "/../component/ShoppingCartAgenda.php"?>
                 </div>
-                <?php
-                echo $cartIsEmpty;
-                if($cartIsEmpty){
-                ?>
+                <?php if(!$cartIsEmpty){ ?>
                     <div class="p-2" style="background: #464646">
                         <a href="/cart/clearCart" class="btn btn-danger">Clear Cart</a>
                     </div>
@@ -79,7 +76,7 @@ $cartIsEmpty = empty($cart->getItems());
                             $totalPrice = $cart->getTotal();
                             ?>
                             <h4>€ <?php echo number_format($totalPrice, 2); ?></h4>
-                            <a href="/paymentpage" class="btn btn-primary btn-lg mt-3">Proceed to Payment</a>
+                            <a href="/payment/checkout" class="btn btn-primary btn-lg mt-3">Proceed to Payment</a>
                         <?php else: ?>
                             <p>Your cart is empty. Add tickets to proceed to payment.</p>
                         <?php endif; ?>

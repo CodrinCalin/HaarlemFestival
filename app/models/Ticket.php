@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Ticket {
+class Ticket implements \JsonSerializable {
     protected $id;
     protected $name;
     protected $category;
@@ -61,7 +61,8 @@ class Ticket {
     }
 
     public function getDateTime() {
-        return $this->dateTime;
+        $date = new \DateTime($this->dateTime);
+        return $date;
     }
     // </editor-fold>
 
@@ -114,5 +115,8 @@ class Ticket {
         echo "Location: " . implode(', ', $this->location) . "<br>";
         echo "Duration: {$this->duration} minutes<br>";
         echo "Datetime: {$this->dateTime}<br>";
+    }
+    public function jsonSerialize(): mixed {
+        return get_object_vars($this);
     }
 }
