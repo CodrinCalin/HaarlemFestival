@@ -18,7 +18,7 @@
                 ?>
                 <tr>
                    <!-- <td><?php /*echo $item['ticket']->getId(); */?></td>-->
-                    <td><?php echo $item['ticket']->getDateTime(); ?></td>
+                    <td><?php echo $item['ticket']->getDateTime()->format('Y-m-d H:i:s'); ?></td>
                     <td><?php echo $item['ticket']->getFullTicketName();  ?></td>
                     <td>$<?php echo $item['ticket']->getPrice(); ?></td>
                     <td><?php echo $item['quantity']; ?></td>

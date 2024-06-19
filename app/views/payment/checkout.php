@@ -25,7 +25,7 @@ foreach ($cart->getItems() as $item) {
             'unit_amount' => $ticket->getPrice() * 100, // Amount in cents
             'product_data' => [
                 'name' => $ticket->getFullTicketName(),
-                'description' => 'Date: ' . $ticket->getDateTime(),
+                'description' => 'Date: ' . $ticket->getDateTime()->format('Y-m-d H:i:s'),
             ],
         ],
         'quantity' => $item['quantity'],
