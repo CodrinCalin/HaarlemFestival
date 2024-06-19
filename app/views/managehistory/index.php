@@ -18,9 +18,6 @@ include __DIR__ . '/../header.php';
             <a href="/managehistory/manageSchedule"><button>Edit schedule</button></a>
         </div>
         <div>
-            <a href="/managehistory/manageMeetingPlace"><button>Edit meeting place</button></a>
-        </div>
-        <div>
             <a href="/managehistory/manageLocations"><button>Edit locations</button></a>
         </div>
         <div>

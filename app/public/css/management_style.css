@@ -52,13 +52,7 @@
     }
 }
 
-#introText {
-    width: 100%;
-    height: 350px;
-    padding: 5px;
-}
-
-#practicalInformationTable button {
+#practicalInformationTable button, #fAQTable button, #scheduleTable button {
     width: auto;
     font-size: 15px;
     padding: 5px 15px;
@@ -107,10 +101,33 @@
     padding: 15px;
 }
 
-.overlay a {
+.close {
     font-size: 50px;
     cursor: pointer;
     position: absolute;
     top: 10px;
     right: 25px;
+    text-decoration: none;
+    color: black;
+}
+
+#editFAQ input, #addFAQ input {
+    width: 100%;
+}
+
+#deleteFAQ button, #deleteInfoCard button, #deleteSchedule button {
+    width: 175px;
+}
+#deleteFAQ p, #deleteInfoCard p, #deleteSchedule p {
+    font-size: 20px;
+}
+
+#confirmDeleteButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
+#newContent {
+    width: 575px;
+    height: 200px;
 }

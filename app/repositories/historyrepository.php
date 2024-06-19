@@ -103,11 +103,44 @@ class historyrepository extends Repository {
         $stmt->execute([':content' => $content, ':addition' => $addition, ':category' => $category]);
     }
 
-/*    function fixtable() {
-        $stmt = $this->connection->prepare
-        ("INSERT INTO `historyLocation` (`id`, `name`, `description`, `address`, `latitude`, `longitude`, `text1`, `text2`, `text3`, `text4`, `text5`, `img1`, `img2`, `img3`, `img4`, `img5`, `img6`) VALUES (NULL, 'Hof van bakenes', 'Proveniershof was established in the early 17th century, specifically in 1662, by Pieter Teyler van der Hulst. It was originally intended to provide housing for \"proveniers,\" which were individuals who contributed to the almshouse in exchange for accommodation and other benefits. The almshouse was created to support elderly single women in need.', 'Wijde Appelaarsteeg 11F, 2011 HB Haarlem', '52.38168600509787', '4.639780497291783', '', '', '', '', '', '', '', '', '', '', '');");
+    public function editFAQ($id, $question, $answer) {
+        $stmt = $this->connection->prepare(
+            "UPDATE historyContent
+            SET content = :question,
+            addition = :answer
+            WHERE id = :id"
+        );
+        $stmt->execute([':id' => $id, ':question' => $question, ':answer' => $answer]);
+    }
 
-        $stmt->execute();
+    public function deleteContent($id) {
+        $stmt = $this->connection->prepare(
+            "DELETE FROM historyContent
+                    WHERE id = :id"
+        );
+        $stmt->execute([':id' => $id]);
+    }
 
-    }*/
+    public function deleteSchedule($id) {
+        $stmt = $this->connection->prepare(
+            "DELETE FROM historySchedule
+                    WHERE id = :id"
+        );
+        $stmt->execute([':id' => $id]);
+    }
+
+    public function addSchedule($language, $guide, $startDate, $endDate) {
+        $stmt = $this->connection->prepare(
+            "INSERT INTO historySchedule (language, startTime, endTime, tourGuide)
+                    VALUES (:language, :startTime, :endTime, :tourGuide)");
+        $stmt->execute([':language' => $language, ':startTime' => $startDate, ':endTime' => $endDate, ':tourGuide'=>$guide]);
+    }
+
+    public function addImage($name) {
+        $stmt = $this->connection->prepare(
+            "INSERT INTO historyContent (content, category, addition)
+                    VALUES (:content, :category, :addition)");
+        $stmt->execute([':content' => $name, ':category' => " ", ':addition' => " "]);
+    }
+
 }
