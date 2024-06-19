@@ -56,7 +56,7 @@ class PaymentController extends Controller
     {
         $this->getMailInstance();
 
-        $order_url_link = "http://localhost/order/" . $uniqueCode;
+        $order_url_link = "http://localhost/order?unique_code=" . $uniqueCode;
         $subject = "Your Order Confirmation";
         $body = "Thank you for your order. You can view your order details here: <br><br> <a href=".$order_url_link."> Order Details </a>";
 
