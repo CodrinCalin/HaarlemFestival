@@ -8,10 +8,11 @@ use App\Services\TicketService;
 use App\Services\OrderService;
 use App\Logic\MailerLogic;
 use Stripe\Stripe;
+use Stripe\Webhook;
 
 class PaymentController extends Controller
 {
-    private $secretkey = "sk_test_51PT20QFOgvMrJQDgldkFAmxn37UrQBbgHCk67Y2B8VFtNlvZfRvWeBaitTSmAUeghkAHOUzoXgOKtxHhc7nJ7OBJ00UI6zgWwM";
+    private $stripeSecretKey;
     private $ticketService;
     private $orderService;
     private $mailer;
@@ -21,6 +22,7 @@ class PaymentController extends Controller
         $this->ticketService = new TicketService();
         $this->orderService = new OrderService();
         $this->getMailInstance();
+        $this->stripeSecretKey = $_ENV['STRIPE_SECRET_KEY'];
     }
 
     // <editor-fold desc="Checkout">
@@ -88,11 +90,11 @@ class PaymentController extends Controller
 
     // Webhook handler
     public function handleStripeWebhook() {
-        Stripe::setApiKey($secretkey);
+        Stripe::setApiKey($this->stripeSecretKey);
 
         $payload = @file_get_contents('php://input');
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
-        $endpoint_secret = 'your_webhook_secret';
+        $endpoint_secret = $_ENV['STRIPE_WEBHOOK_SECRET'];
 
         try {
             $event = Webhook::constructEvent($payload, $sig_header, $endpoint_secret);
