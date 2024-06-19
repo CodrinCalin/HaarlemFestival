@@ -563,18 +563,44 @@ h1 {
 }
 
 #locationIntro {
-    height: 665px;
     background: #47515C;
-}
-
-#locationIntoColourBlock {
-    height: 175px;
-    background: rgba(65, 183, 179, 0.30);
 }
 
 #locationIntro p {
     color: white;
     font-size: 20px;
+}
+
+#locationMapBackground {
+    background: linear-gradient(180deg, rgba(71, 81, 92, 0.85) 0%, rgba(169, 224, 222, 0.85) 75.52%);
+    padding: 35px;
+    border-radius: 25px;
+    max-width: 695px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+#locationMapBackground #map {
+    height: 425px;
+    border-radius: 25px;
+    max-width: 625px;
+}
+
+#locationLink {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+#locationLink a {
+    text-decoration: none;
+    color: white;
+}
+
+#locationIntroText {
+    margin: 50px;
 }
 
 #locationDetails {
@@ -585,6 +611,17 @@ h1 {
     background: rgba(169, 224, 222, 0.50);
     margin-left: 5vw;
     margin-right: 5vw;
+    padding: 25px;
+}
+
+#locationDetailsContent img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+}
+
+#locationDetailsContent p {
+    margin: 25px;
 }
 
 #locationButtons {
@@ -614,4 +651,6 @@ h1 {
         padding: 20px;
     }
 }
+
+
 

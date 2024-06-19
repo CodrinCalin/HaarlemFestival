@@ -1,30 +1,34 @@
 <div id="dance">
     <?php
     $title = "Dance!";
-    $text = $service->getTextById(2);
-    $image = "\img\homepage\dance.jpg";
+    $text = $service->getContentById(2);
+    $image = $service->getContentById(27);
+    $href = "/dance";
     include __DIR__ . '/eventSample.php';
     ?>
 </div>
 <div id="yummy">
     <?php
     $title = "Yummy!";
-    $text = $service->getTextById(3);
-    $image = "\img\homepage\yummy.jpg";
+    $text = $service->getContentById(3);
+    $image = $service->getContentById(26);
+    $href = "/restaurant";
     include __DIR__ . '/eventSample.php';
     ?>
 </div>
 <div id="history">
     <?php
     $title = "Stroll Through History";
-    $text = $service->getTextById(4);
-    $image = "\img\homepage\history.png";
+    $text = $service->getContentById(4);
+    $image = $service->getContentById(25);
+    $href = "/history";
     include __DIR__ . '/eventSample.php';
     ?>
 </div>
 <div id="teyler">
     <?php
-    $text = $service->getTextById(5);
+    $text = $service->getContentById(5);
+    $image = $service->getContentById(28);
     ?>
     <div class="row">
         <div class="col-6">
@@ -43,8 +47,7 @@
 
         </div>
         <div class="col-4">
-            <img style="height: auto; max-height: 50dvw; width: auto" src="\img\homepage\teylerapp.png">
+            <img style="height: auto; max-height: 50dvw; width: auto" src="<?= $image->text ?>">
         </div>
-
     </div>
 </div>

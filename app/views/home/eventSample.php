@@ -6,9 +6,9 @@
             </h1>
             <p class="eventDescription"><?= nl2br($text->text) ?></p>
         </div>
-        <button class="homeButton">Learn More About The Event</button>
+        <a href="<?= $href ?>"><button class="homeButton">Learn More About The Event</button></a>
     </div>
     <div class="col-sm">
-        <img class="eventImage" src="<?=$image?>">
+        <img class="eventImage" src="<?= $image->text ?>">
     </div>
 </div>
