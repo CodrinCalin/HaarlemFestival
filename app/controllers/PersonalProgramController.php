@@ -16,7 +16,7 @@ class PersonalProgramController extends Controller
 
     public function index()
     {
-        $model = $this->ticketService->getAllTickets();
+        $model = $this->ticketService->getAllYummyTickets();
         require __DIR__ . '/../views/personalprogram/index.php';
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\exception;
+namespace App\Exception;
 
 class TokenNotFoundException extends \Exception
 {

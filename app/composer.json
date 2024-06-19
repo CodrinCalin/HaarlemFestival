@@ -4,11 +4,24 @@
     "type": "project",
     "authors": [
         {
-            "name": ["Mark de Haan (Ahrnuld)", "Codrin Calin", "Jonathan Mauricio", "Ignas Montvydas", "Kim van Schagen"]
+            "name": "Mark de Haan (Ahrnuld)"
+        },
+        {
+            "name": "Codrin Calin"
+        },
+        {
+            "name": "Jonathan Mauricio"
+        },
+        {
+            "name": "Ignas Montvydas"
+        },
+        {
+            "name": "Kim van Schagen"
         }
     ],
     "require": {
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+        "stripe/stripe-php": "^14.10"
     },
     "autoload": {
         "psr-4": {
@@ -17,7 +30,9 @@
             "App\\Models\\": "./models",
             "App\\Services\\": "./services",
             "App\\Repositories\\": "./repositories",
-            "App\\Views\\": "./views"
+            "App\\Views\\": "./views",
+            "App\\Logic\\": "./logic",
+            "App\\Exception\\": "./exception"
         }
     }
 }
