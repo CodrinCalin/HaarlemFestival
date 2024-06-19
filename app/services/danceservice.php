@@ -50,14 +50,9 @@ class DanceService {
         return $this->repository->getAllSpecialTickets();
     }
 
-    public function addArtist($files, $postData) {
-        $name = $postData['name'];
-        $style = $postData['style'];
-        $title = $postData['title'];
-        $cardImageUrl = $this->uploadImage($files['card_image_url']);
-        $mainImageUrl = $this->uploadImage($files['artist_main_img_url']);
-
-        return $this->repository->createArtist($name, $style, $title, $cardImageUrl, $mainImageUrl);
+    public function addArtist($artist) {
+        $this->getNewInstance();
+       return $this->repository->addArtist($artist);
     }
 
     protected function uploadImage($file) {

@@ -10,6 +10,6 @@
     <?php use App\Models\Permissions;
         include __DIR__ . '/../public/css/style.css' ?>
 </style>
-<script src="<?php __DIR__ . '/../public/js/alertHandling.js' ?>>"></script>
+<script src="<?php __DIR__ . '/../public/js/alertHandling.js' ?>"></script>
 <?php include __DIR__ . "/common/navigation.php" ?>
     <main>
