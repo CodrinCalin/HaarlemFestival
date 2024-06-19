@@ -144,7 +144,9 @@ class ManageRestaurantsController {
         if($_FILES!=null){
 
             if($_FILES["previewImage"]["error"] !== UPLOAD_ERR_NO_FILE){
+                //Delete the previous image if replacing one
                 if($restaurant->previewImage !== "default.png") { $this->imageService->deleteImage($restaurant->previewImage, "img/restaurant/");}
+                //Set the image to the uploaded one
                 $restaurant->previewImage = $this->imageService->uploadImage($_FILES["previewImage"], "img/restaurant/");
             }
 

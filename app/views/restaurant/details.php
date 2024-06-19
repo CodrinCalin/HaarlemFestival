@@ -57,8 +57,69 @@ INCLUDE __DIR__ . '/../header.php';
 
         <div class="vw-100 position-relative pt-5">
             <h1 class="text-center text-blue fw-bold">Reserve a Table</h1>
+            <div class="fw-bold text-white d-flex justify-content-center">Reserve a table below by choosing the amount of people you are dining with and selecting a timeslot alongside a date.</div>
         </div>
-</div>
+    <form action="reserveSeats" method="post">
+        <div class="vw-100 row pt-3 d-flex justify-content-center user-select-none pb-5">
+            <div class="col-auto pe-5">
+                <p>Pick a date for reservation:</p>
+                <ul>
+                    <?php $dateCounter = 1; ?>
+                    <?php foreach($restaurantDates as $date) { ?>
+                        <li><input id="d<?php echo $dateCounter ?>" type="radio" name="dates" class="btn-check" value="<?php echo $date->id ?>" required><label for="d<?php echo $dateCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1"><?php echo $date->date ?></label></li>
+                    <?php $dateCounter++; } ?>
+                </ul>
+            </div>
+
+            <div class="col-auto">
+                <p>Pick a timeslot for reservation:</p>
+                <ul>
+                    <?php $timeCounter = 1; var_dump($restaurantTimes); ?>
+                    <?php foreach($restaurantTimes as $time) { ?>
+                        <li><input id="t<?php echo $timeCounter ?>" type="radio" name="times" class="btn-check" value="<?php echo $time[1] ?>" required><label for="t<?php echo $timeCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1"><?php echo $time->time ?> - <?php echo $time->seatsLeft ?> seats left</label></li>
+                    <?php $timeCounter++; } ?>
+                </ul>
+            </div>
+            <div class="row d-flex justify-content-center user-select-none">
+                <div class="col-auto">
+                    <label for="adults">Nr. of adults.</label>
+                    <Select name="adults" id="adults" class="form-select">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </Select>
+                </div>
+                <div class="col-auto">
+                    <label for="children">Nr. of children.</label>
+                    <Select name="children" id="children" class="form-select">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </Select>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center pt-3">
+                <div class="col-3">
+                    <label for="comment" class="l" aria-describedby="comment">Any questions? Ask here:</label>
+                    <textarea class="form-control text-box" id="comment" name="comment" placeholder="type question here..."></textarea>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center pt-3">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-outline-info">Add To Personal Project</button>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-outline-info">Pay</button>
+                </div>
+            </div>
+            <input type="hidden" name="id" id="id" value="<?php echo $restaurantModel->id ?>">
+        </div>
+    </form>
 
 
 
