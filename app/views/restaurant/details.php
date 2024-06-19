@@ -29,7 +29,7 @@ INCLUDE __DIR__ . '/../header.php';
         </div>
 
         <div class="vw-100 position-relative">
-            <img class="darken img-scale" src="/img/ratatouillebg.jpg" alt="People at a festival">
+            <img class="darken img-scale" src="/img/restaurant/<?php echo $restaurantModel->frontPageImage ?>" alt="People at a festival">
             <div class="overlay-text position-absolute"><?php echo $restaurantModel->description ?></div>
             <div class="scroll-text position-absolute fw-bold">Scroll Down to Learn More</div>
             <div class="or-text position-absolute">or</div>
@@ -37,7 +37,7 @@ INCLUDE __DIR__ . '/../header.php';
         </div>
 
         <div class="vw-100 position-relative pt-5">
-            <img class="display-one col-6" src="/img/ratatouille1.jpg" alt="Image of Food">
+            <img class="display-one col-6" src="/img/restaurant/<?php echo $restaurantModel->displayImageOne ?>" alt="Image of Food">
             <div class="menu-header col-6 text-blue fw-bold d-flex justify-content-center">Food and Menu</div>
             <div class="menu-text"><?php echo $restaurantModel->menuText ?></div>
             <a href="<?php echo $restaurantModel->menuLink ?>" class="menu-button btn btn-outline-info">View Menu</a>
@@ -52,16 +52,100 @@ INCLUDE __DIR__ . '/../header.php';
                 <div>Timeslots: <span>17:00 | 17:00 | 17:00</span></div>
                 <div>Price: €<span><?php echo $restaurantModel->adultPrice ?> <br> €<?php echo $restaurantModel->childPrice ?> for children under 12</span></div>
             </div>
-            <img class="display-two col-6" src="/img/ratatouille2.png" alt="Image of Food">
+            <img class="display-two col-6" src="/img/restaurant/<?php echo $restaurantModel->displayImageTwo ?>" alt="Image of the restaurant">
         </div>
 
         <div class="vw-100 position-relative pt-5">
             <h1 class="text-center text-blue fw-bold">Reserve a Table</h1>
+            <div class="fw-bold text-white d-flex justify-content-center">Reserve a table below by choosing the amount of people you are dining with and selecting a timeslot alongside a date.</div>
         </div>
-</div>
+    <form action="reserveSeats" method="post">
+        <div class="vw-100 row pt-3 d-flex justify-content-center user-select-none pb-5">
+            <div class="col-auto pe-5" id="dateList">
+                <p>Pick a date for reservation:</p>
+                <ul>
+                    <?php $dateCounter = 1; ?>
+                    <?php foreach($restaurantDates as $date) { ?>
+                        <li><input id="d<?php echo $dateCounter ?>" type="radio" name="dates" class="btn-check" value="<?php echo $date ?>" onclick="updateTime(this.value, '<?php echo $restaurantModel->id ?>')" required><label for="d<?php echo $dateCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1 px-5"><?php echo $date ?></label></li>
+                    <?php $dateCounter++; } ?>
+                </ul>
+            </div>
+
+            <div class="col-auto" id="timeslotList">
+                <p>Pick a timeslot for reservation:</p>
+                <ul>
+                    <?php $timeCounter = 0; ?>
+                    <?php foreach($restaurantTimes as $time) { ?>
+                        <li><input id="t<?php echo $timeCounter ?>" type="radio" name="times" class="btn-check" value="<?php echo $timeCounter ?>" required><label for="t<?php echo $timeCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1 px-3"><?php echo $time->getDateTime()->format('H:i') ?> - <?php echo $time->getQuantityAvailable() ?> seats left</label></li>
+                    <?php $timeCounter++; } ?>
+                </ul>
+            </div>
+            <div class="row d-flex justify-content-center user-select-none">
+                <div class="col-auto">
+                    <label for="adults">Nr. of adults.</label>
+                    <Select name="adults" id="adults" class="form-select">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </Select>
+                </div>
+                <div class="col-auto">
+                    <label for="children">Nr. of children.</label>
+                    <Select name="children" id="children" class="form-select">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </Select>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center pt-3">
+                <div class="col-3">
+                    <label for="comment" class="l" aria-describedby="comment">Any questions? Ask here:</label>
+                    <textarea class="form-control text-box" id="comment" name="comment" placeholder="type question here..."></textarea>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center pt-3">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-outline-info">Add To Personal Project</button>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-outline-info">Pay</button>
+                </div>
+            </div>
+            <input type="hidden" name="id" id="id" value="<?php echo $restaurantModel->id ?>">
+        </div>
+    </form>
 
 
+<script>
+    function updateTime(value, restaurant) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("Response received: ", this.responseText);
+                try {
+                    var response = JSON.parse(this.responseText);
+                    console.log("Parsed response: ", response);
+                } catch (e) {
+                    console.error("Error parsing JSON response: ", e);
+                }
+            } else {
+                console.error("Error: ", this.status);
+            }
+        }
+        xhttp.open("POST", "/restaurant/updateTime", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "dates=" + encodeURIComponent(value) + "&restaurant=" + encodeURIComponent(restaurant);
+        xhttp.send(params);
 
+    }
+
+</script>
 
 
 <?php

@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories;
 
-use App\Models\Event;
+use App\Models\HomeEvent;
 use PDO;
 
 class eventrepository extends Repository {
@@ -17,7 +17,7 @@ class eventrepository extends Repository {
         if (!empty($result)) {
             foreach ($result as $item) {
                 if (empty($events)) {
-                    $newEvent = new Event($item['event_id'], $item['event_name']);
+                    $newEvent = new HomeEvent($item['event_id'], $item['event_name']);
                     $newEvent->addDate($item['event_date']);
                     $events[] = $newEvent;
                 } else {
@@ -30,7 +30,7 @@ class eventrepository extends Repository {
                         }
                     }
                     if (!$contains) {
-                        $newEvent = new Event($item['event_id'], $item['event_name']);
+                        $newEvent = new HomeEvent($item['event_id'], $item['event_name']);
                         $newEvent->addDate($item['event_date']);
                         $events[] = $newEvent;
                     }

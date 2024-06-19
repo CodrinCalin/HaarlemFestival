@@ -30,8 +30,8 @@ include __DIR__ . '/../header.php';
                 <td><?php echo isset($user->username) ? $user->username : "" ; ?></td>
                 <td><?php echo isset($user->email) ? $user->email : "" ; ?></td>
                 <td><?php echo isset($user->password) ? $user->password : "" ; ?></td>
-                <td><?php echo isset($user->last_name) ? $user->last_name : "" ; ?></td>
                 <td><?php echo isset($user->first_name) ? $user->first_name : "" ; ?></td>
+                <td><?php echo isset($user->last_name) ? $user->last_name : "" ; ?></td>
                 <td><?php echo isset($user->date_created) ? $user->date_created : "" ; ?></td>
                 <td>
                     <a href='/manageusers/edit?id=<?php echo $user->id;?>'>Edit</a>

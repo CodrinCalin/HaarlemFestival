@@ -1,30 +1,25 @@
 <?php
 namespace App\Services;
 use App\Repositories\eventrepository;
-use App\Repositories\textrepository;
+use App\Repositories\homerepository;
 
 class homeService {
     private $repository;
 
     private function getNewInstance()
     {
-        $this->repository = new textrepository();
+        $this->repository = new homerepository();
     }
-    public function getAll()
-    {
+
+    public function getAll(){
         $this->getNewInstance();
         return $this->repository->getAll();
     }
 
-    public function getTextById($textId)
+    public function getContentById($textId)
     {
         $this->getNewInstance();
-        return $this->repository->getTextById($textId);
-    }
-
-    public function getTextByCategory($category) {
-        $this->getNewInstance();
-        return $this->repository->getTextByCategory($category);
+        return $this->repository->getContentById($textId);
     }
 
     public function getAllDates() {

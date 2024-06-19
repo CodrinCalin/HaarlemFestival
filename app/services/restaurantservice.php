@@ -26,4 +26,24 @@ class RestaurantService
         $this->getNewInstance();
         return $this->repository->getYummyDetails();
     }
+
+    public function getRestaurantDates() {
+        $this->getNewInstance();
+        return $this->repository->getRestaurantDates();
+    }
+
+    public function getRestaurantDateById($date) {
+        $this->getNewInstance();
+        return $this->repository->getRestaurantDateById($date);
+    }
+    public function getRestaurantTimes() {
+        $this->getNewInstance();
+        return $this->repository->getRestaurantTimes();
+    }
+
+    public function getRestaurantTimeById($time) {
+        $this->getNewInstance();
+        return $this->repository->getRestaurantTimeById($time);
+    }
+
 }

@@ -5,13 +5,13 @@ use App\Models\User;
 use App\Services\UserService;
 use http\Header;
 
-class ManageUsersController
+class ManageUsersController extends Controller
 {
     private $service;
 
     function __construct()
     {
-        session_start();
+        parent::__construct();
         $this->service = new UserService();
     }
 

@@ -18,6 +18,7 @@ include __DIR__ . '/../header.php';
         <a href="/managehome/manageEvents"><button>Manage event introductions</button></a>
     </div>
 </div>
+
 <?php
 include __DIR__ . '/../footer.php';
 ?>
