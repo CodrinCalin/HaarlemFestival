@@ -61,22 +61,22 @@ INCLUDE __DIR__ . '/../header.php';
         </div>
     <form action="reserveSeats" method="post">
         <div class="vw-100 row pt-3 d-flex justify-content-center user-select-none pb-5">
-            <div class="col-auto pe-5">
+            <div class="col-auto pe-5" id="dateList">
                 <p>Pick a date for reservation:</p>
                 <ul>
                     <?php $dateCounter = 1; ?>
                     <?php foreach($restaurantDates as $date) { ?>
-                        <li><input id="d<?php echo $dateCounter ?>" type="radio" name="dates" class="btn-check" value="<?php echo $date->id ?>" required><label for="d<?php echo $dateCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1"><?php echo $date->date ?></label></li>
+                        <li><input id="d<?php echo $dateCounter ?>" type="radio" name="dates" class="btn-check" value="<?php echo $date ?>" onclick="updateTime(this.value, '<?php echo $restaurantModel->id ?>')" required><label for="d<?php echo $dateCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1 px-5"><?php echo $date ?></label></li>
                     <?php $dateCounter++; } ?>
                 </ul>
             </div>
 
-            <div class="col-auto">
+            <div class="col-auto" id="timeslotList">
                 <p>Pick a timeslot for reservation:</p>
                 <ul>
-                    <?php $timeCounter = 1; var_dump($restaurantTimes); ?>
+                    <?php $timeCounter = 0; ?>
                     <?php foreach($restaurantTimes as $time) { ?>
-                        <li><input id="t<?php echo $timeCounter ?>" type="radio" name="times" class="btn-check" value="<?php echo $time[1] ?>" required><label for="t<?php echo $timeCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1"><?php echo $time->time ?> - <?php echo $time->seatsLeft ?> seats left</label></li>
+                        <li><input id="t<?php echo $timeCounter ?>" type="radio" name="times" class="btn-check" value="<?php echo $timeCounter ?>" required><label for="t<?php echo $timeCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1 px-3"><?php echo $time->getDateTime()->format('H:i') ?> - <?php echo $time->getQuantityAvailable() ?> seats left</label></li>
                     <?php $timeCounter++; } ?>
                 </ul>
             </div>
@@ -122,7 +122,30 @@ INCLUDE __DIR__ . '/../header.php';
     </form>
 
 
+<script>
+    function updateTime(value, restaurant) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("Response received: ", this.responseText);
+                try {
+                    var response = JSON.parse(this.responseText);
+                    console.log("Parsed response: ", response);
+                } catch (e) {
+                    console.error("Error parsing JSON response: ", e);
+                }
+            } else {
+                console.error("Error: ", this.status);
+            }
+        }
+        xhttp.open("POST", "/restaurant/updateTime", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "dates=" + encodeURIComponent(value) + "&restaurant=" + encodeURIComponent(restaurant);
+        xhttp.send(params);
 
+    }
+
+</script>
 
 
 <?php

@@ -105,11 +105,11 @@ class RestaurantController {
     private function restaurantDates($restaurantId) {
         $restaurant = $this->manageRestaurantService->getRestaurantById($restaurantId);
         $tickets = $this->ticketService->getAllYummyTicketsByName($restaurant->name);
-        var_dump($tickets);
         $dates = [];
 
-        foreach($tickets->getDateTime() as $dateTime) {
-            $date = $dateTime->format('d-m');
+        foreach($tickets as $ticket) {
+            $dateTime = $ticket->getDateTime();
+            $date = $dateTime->format('F-d');
             if (!in_array($date, $dates)) {
                 $dates[] = $date;
             }
@@ -121,16 +121,60 @@ class RestaurantController {
     private function restaurantTimes($restaurantId) {
         $restaurant = $this->manageRestaurantService->getRestaurantById($restaurantId);
         $tickets = $this->ticketService->getAllYummyTicketsByName($restaurant->name);
-        $times = [];
 
-        foreach($tickets->getDateTime()  as $dateTime) {
-            $time = $dateTime->format('H:i');
-            if (!in_array($time, $times)) {
-                $times[] = $time;
+        $timeTickets = [];
+
+        foreach($tickets as $ticket) {
+            $unique = true;
+            foreach($timeTickets as $time) {
+                if($time->getDateTime()->format('H:i') === $ticket->getDateTime()->format('H:i')) {
+                    $unique = false;
+                    break;
+                }
             }
+            if($unique) { $timeTickets[] = $ticket; }
         }
 
-        return $times;
+        return $timeTickets;
+    }
+    private function getTimeByDate($date, $restaurantId) {
+        $restaurant = $this->manageRestaurantService->getRestaurantById($restaurantId);
+        $tickets = $this->ticketService->getAllYummyTicketsByName($restaurant->name);
+        //Only keep tickets with the right date
+        $counter = 0;
+        foreach($tickets as $ticket) {
+            if($ticket->getDateTime()->format('F-d') !== $date) {
+                unset($tickets[$counter]);
+            }
+            $counter++;
+        }
+
+        $timeTickets = [];
+        //Filter out only unique times from the tickets
+        foreach($tickets as $ticket) {
+            $unique = true;
+            foreach($timeTickets as $time) {
+                if($time->getDateTime()->format('H:i') === $ticket->getDateTime()->format('H:i')) {
+                    $unique = false;
+                    break;
+                }
+            }
+            if($unique) { $timeTickets[] = $ticket; }
+        }
+
+        return $timeTickets;
+    }
+    public function updateTime()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $date = $_POST['dates'];
+            $restaurantId = $_POST['restaurant'];
+            header('Content-Type: application/json');
+
+            $times = [];
+            $times = $this->getTimeByDate($date, $restaurantId);
+            $encoded = json_encode($times[0], JSON_FORCE_OBJECT);
+        }
     }
 
     public function returnToIndex()
