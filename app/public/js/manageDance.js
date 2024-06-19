@@ -1,7 +1,7 @@
 loadArtists();
-loadAgenda();
-loadTickets();
-loadOverviews();
+// loadAgenda();
+// loadTickets();
+// loadOverviews();
 
 ////////////SideBar/////////////////////
 function showArtists() {
@@ -16,43 +16,42 @@ function showArtists() {
   loadArtists();
 }
 
-function showAgenda() {
-  document.getElementById("artists-container").style.display = "none";
-  document.getElementById("agenda-container").style.display = "block";
-  document.getElementById("tickets-container").style.display = "none";
-  document.getElementById("danceOverview-container").style.display = "none";
+// function showAgenda() {
+//   document.getElementById("artists-container").style.display = "none";
+//   document.getElementById("agenda-container").style.display = "block";
+//   document.getElementById("tickets-container").style.display = "none";
+//   document.getElementById("danceOverview-container").style.display = "none";
 
-  const addButton = document.getElementById("add-btn");
-  addButton.innerText = `Add Event`;
-  addButton.onclick = showAddAgendaForm; // Assign the onclick handler here
+//   const addButton = document.getElementById("add-btn");
+//   addButton.innerText = `Add Event`;
+//   addButton.onclick = showAddAgendaForm; // Assign the onclick handler here
 
-  loadAgenda();
-}
+//   loadAgenda();
+// }
 
-function showTickets() {
-  document.getElementById("artists-container").style.display = "none";
-  document.getElementById("agenda-container").style.display = "none";
-  document.getElementById("tickets-container").style.display = "block";
-  document.getElementById("danceOverview-container").style.display = "none";
+// function showTickets() {
+//   document.getElementById("artists-container").style.display = "none";
+//   document.getElementById("agenda-container").style.display = "none";
+//   document.getElementById("tickets-container").style.display = "block";
+//   document.getElementById("danceOverview-container").style.display = "none";
 
-  const addButton = document.getElementById("add-btn");
-  addButton.innerText = `Add Ticket`;
-  addButton.onclick = showAddTicketForm; // Assign the onclick handler here
+//   const addButton = document.getElementById("add-btn");
+//   addButton.innerText = `Add Ticket`;
+//   addButton.onclick = showAddTicketForm; // Assign the onclick handler here
 
-  loadTickets();
-}
+//   loadTickets();
+// }
 
-function showOverview() {
-  document.getElementById("artists-container").style.display = "none";
-  document.getElementById("agenda-container").style.display = "none";
-  document.getElementById("tickets-container").style.display = "none";
-  document.getElementById("danceOverview-container").style.display = "block";
-  const addButton = document.getElementById("add-btn");
-  addButton.innerText = `Add Overview`;
-  addButton.onclick = showAddOverviewForm; // Assign the onclick handler here
-  loadOverviews();
-}
-////////////////////End of SideBar//////////////////////////
+// function showOverview() {
+//   document.getElementById("artists-container").style.display = "none";
+//   document.getElementById("agenda-container").style.display = "none";
+//   document.getElementById("tickets-container").style.display = "none";
+//   document.getElementById("danceOverview-container").style.display = "block";
+//   const addButton = document.getElementById("add-btn");
+//   addButton.innerText = `Add Overview`;
+//   addButton.onclick = showAddOverviewForm; // Assign the onclick handler here
+//   loadOverviews();
+// }
 
 //////////////////////Adjusting the Form///////////////////////
 function showAddArtistForm() {
@@ -358,7 +357,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function addArtist(event) {
   event.preventDefault(); // Prevent the default form submission behavior
-  console.log("Form submission intercepted"); // Add this line
   const formData = new FormData(document.getElementById("artistForm"));
 
   // Debugging: Log FormData contents
@@ -379,8 +377,11 @@ async function addArtist(event) {
     const responseText = await response.text();
     const data = JSON.parse(responseText); // Parse JSON response
 
+
     if (data.success) {
       showToast("Artist added successfully", "#008000");
+      // document.getElementById("add-artist-modal").style.display = "none"; // Hide the modal
+      // loadArtists(); // Reload the artists
     } else {
       throw new Error(data.error || "Unknown error occurred");
     }
@@ -396,6 +397,32 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("artistForm").addEventListener("submit", addArtist);
 });
 
+
+// show toast message ------------------------------------------------------------------------------------------------
+
+function showToast(message, backgroundColor = "#333") {
+  const toast = document.createElement("div");
+  toast.textContent = message;
+  toast.style.position = "fixed";
+  toast.style.bottom = "20px";
+  toast.style.left = "50%";
+  toast.style.transform = "translateX(-50%)";
+  toast.style.backgroundColor = backgroundColor;
+  toast.style.color = "#fff";
+  toast.style.padding = "10px 20px";
+  toast.style.borderRadius = "5px";
+  toast.style.boxShadow = "0 0 10px rgba(0,0,0,0.1)";
+  toast.style.zIndex = "1000";
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.transition = "opacity 0.5s";
+    toast.style.opacity = "0";
+    setTimeout(() => {
+      document.body.removeChild(toast);
+    }, 500);
+  }, 3000);
+}
 
 
 

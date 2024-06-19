@@ -26,4 +26,40 @@ class Artists
     public function getName() { 
       return $this->name;
     }
+
+    public function getStyle() { 
+      return $this->style;
+    }
+
+    public function getCardImageUrl() { 
+      return $this->card_image_url;
+    }
+
+    public function getTitle() { 
+      return $this->title;
+    }
+
+    public function getArtistMainImgUrl() { 
+      return $this->artist_main_img_url;
+    }
+
+    public function setName($name) { 
+      $this->name = $name;
+    }
+
+    public function setStyle($style) { 
+      $this->style = $style;
+    }
+
+    public function setCardImageUrl($card_image_url) { 
+      $this->card_image_url = $card_image_url;
+    }
+
+    public function setTitle($title) { 
+      $this->title = $title;
+    }
+
+    public function setArtistMainImgUrl($artist_main_img_url) { 
+      $this->artist_main_img_url = $artist_main_img_url;
+    }
 }

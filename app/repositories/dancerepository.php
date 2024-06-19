@@ -1,6 +1,8 @@
 <?php
 namespace App\Repositories;
 use App\Models\Event;
+use App\Models\Artists;
+
 use PDO;
 
 class DanceRepository extends Repository {
