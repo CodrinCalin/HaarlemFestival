@@ -27,6 +27,10 @@ class TicketYummy extends Ticket
     public function getFoodType(){
         return $this->foodType;
     }
+
+    public function getFullTicketName(){
+        return $this->getType() . " - " . $this->name . " (". $this->getCategory() .")";
+    }
     // </editor-fold>
 
     // <editor-fold desc="Setters">

@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\lib\SessionManager;
+use App\lib\CartManager;
+use App\Models\Cart;
 use App\Services\TicketService;
 
 class CartController extends Controller
@@ -22,13 +23,21 @@ class CartController extends Controller
 
             $ticket = $this->ticketService->getTicketById($ticketId);
             if ($ticket) {
-                $cart = SessionManager::getCart();
+                $cart = CartManager::getCart();
                 $cart->addItem($ticket, $quantity);
             }
         }
 
-        // Redirect back to the referring page
         $this->redirectBack();
+    }
+
+    public function methodAddToCart($ticket_id, $quantity)
+    {
+        $ticket = $this->ticketService->getTicketById($ticket_id);
+        if ($ticket) {
+            $cart = CartManager::getCart();
+            $cart->addItem($ticket, $quantity);
+        }
     }
 
     public function removeFromCart()
@@ -37,29 +46,26 @@ class CartController extends Controller
             $ticketId = $_POST['ticket_id'];
             $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
 
-            $cart = SessionManager::getCart();
+            $cart = CartManager::getCart();
             $cart->removeItem($ticketId, $quantity);
         }
 
-        // Redirect back to the referring page
         $this->redirectBack();
     }
 
     public function clearCart()
     {
-        SessionManager::clearCart();
-
-        // Redirect back to the referring page
+        CartManager::clearCart();
         $this->redirectBack();
     }
 
     public function viewCart() {
-        $cart = SessionManager::getCart();
+        $cart = CartManager::getCart();
         return $cart->getItems();
     }
 
     public function getTotal() {
-        $cart = SessionManager::getCart();
+        $cart = CartManager::getCart();
         return $cart->getTotal();
     }
 

@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\exception\TokenExpiredException;
-use App\exception\TokenNotFoundException;
+use App\Exception\TokenExpiredException;
+use App\Exception\TokenNotFoundException;
 use App\Repositories\ResetTokenRepository;
 use App\Repositories\UserRepository;
 

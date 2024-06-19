@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use App\exception\PasswordDoesNotMatchException;
-use App\exception\TokenNotFoundException;
+use App\Exception\PasswordDoesNotMatchException;
+use App\Exception\TokenNotFoundException;
 use App\Models\User;
 use App\Services\ResetTokenService;
 use App\Services\UserService;
