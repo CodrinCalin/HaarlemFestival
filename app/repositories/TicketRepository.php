@@ -84,6 +84,21 @@ class TicketRepository extends Repository {
         return $tickets;
     }
 
+    public function getAllYummyTicketsByName($name) {
+        $sql = "SELECT T.id, T.name, T.category, T.type, T.quantity_available, T.price, T.location, T.duration, T.restaurant_name, T.date_time, T.language, T.guide, T.star, T.food_type FROM `ticket` AS T WHERE `category` LIKE 'YUMMY' AND `restaurant_name` = :name;";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':name', $name, PDO::PARAM_INT);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $tickets = [];
+        foreach ($results as $result) {
+            $tickets[] = $this->transformDataToTicket($result);
+        }
+
+        return $tickets;
+    }
+
     private function transformDataToTicket($result){
         $ticket = "";
         switch ($result['category']) {
