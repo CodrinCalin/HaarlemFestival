@@ -20,6 +20,7 @@
         }
     ],
     "require": {
+        "vlucas/phpdotenv":  "5.4",
         "phpmailer/phpmailer": "^6.9",
         "stripe/stripe-php": "^14.10"
     },

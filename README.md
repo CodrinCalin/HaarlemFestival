@@ -33,7 +33,11 @@ docker-compose down
 ```bash
 docker run --rm -it stripe/stripe-cli login
 ```
-2. 
+2. To produce a completed payment as a test, in the 2nd terminal where you logged in, type:
+```bash
+stripe trigger checkout.session.completed
+```
+
 
 ## Login Credentials
 
@@ -43,3 +47,16 @@ Accounts available:
 
 * **Username:** _admin_
 * **Password:** _admin_
+
+## Authors and Credits
+
+### Authors:
+
+- [Codrin Calin](https://github.com/CodrinCalin)
+- [Jonathan Mauricio](https://github.com/jonathan-mauricio)
+- [Ignas Montvydas](https://github.com/IgnasMon)
+- [Kim van Schagen](https://github.com/KimvanSchagen)
+
+### Credits:
+
+- Initial [PHP MVC Basic](https://github.com/ahrnuld/php-mvc-basic) project startup - [Mark de Haan](https://github.com/ahrnuld)
