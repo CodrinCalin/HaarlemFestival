@@ -49,4 +49,21 @@ class DanceService {
         $this->getNewInstance();
         return $this->repository->getAllSpecialTickets();
     }
+
+    public function addArtist($files, $postData) {
+        $name = $postData['name'];
+        $style = $postData['style'];
+        $title = $postData['title'];
+        $cardImageUrl = $this->uploadImage($files['card_image_url']);
+        $mainImageUrl = $this->uploadImage($files['artist_main_img_url']);
+
+        return $this->repository->createArtist($name, $style, $title, $cardImageUrl, $mainImageUrl);
+    }
+
+    protected function uploadImage($file) {
+        $targetDirectory = "/img/danceimages/";
+        $targetFile = $targetDirectory . basename($file['name']);
+        move_uploaded_file($file['tmp_name'], $targetFile);
+        return $targetFile; // Return path to store in database
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 namespace App;
+use mysql_xdevapi\Exception;
 
 class PatternRouter
 {

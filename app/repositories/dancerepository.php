@@ -122,7 +122,38 @@ class DanceRepository extends Repository {
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'App\\Models\\SpecialTicket');
         return $stmt->fetchAll();
     }
-    
+
+    public function createArtist($name, $style, $title, $cardImageUrl, $mainImageUrl) {
+        $stmt = $this->connection->prepare("INSERT INTO artists (name, style, title, card_image_url, artist_main_img_url) VALUES (?, ?, ?, ?, ?)");
+        return $stmt->execute([$name, $style, $title, $cardImageUrl, $mainImageUrl]);
+    }
+
+    public function addArtist(Artists $artist)
+    {
+        try {
+            // Use a prepared statement to insert the artist into the database
+            $stmt = $this->connection->prepare("INSERT INTO artists (name, style, title, card_image_url, artist_main_img_url) VALUES (:name, :style, :title, :card_image_url, :artist_main_img_url)");
+            
+            $name = $artist->getName();
+            $style = $artist->style;
+            $title = $artist->title;
+            $card_image_url = $artist->card_image_url;
+            $artist_main_img_url = $artist->artist_main_img_url;
+
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':style', $style, PDO::PARAM_STR);
+            $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':card_image_url', $card_image_url, PDO::PARAM_STR);
+            $stmt->bindParam(':artist_main_img_url', $artist_main_img_url, PDO::PARAM_STR);
+
+            $stmt->execute();
+            return true; // Return true if insertion is successful
+        } catch (PDOException $e) {
+            // Handle the exception (log, show an error message, etc.)
+            throw new PDOException('Error adding artist: ' . $e->getMessage());
+        }
+    }
+
 
 
     public function getAllTickets(){
