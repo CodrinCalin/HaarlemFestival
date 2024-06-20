@@ -83,12 +83,6 @@ $cartIsEmpty = empty($cart->getItems());
                     </div>
                 </div>
             </aside>
-
-            <!-- Ticket Display (Left Side) -->
-            <div class="col-md-9">
-                <h1>Tickets</h1>
-                <?php include_once __DIR__. "/../component/AvailableTicketCards.php"?>
-            </div>
         </div>
     </div>
 </div>

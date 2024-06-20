@@ -27,17 +27,22 @@ Or run:
 docker-compose down
 ```
 
-### Testing Payment
+## Testing:
 
-1. First setup Stripe login in local environment, open another terminal and type:
-```bash
-docker run --rm -it stripe/stripe-cli login
-```
-2. To produce a completed payment as a test, in the 2nd terminal where you logged in, type:
-```bash
-stripe trigger checkout.session.completed
-```
+### Shopping cart:
 
+###### In case ticket adding to cart doesn't work from individual pages, you can go to these pages for working adding of tickets 
+
+* [All tickets](http://localhost/ticket)
+* [Yummy tickets](http://localhost/ticket?category=YUMMY)
+* [History tickets](http://localhost/ticket?category=HISTORY)
+* [Dance tickets](http://localhost/ticket?category=DANCE)
+
+### Order preview:
+
+###### In case you do not retrieve an email, existing order preview
+
+* [Existing order preview](http://localhost/order?unique_code=98203c75c0763280a176c35997632734)
 
 ## Login Credentials
 
