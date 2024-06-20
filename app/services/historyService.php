@@ -46,6 +46,37 @@ class historyService {
         return $this->repository->getHistoryLocationById($id);
     }
 
+    public function uploadImage($image, $name) {
+        if (isset($image) && $image["error"] == 0) {
+            $fileType = explode('.', $image["name"])[1];
+            $image["name"] = $name.".".$fileType;
+            $fileFullName = $image["name"];
+            $fileTmpPath = $image["tmp_name"];
+            $uploadFileDir = './img/history/';
+            $dest_path = $uploadFileDir . $fileFullName;
+            $newPath = '\img\history\\' . $fileFullName;
+
+            // Move the file to the specified directory
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                return $newPath;
+            } else {
+                return " ";
+            }
+        } else {
+            return " ";
+        }
+    }
+
+    public function changeImage($id, $newPath) {
+        $this->getNewInstance();
+        $this->repository->updateContent($id, $newPath);
+    }
+
+    public function removeImage() {
+        $this->getNewInstance();
+        $this->repository->addImage("\img\history\history_header.png");
+    }
+
     public function updateContent($contentId, $newText) {
         $this->getNewInstance();
         $this->repository->updateContent($contentId, $newText);
@@ -56,8 +87,23 @@ class historyService {
         $this->repository->addContent($content, $addition, $category);
     }
 
-    public function fixtable() {
+    public function editFAQ($id, $question, $answer) {
         $this->getNewInstance();
-        $this->repository->fixtable();
+        $this->repository->editFAQ($id, $question, $answer);
+    }
+
+    public function deleteContent($id) {
+        $this->getNewInstance();
+        $this->repository->deleteContent($id);
+    }
+
+    public function deleteSchedule($id) {
+        $this->getNewInstance();
+        $this->repository->deleteSchedule($id);
+    }
+
+    public function addSchedule($language, $guide, $startDate, $endDate) {
+        $this->getNewInstance();
+        $this->repository->addSchedule($language, $guide, $startDate, $endDate);
     }
 }

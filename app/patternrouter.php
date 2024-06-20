@@ -36,13 +36,14 @@ class PatternRouter
 
         try {
             $controllerObj = new $controllerName();
-
             // Handle POST requests for cart actions
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (isset($_POST['add_to_cart'])) {
                     $controllerObj->addToCart();
                 } elseif (isset($_POST['remove_from_cart'])) {
                     $controllerObj->removeFromCart();
+                } elseif (isset($_POST['dates'])) {
+                    $controllerObj->updateTime();
                 } else {
                     $controllerObj->$methodName();
                 }

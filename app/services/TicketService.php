@@ -29,4 +29,8 @@ class TicketService {
         $this->getNewInstance();
         return $this->repository->getAllYummyTickets();
     }
+    public function getAllYummyTicketsByName($name) {
+        $this->getNewInstance();
+        return $this->repository->getAllYummyTicketsByName($name);
+    }
 }

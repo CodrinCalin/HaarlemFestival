@@ -35,13 +35,13 @@ class MailerLogic{
         $this->mailOutbound->Body = $body;
     }
 
-    public function mailClassTest(){
-        echo "Hello from MailLogic Class";
-    }
-
     public function sendMail()
     {
         $this->mailOutbound->send();
+    }
+
+    public function mailClassTest(){
+        echo "Hello from MailLogic Class";
     }
 }
 

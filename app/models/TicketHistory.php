@@ -22,6 +22,10 @@ class TicketHistory extends Ticket
     public function getGuide(){
         return $this->guide;
     }
+
+    public function getFullTicketName(){
+        return $this->getType() . " - " . $this->name . " (". $this->getCategory() .")";
+    }
     // </editor-fold>
 
     // <editor-fold desc="Setters">

@@ -10,18 +10,4 @@ class SessionManager {
             session_start();
         }
     }
-    public static function getCart() {
-        self::startSession();
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = new Cart();
-        }
-        return $_SESSION['cart'];
-    }
-    public static function clearCart() {
-        self::startSession();
-        if (isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = new Cart();
-        }
-    }
-
 }

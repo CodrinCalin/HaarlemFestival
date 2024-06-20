@@ -12,10 +12,22 @@ services:
         build:
             context: .
             dockerfile: PHP.Dockerfile
-        working_dir: /app    
+        working_dir: /app
         volumes:
             - ./app:/app
             - ./app/vendor:/app/vendor
+            - ~/.config/stripe:/root/.config/stripe  # Mount Stripe CLI configuration
+        environment:
+            - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}  # Pass environment variable to PHP container
+    stripe:
+        image: stripe/stripe-cli:latest
+        entrypoint: [ "stripe", "listen", "--forward-to", "http://php/payment/handleStripeWebhook" ]
+        environment:
+            - STRIPE_API_KEY=${STRIPE_SECRET_KEY}  # Pass environment variable to Stripe CLI container
+        depends_on:
+            - php
+        networks:
+            - default
 # Local DB - Local DB is here in case something happens to DB or for future tests.
 #    mysql:
 #        image: mariadb:latest

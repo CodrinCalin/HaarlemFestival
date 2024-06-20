@@ -18,10 +18,9 @@ include __DIR__ . '/../header.php';
                 <p><?= nl2br($content->content) ?></p>
             </div>
             <div class="col-sm">
-                <form action="editContent?id=1" method="post">
-
-                    <h4><label for="introText">New text:</label></h4><br>
-                    <textarea id="introText" name="introText"> <?= nl2br($content->content) ?> </textarea>
+                <form action="editContent?id=1&type=intro" method="post">
+                    <h4><label for="newContent">New text:</label></h4><br>
+                    <textarea id="newContent" name="newContent" required> <?= nl2br($content->content) ?> </textarea>
                     <button type="submit">Edit</button>
                 </form>
             </div>

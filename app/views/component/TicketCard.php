@@ -9,7 +9,7 @@
             <strong>Price:</strong> &#8364;<?php echo $ticket->getPrice(); ?><br>
             <strong>Location:</strong> <?php echo implode(', ', $ticket->getLocation()); ?><br>
             <strong>Duration:</strong> <?php echo $ticket->getDuration() ? $ticket->getDuration() . " minute(s)" : "Full day"; ?><br>
-            <strong>Date & Time:</strong> <?php echo $ticket->getDateTime(); ?>
+            <strong>Date & Time:</strong> <?php echo $ticket->getDateTime()->format('Y-m-d H:i:s'); ?>
         </p>
     </div>
     <div class="card-footer">

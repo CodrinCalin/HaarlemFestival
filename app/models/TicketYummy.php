@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 class TicketYummy extends Ticket
 {
     private $restaurantName;
@@ -27,6 +28,10 @@ class TicketYummy extends Ticket
     public function getFoodType(){
         return $this->foodType;
     }
+
+    public function getFullTicketName(){
+        return $this->getType() . " - " . $this->name . " (". $this->getCategory() .")";
+    }
     // </editor-fold>
 
     // <editor-fold desc="Setters">
@@ -49,4 +54,7 @@ class TicketYummy extends Ticket
         echo "Food Type: " . implode(', ', $this->foodType) . "<br>";
     }
     // </editor-fold>
+    public function jsonSerialize(): mixed {
+        return get_object_vars($this);
+    }
 }

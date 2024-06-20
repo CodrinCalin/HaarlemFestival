@@ -17,17 +17,15 @@ include __DIR__ . '/../header.php';
             <tbody>
             <?php
             $info = $service->getPracticalInformation();
-            foreach ($info as $item) { ?>
+            foreach ($info as $item) {
+                $itemJson = htmlspecialchars(json_encode($item), ENT_QUOTES, 'UTF-8');
+                ?>
                 <tr>
                     <td><img class="icon" src="<?= $item->addition ?>" alt="icon"></td>
                     <td><?= $item->content ?></td>
                     <td>
-                        <!--<a href="/managehistory/editPInfo?id=<?php /*= $item->id */?>"><button>Edit Text</button></a>
-                        <a href="/managehistory/editPInfo?id=<?php /*= $item->id */?>"><button>Change Image</button></a>
-                        <a href="/managehistory/editPInfo?id=<?php /*= $item->id */?>"><button>Delete Card</button></a>-->
-                        <button onclick="openOverlayEditText(1, '<?= htmlspecialchars($item->content, ENT_QUOTES) ?>')">Edit Text</button>
-                        <button onclick="openOverlayChangeImage()">Change Image</button>
-                        <button onclick="openOverlayDeleteCard()">Delete Card</button>
+                        <button onclick="openOverlayEditText(<?= $itemJson ?>)">Edit Text</button>
+                        <button onclick="openOverlayDeleteInfoCard(<?= $itemJson ?>)">Delete Card</button>
                     </td>
                 </tr>
             <?php }
@@ -40,12 +38,15 @@ include __DIR__ . '/../header.php';
 <div class="overlay" id="addInfoCard">
     <div class="overlayContent">
         <h1>Add information card</h1>
-        <a onclick="closeOverlayAddInfoCard()">x</a>
-        <form action="addInfoCard" method="post">
+        <a onclick="closeOverlayAddInfoCard()" class="close">x</a>
+        <?php
+        $numFaq = count($service->getPracticalInformation())
+        ?>
+        <form action="addInfoCard?name=faq_icon<?= $numFaq ?>" method="post" enctype="multipart/form-data">
             <label for="content">Text:</label><br>
-            <textarea id="content" name="content"></textarea><br>
+            <textarea id="content" name="content" required></textarea><br>
             <label for="image">Image:</label><br>
-            <input type="file" name="image" accept="image/*"><br>
+            <input type="file" name="image" accept="image/*" required><br>
             <button type="submit">Add</button>
         </form>
     </div>
@@ -54,12 +55,22 @@ include __DIR__ . '/../header.php';
 <div class="overlay" id="editText">
     <div class="overlayContent">
         <h1>Edit Text</h1>
-        <a onclick="closeOverlayEditText()">x</a>
-        <form action="editContent?id=" method="post">
-            <label for="introText">New text:</label><br>
-            <textarea id="introText" name="introText"></textarea>
+        <a onclick="closeOverlayEditText()" class="close">x</a>
+        <form method="post" id="editContentForm" action="editContent">
+            <label for="newContent">New text:</label><br>
+            <textarea id="newContent" name="newContent"></textarea>
             <button type="submit">Edit</button>
         </form>
+    </div>
+</div>
+
+<div class="overlay" id="deleteInfoCard">
+    <div class="overlayContent">
+        <p>Are you sure you want to delete this info card?</p>
+        <div id="confirmDeleteButtons">
+            <a href="/managehistory/deleteInfoCard" id="confirmDeleteInfoCard"><button>Yes</button></a>
+            <button onclick="closeOverlayDeleteInfoCard()">No</button>
+        </div>
     </div>
 </div>
 

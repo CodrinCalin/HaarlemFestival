@@ -12,15 +12,14 @@
         </thead>
         <tbody>
         <?php
-        $cart = \App\lib\SessionManager::getCart();
         $items = $cart->getItems();
         if (!empty($items)) {
             foreach ($items as $item):
                 ?>
                 <tr>
                    <!-- <td><?php /*echo $item['ticket']->getId(); */?></td>-->
-                    <td><?php echo $item['ticket']->getDateTime(); ?></td>
-                    <td><?php echo $item['ticket']->getType() . " - " . $item['ticket']->getName() . " (" . $item['ticket']->getCategory() . ")";  ?></td>
+                    <td><?php echo $item['ticket']->getDateTime()->format('Y-m-d H:i:s'); ?></td>
+                    <td><?php echo $item['ticket']->getFullTicketName();  ?></td>
                     <td>$<?php echo $item['ticket']->getPrice(); ?></td>
                     <td><?php echo $item['quantity']; ?></td>
                     <td>

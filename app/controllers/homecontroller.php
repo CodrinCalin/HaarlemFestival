@@ -1,20 +1,20 @@
 <?php
 namespace App\Controllers;
 
+use http\Header;
+
 class HomeController
 {
+    public $homeService;
     function __construct()
     {
         session_start();
+        $this->homeService = new \App\Services\homeService();
     }
 
     public function index()
     {
+        $service = $this->homeService;
         require __DIR__ . '/../views/home/index.php';
-    }
-
-    public function user()
-    {
-        require __DIR__ . '/../views/manageusers/index.php';
     }
 }

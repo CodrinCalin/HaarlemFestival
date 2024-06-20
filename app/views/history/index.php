@@ -5,7 +5,10 @@ include __DIR__ . '/../header.php';
 <link href="/css/history_style.css" rel="stylesheet">
 
 <div id="titleBlock">
-    <img src="\img\history\history_header.png" alt="header image" id="headerImage">
+    <?php
+    $img = $service->getContentById(35);
+    ?>
+    <img src="<?= $img->content ?>" alt="header image" id="headerImage">
     <div>
         <p id="title">Stroll Through History</p>
         <a onclick="document.getElementById('intro').scrollIntoView()">
