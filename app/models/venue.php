@@ -27,4 +27,36 @@ class Venue
     public function getName() {
         return $this->name;
     }
+
+    public function getAddress() {
+        return $this->address;
+    }
+
+    public function getVenueImgUrl() {
+        return $this->venue_img_url;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function setId($venue_id) {
+        $this->venue_id = $venue_id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setAddress($address) {
+        $this->address = $address;
+    }
+
+    public function setVenueImgUrl($venue_img_url) {
+        $this->venue_img_url = $venue_img_url;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
 }

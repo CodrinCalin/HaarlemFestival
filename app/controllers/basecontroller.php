@@ -1,8 +1,15 @@
 <?php
 namespace App\Controllers;
 
-class BaseController
+class BaseController extends Controller
 {
+
+
+  public function __construct()
+  {
+    parent::__construct();
+  }
+  
   protected function setHeaders()
   {
     header("Access-Control-Allow-Origin: *");

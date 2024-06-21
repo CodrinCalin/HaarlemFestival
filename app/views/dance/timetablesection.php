@@ -20,28 +20,42 @@
             <div class="col-md-8 <?= $tableOrderClass ?>">
                 <div class="table-container">
                     <p>Events Date: <?= $date ?></p>
-                    <table class="table event-table">
+                    <table class="table table-bordered">
                         <thead>
-                        <tr>
-                            <th>ARTISTS</th>
-                            <th>TIME</th>
-                            <th>PRICE</th>
-                            <th>TICKETS</th>
-                            <th>VENUE</th>
-                            <th></th> <!-- For buy button -->
-                        </tr>
+                            <tr>
+                                <th>Artists</th>
+                                <th>Time</th>
+                                <th>Price (€)</th>
+                                <th>Tickets</th>
+                                <th>Venue</th>
+                                <th>Quantity to Add</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($events as $event): ?>
-                            <tr>
-                                <td><?= $event['artist_name'] ?></td>
-                                <td><?= $event['time'] . " (" . $event['duration'] . ")" ?></td>
-                                <td>$<?= $event['price'] ?></td>
-                                <td><?= $event['tickets_available'] ?></td>
-                                <td><?= $event['venue_name'] ?></td>
-                                <td><button class="btn btn-primary">Buy Ticket</button></td>
-                            </tr>
-                        <?php endforeach; ?>
+                            <?php foreach ($model as $ticket) : 
+                                if($ticket->getType() === "Single" && $date == $ticket->getDateTime()->format('Y-m-d')) { ?>
+                                <tr>
+                                    <td><?php echo implode(", " , $ticket->getArtist()); ?></td>
+                                    <td><?php echo $ticket->getDateTime()->format('H:i') . ' (' . $ticket->getDuration() . ' min)'; ?></td>
+                                    <td><?php echo $ticket->getPrice(); ?></td>
+                                    <td><?php echo $ticket->getQuantityAvailable(); ?></td>
+                                    <td><?php echo implode(', ', $ticket->getLocation()); ?></td>
+                                    <td>
+                                        <form action="/cart/addToCart" method="post">
+                                            <input type="hidden" name="ticket_id" value="<?php echo $ticket->getId(); ?>">
+                                            <div class="row align-items-center justify-content-between">
+                                                <div class="col-md-6">
+                                                    <label for="quantity_<?php echo $ticket->getId(); ?>" class="sr-only">Quantity</label>
+                                                    <input type="number" class="form-control" id="quantity_<?php echo $ticket->getId(); ?>" name="quantity" value="1" min="1">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="submit" class="btn btn-primary btn-block" name="add_to_cart">Add to Cart</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php } endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -56,21 +70,31 @@
         <h2>Interested In Participating To Multiple Events?</h2>
         <h2>Here are our special tickets:</h2>
         <div class="row">
-            <?php foreach ($specialTickets as $ticket) : ?>
+        <?php foreach ($model as $ticket) : 
+                if($ticket->getType() !== "Single") { ?>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card h-100 text-left special_ticket_card">
                         <div class="card-body">
-                            <h3 class="card-title"><?= htmlspecialchars($ticket->ticket_name, ENT_QUOTES, 'UTF-8') ?></h3>
-                            <p class="card-text"><?= htmlspecialchars($ticket->ticket_information, ENT_QUOTES, 'UTF-8') ?></p>
+                            <h3 class="card-title"><?= $ticket->getType(); ?></h3>
+                            <p class="card-text">Access to all events <?php if($ticket->getType() !== "Full Access Pass") {  echo "on the " . $ticket->getDateTime()->format('d') . " of July"; } else { echo "for the entire festival duration."; } ?></p>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary mt-3">
-                                Buy <?= htmlspecialchars($ticket->ticket_name, ENT_QUOTES, 'UTF-8') ?> (<?= htmlspecialchars($ticket->ticket_price, ENT_QUOTES, 'UTF-8') ?>)
-                            </a>
+                            <form action="/cart/addToCart" method="post">
+                                <input type="hidden" name="ticket_id" value="<?php echo $ticket->getId(); ?>">
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-md-6">
+                                        <label for="quantity_<?php echo $ticket->getId(); ?>" class="sr-only">Quantity</label>
+                                        <input type="number" class="form-control" id="quantity_<?php echo $ticket->getId(); ?>" name="quantity" value="1" min="1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary btn-block" name="add_to_cart">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php } endforeach; ?>
         </div>
     </div>
 </div>

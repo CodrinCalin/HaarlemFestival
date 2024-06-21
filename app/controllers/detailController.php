@@ -3,14 +3,18 @@ namespace App\Controllers;
 use App\Models\Artists;
 use App\Models\Event;
 use App\Services\DanceService;
+use App\Services\TicketService;
 
-class DetailController
+class DetailController extends Controller
 {
     private $danceService;
+    private $ticketService;
 
     public function __construct()
     {
+        parent::__construct();
         $this->danceService = new DanceService();
+        $this->ticketService = new TicketService();
     }
 
     function index()
@@ -32,6 +36,7 @@ class DetailController
             echo "Artist not found.";
             return;
         }
+        $model = $this->ticketService->getAllDanceTickets();
         require __DIR__ . '/../views/dance/aboutartist.php';
     }
 }
