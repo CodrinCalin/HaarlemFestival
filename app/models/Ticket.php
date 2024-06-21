@@ -107,15 +107,14 @@ class Ticket implements \JsonSerializable {
 
     // <editor-fold desc="PrintDetails">
     public function printDetails() {
-        echo "Ticket ID: {$this->id}<br>";
-        echo "Name: {$this->name}<br>";
-        echo "Category: {$this->category}<br>";
-        echo "Type: {$this->type}<br>";
-        echo "Quantity Available: {$this->quantityAvailable}<br>";
-        echo "Price: €{$this->price}<br>";
-        echo "Location: " . implode(', ', $this->location) . "<br>";
-        echo "Duration: {$this->duration} minutes<br>";
-        echo "Datetime: {$this->dateTime}<br>";
+        echo "<strong>Ticket ID:</strong> {$this->getId()}<br>";
+        echo "<strong>Name:</strong> {$this->getType()} - {$this->getName()} ( {$this->getCategory()} ) <br>";
+        echo "<strong>Quantity Available:</strong> {$this->getQuantityAvailable()}<br>";
+        echo "<strong>Price:</strong> €{$this->getPrice()}<br>";
+        echo "<strong>Location:</strong> " . implode(', ', $this->getLocation()) . "<br>";
+        echo "<strong>Duration:</strong> {$this->getDuration()} minutes<br>";
+        echo "<strong>Date Time:</strong> {$this->getDateTime()->format("Y-m-d H:i:s")} <br>";
+        echo "<br>";
     }
     public function jsonSerialize(): mixed {
         return get_object_vars($this);

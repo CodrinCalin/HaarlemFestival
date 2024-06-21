@@ -20,6 +20,9 @@ class TicketDance extends Ticket
     public function getFullTicketName(){
         return $this->getType() . " - " . $this->name . " (". $this->getCategory() .")";
     }
+    public function getSpecificTicketDetails(){
+        return implode(", ", $this->getArtist());
+    }
     // </editor-fold>
 
     // <editor-fold desc="Setters">
@@ -31,7 +34,7 @@ class TicketDance extends Ticket
     // <editor-fold desc="PrintDetails">
     public function printDetails() {
         parent::printDetails();
-        echo "Artist(s): " . implode(', ', $this->artist) . "<br>";
+        echo "<strong>Artist(s):</strong> " . implode(', ', $this->getArtist()) . "<br>";
     }
     // </editor-fold>
 }

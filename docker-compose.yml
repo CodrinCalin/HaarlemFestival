@@ -1,5 +1,3 @@
-version: '3'
-
 services:
     nginx:
         image: nginx:latest
@@ -18,12 +16,12 @@ services:
             - ./app/vendor:/app/vendor
             - ~/.config/stripe:/root/.config/stripe  # Mount Stripe CLI configuration
         environment:
-            - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}  # Pass environment variable to PHP container
+            - STRIPE_SECRET_KEY=sk_test_51PT20QFOgvMrJQDgldkFAmxn37UrQBbgHCk67Y2B8VFtNlvZfRvWeBaitTSmAUeghkAHOUzoXgOKtxHhc7nJ7OBJ00UI6zgWwM  # Pass environment variable to PHP container
     stripe:
         image: stripe/stripe-cli:latest
         entrypoint: [ "stripe", "listen", "--forward-to", "http://php/payment/handleStripeWebhook" ]
         environment:
-            - STRIPE_API_KEY=${STRIPE_SECRET_KEY}  # Pass environment variable to Stripe CLI container
+            - STRIPE_API_KEY=sk_test_51PT20QFOgvMrJQDgldkFAmxn37UrQBbgHCk67Y2B8VFtNlvZfRvWeBaitTSmAUeghkAHOUzoXgOKtxHhc7nJ7OBJ00UI6zgWwM  # Pass environment variable to Stripe CLI container
         depends_on:
             - php
         networks:
