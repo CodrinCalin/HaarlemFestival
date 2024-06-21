@@ -75,7 +75,6 @@ function showDanceContentDetail() {
   loadDanceContentDetail();
 }
 
-
 // Showing add form functions
 function showAddArtistForm() {
   var modal = document.getElementById("add-artist-modal");
@@ -1324,7 +1323,6 @@ function deleteDanceContentHome(contentId) {
     .catch((error) => console.error("Error deleting content:", error));
 }
 
-
 // CRUD DANCE CONTENT DETAIL-----------------------------------------------------------------------------------------------------------------------
 
 function displayDanceContentDetail(data) {
@@ -1478,8 +1476,6 @@ function updateDanceContentDetail(id) {
       alert(error.message);
     });
 }
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contentDetailForm");

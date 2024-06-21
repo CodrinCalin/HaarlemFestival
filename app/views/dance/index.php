@@ -5,15 +5,19 @@ include __DIR__ . '/../header.php';
 
     <?php require 'websitebackround.php'; ?>
 
-    <div class="vh-100 d-flex align-items-center justify-content-center text-center bg-cover bg-center text-white text-uppercase overlay-text-container" style="background-image: url('img/danceimages/backround-picture.png');">
-        <h1 class="overlay-text" style="font-size: 9vw;">Haarlem Dance</h1>
-    </div>
+    <?php foreach ($dancecontenthome as $dancecontenthome) : ?>
+        <div class="vh-100 d-flex align-items-center justify-content-center text-center bg-cover bg-center text-white text-uppercase overlay-text-container" style="background-image: url('<?= $dancecontenthome->getMainImageUrl(); ?>');">
+            <h1 class="overlay-text" style="font-size: 9vw;">Haarlem Dance</h1>
+        </div>
+    <?php endforeach; ?>
 
     <div class="content">
 
-            <?php require 'introductionhomepage.php'; ?>
 
-           <?php require 'artistscards.php'; ?>
+
+        <?php require 'introductionhomepage.php'; ?>
+
+        <?php require 'artistscards.php'; ?>
 
 
         <!-- Timetable section ----------------------------------------------------------------------------------------------------------->

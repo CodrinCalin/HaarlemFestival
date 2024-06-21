@@ -64,6 +64,7 @@ class Ticket implements \JsonSerializable {
         $date = new \DateTime($this->dateTime);
         return $date;
     }
+
     // </editor-fold>
 
     // <editor-fold desc="Setters">
