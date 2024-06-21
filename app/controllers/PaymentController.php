@@ -9,6 +9,7 @@ use App\Services\OrderService;
 use App\Logic\MailerLogic;
 use Stripe\Stripe;
 use Stripe\Webhook;
+use Exception;
 
 class PaymentController extends Controller
 {
@@ -18,114 +19,141 @@ class PaymentController extends Controller
     private $mailer;
 
     public function __construct() {
-        SessionManager::startSession();
-        $this->ticketService = new TicketService();
-        $this->orderService = new OrderService();
-        $this->getMailInstance();
-        $this->stripeSecretKey = $_ENV['STRIPE_SECRET_KEY'];
-    }
-
-    // <editor-fold desc="Checkout">
-    public function checkout() {
-        include __DIR__ . '/../views/payment/checkout.php';
-    }
-    // </editor-fold>
-
-    // <editor-fold desc="Checkout Success">
-    public function checkout_success() {
-        // Check if checkout was completed
-        $this->checkIfCheckoutSuccess();
-
-        $cart = CartManager::getCart();
-        $cartItems = $cart->getItems();
-
         try {
+            SessionManager::startSession();
+            $this->ticketService = new TicketService();
+            $this->orderService = new OrderService();
+            $this->getMailInstance();
+            $this->stripeSecretKey = $_ENV['STRIPE_SECRET_KEY'];
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->handleError($e);
+        }
+    }
+
+    public function checkout() {
+        try {
+            include __DIR__ . '/../views/payment/checkout.php';
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->handleError($e);
+        }
+    }
+
+    public function checkout_success() {
+        try {
+            $this->checkIfCheckoutSuccess();
+            $cart = CartManager::getCart();
+            $cartItems = $cart->getItems();
+
             $uniqueCode = $this->orderService->createOrder($cartItems);
             CartManager::clearCart();
 
-            // Send order confirmation email
-            $this->sendOrderConfirmationEmail("qhgjpafz@sharklasers.com", $uniqueCode); // Have to manually change the email for now!!!
+            $this->sendOrderConfirmationEmail("qhgjpafz@sharklasers.com", $uniqueCode);
 
             include __DIR__ . '/../views/payment/checkout_success.php';
         } catch (Exception $e) {
+            error_log($e->getMessage());
             echo 'Error storing order: ' . $e->getMessage();
         }
     }
 
     private function sendOrderConfirmationEmail($customerEmail, $uniqueCode)
     {
-        $this->getMailInstance();
+        try {
+            $this->getMailInstance();
 
-        $order_url_link = "http://localhost/order?unique_code=" . $uniqueCode;
-        $subject = "Your Order Confirmation";
-        $body = "Thank you for your order. You can view your order details here: <br><br> <a href=".$order_url_link."> Order Details </a>";
+            $order_url_link = "http://localhost/order?unique_code=" . $uniqueCode;
+            $subject = "Your Order Confirmation";
+            $body = "Thank you for your order. You can view your order details here: <br><br> <a href=".$order_url_link."> Order Details </a>";
 
-        $this->mailer->setMailInfo($customerEmail, $subject, $body);
-        $this->mailer->sendMail();
+            $this->mailer->setMailInfo($customerEmail, $subject, $body);
+            $this->mailer->sendMail();
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            throw $e;
+        }
     }
-    // </editor-fold>
 
-    // <editor-fold desc="Checkout Cancel">
     public function checkout_cancel() {
-        include __DIR__ . '/../views/payment/checkout_cancel.php';
+        try {
+            include __DIR__ . '/../views/payment/checkout_cancel.php';
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->handleError($e);
+        }
     }
-    // </editor-fold>
 
     private function getMailInstance(){
-        $this->mailer = new MailerLogic();
+        try {
+            $this->mailer = new MailerLogic();
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            throw $e;
+        }
     }
 
     private function checkIfCheckoutSuccess() {
-        if (!isset($_SESSION['checkout_success']) || !$_SESSION['checkout_success']) {
-            header("Location: /");
-            exit;
-        }
-        unset($_SESSION['checkout_success']);
-    }
-
-    // Method to set session variable after successful checkout
-    public function setCheckoutSuccessSession() {
-        $_SESSION['checkout_success'] = true;
-    }
-
-    // Webhook handler
-    public function handleStripeWebhook() {
-        Stripe::setApiKey($this->stripeSecretKey);
-
-        $payload = @file_get_contents('php://input');
-        $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
-        $endpoint_secret = $_ENV['STRIPE_WEBHOOK_SECRET'];
-
         try {
-            $event = Webhook::constructEvent($payload, $sig_header, $endpoint_secret);
-        } catch(\UnexpectedValueException $e) {
-            // Invalid payload
-            http_response_code(400);
-            exit();
-        } catch(\Stripe\Exception\SignatureVerificationException $e) {
-            // Invalid signature
-            http_response_code(400);
-            exit();
+            if (!isset($_SESSION['checkout_success']) || !$_SESSION['checkout_success']) {
+                header("Location: /");
+                exit;
+            }
+            unset($_SESSION['checkout_success']);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            throw $e;
         }
+    }
 
-        // Handle the event
-        switch ($event->type) {
-            case 'checkout.session.completed':
-                $session = $event->data->object;
-
-                // Fulfill the purchase, extract email
-                $customerEmail = $session->customer_details->email;
-                $uniqueCode = $this->orderService->createOrder($session->line_items); // Assuming line_items are in the session
-
-                // Send the email
-                $this->sendOrderConfirmationEmail($customerEmail, $uniqueCode);
-
-                break;
-            // ... handle other event types
-            default:
-                echo 'Received unknown event type ' . $event->type;
+    public function setCheckoutSuccessSession() {
+        try {
+            $_SESSION['checkout_success'] = true;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            throw $e;
         }
+    }
 
-        http_response_code(200);
+    public function handleStripeWebhook() {
+        try {
+            Stripe::setApiKey($this->stripeSecretKey);
+
+            $payload = @file_get_contents('php://input');
+            $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
+            $endpoint_secret = $_ENV['STRIPE_WEBHOOK_SECRET'];
+
+            try {
+                $event = Webhook::constructEvent($payload, $sig_header, $endpoint_secret);
+            } catch(\UnexpectedValueException $e) {
+                http_response_code(400);
+                exit();
+            } catch(\Stripe\Exception\SignatureVerificationException $e) {
+                http_response_code(400);
+                exit();
+            }
+
+            switch ($event->type) {
+                case 'checkout.session.completed':
+                    $session = $event->data->object;
+                    $customerEmail = $session->customer_details->email;
+                    $uniqueCode = $this->orderService->createOrder($session->line_items);
+                    $this->sendOrderConfirmationEmail($customerEmail, $uniqueCode);
+                    break;
+                default:
+                    echo 'Received unknown event type ' . $event->type;
+            }
+
+            http_response_code(200);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            http_response_code(500);
+        }
+    }
+
+    private function handleError(Exception $e)
+    {
+        header('Location: /error');
+        exit;
     }
 }
