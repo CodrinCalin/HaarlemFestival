@@ -1,10 +1,8 @@
 <?php
 include __DIR__ . '/../header.php';
-$cart = \App\lib\CartManager::getCart();
 
-$cartIsEmpty = empty($cart->getItems());
+$cartIsEmpty = empty($cart);
 ?>
-<script src="/js/shoppingCartDisplaySwitch.js"></script>
 
 <div class="p-4" style="background: rgba(37.19, 189.66, 255, 0.30);">
     <div class="container">
@@ -28,7 +26,7 @@ $cartIsEmpty = empty($cart->getItems());
                     <div class="p-2" style="background: #464646">
                         <a href="/cart/clearCart" class="btn btn-danger">Clear Cart</a>
                     </div>
-                <?php
+                    <?php
                 }
                 ?>
             </div>
@@ -72,8 +70,8 @@ $cartIsEmpty = empty($cart->getItems());
                         <h3 class="card-title">Total Amount</h3>
                         <?php if (!$cartIsEmpty): ?>
                             <?php
-                            // Assuming $totalPrice is calculated somewhere in your PHP code
-                            $totalPrice = $cart->getTotal();
+                            $cartManager = \App\lib\CartManager::getCart();
+                            $totalPrice = $cartManager->getTotal();
                             ?>
                             <h4>€ <?php echo number_format($totalPrice, 2); ?></h4>
                             <a href="/payment/checkout" class="btn btn-primary btn-lg mt-3">Proceed to Payment</a>
@@ -87,6 +85,8 @@ $cartIsEmpty = empty($cart->getItems());
     </div>
 </div>
 
+<!-- Swap display (List or Agenda view) -->
+<script src="/js/shoppingCartDisplaySwitch.js"></script>
 <?php
 include __DIR__ . '/../footer.php';
 ?>

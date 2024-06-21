@@ -35,13 +35,16 @@ class TicketHistory extends Ticket
     public function setGuide($guide) {
         $this->guide = $guide;
     }
+    public function getSpecificTicketDetails(){
+        return $this->getGuide() . " (" . $this->getLanguage() . ")";
+    }
     // </editor-fold>
 
     // <editor-fold desc="PrintDetails">
     public function printDetails() {
         parent::printDetails();
-        echo "Language: {$this->language}<br>";
-        echo "Guide: {$this->guide}<br>";
+        echo "<strong>Language:</strong> {$this->getLanguage()}<br>";
+        echo "<strong>Guide:</strong> {$this->getGuide()}<br>";
     }
     // </editor-fold>
 }

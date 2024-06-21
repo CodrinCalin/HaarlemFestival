@@ -25,12 +25,21 @@ class TicketYummy extends Ticket
     public function getStar(){
         return $this->star;
     }
+    private function getStarPrint(){
+        $print = "";
+        for ($i = 1; $i <= $this->getStar(); $i++) {
+            $print = $print . "*";
+        }
+        return $print;
+    }
     public function getFoodType(){
         return $this->foodType;
     }
-
     public function getFullTicketName(){
         return $this->getType() . " - " . $this->name . " (". $this->getCategory() .")";
+    }
+    public function getSpecificTicketDetails(){
+        return $this->getRestaurantName() . " " . $this->getStarPrint();
     }
     // </editor-fold>
 
@@ -49,9 +58,9 @@ class TicketYummy extends Ticket
     // <editor-fold desc="PrintDetails">
     public function printDetails() {
         parent::printDetails();
-        echo "Restaurant Name: {$this->restaurantName}<br>";
-        echo "Star Rating: {$this->star}<br>";
-        echo "Food Type: " . implode(', ', $this->foodType) . "<br>";
+        echo "<strong>Restaurant Name:</strong> {$this->getRestaurantName()}<br>";
+        echo "<strong>Star Rating:</strong> {$this->getStar()}<br>";
+        echo "<strong>Food Type:</strong> " . implode(', ', $this->getFoodType()) . "<br>";
     }
     // </editor-fold>
     public function jsonSerialize(): mixed {

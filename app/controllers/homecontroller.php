@@ -3,12 +3,12 @@ namespace App\Controllers;
 
 use http\Header;
 
-class HomeController
+class HomeController extends Controller
 {
     public $homeService;
     function __construct()
     {
-        session_start();
+        parent::__construct();
         $this->homeService = new \App\Services\homeService();
     }
 

@@ -35,7 +35,7 @@ foreach ($cart->getItems() as $item) {
 try {
     // Create a Stripe checkout session
     $checkout_session = Session::create([
-        'payment_method_types' => ['card'],
+        'payment_method_types' => ['card', 'ideal'],
         'line_items' => $lineItems,
         'mode' => 'payment',
         'success_url' => $domain . '/payment/checkout_success',

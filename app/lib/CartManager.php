@@ -19,4 +19,9 @@ class CartManager extends SessionManager
             $_SESSION['cart'] = new Cart();
         }
     }
+
+    public static function getTimeOrderedCart() {
+        $cart = self::getCart();
+        return $cart->getTimeOrderedCart();
+    }
 }
