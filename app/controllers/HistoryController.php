@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use http\Header;
 
-class HistoryController {
+class HistoryController extends Controller {
     public $historyService;
 
     function __construct() {
