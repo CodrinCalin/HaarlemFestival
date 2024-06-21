@@ -3,7 +3,11 @@ INCLUDE __DIR__ . '/../header.php';
 ?>
 
 <link href="/css/restaurantstyle.css" rel="stylesheet">
-
+<style>
+    * {
+        overflow-x: hidden;
+    }
+</style>
 <div class="container-fluid p-0 m-0 yummy">
     <?php
     if($yummyDetails) { ?>
@@ -49,7 +53,7 @@ INCLUDE __DIR__ . '/../header.php';
                 <div>Date: <span><?php echo $yummyDetails->date ?></span></div>
                 <div>Address: <span><?php echo $restaurantModel->address ?></span></div>
                 <div>Phone: <span><?php echo $restaurantModel->phoneNumber ?></span></div>
-                <div>Timeslots: <span>17:00 | 17:00 | 17:00</span></div>
+                <div>Timeslots: <span><?php foreach($restaurantTimes as $time) { echo $time->getDateTime()->format('H:i '); } ?> </span></div>
                 <div>Price: €<span><?php echo $restaurantModel->adultPrice ?> <br> €<?php echo $restaurantModel->childPrice ?> for children under 12</span></div>
             </div>
             <img class="display-two col-6" src="/img/restaurant/<?php echo $restaurantModel->displayImageTwo ?>" alt="Image of the restaurant">
@@ -66,7 +70,7 @@ INCLUDE __DIR__ . '/../header.php';
                 <ul>
                     <?php $dateCounter = 1; ?>
                     <?php foreach($restaurantDates as $date) { ?>
-                        <li><input id="d<?php echo $dateCounter ?>" type="radio" name="dates" class="btn-check" value="<?php echo $date ?>" onclick="updateTime(this.value, '<?php echo $restaurantModel->id ?>')" required><label for="d<?php echo $dateCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1 px-5"><?php echo $date ?></label></li>
+                        <li><input id="d<?php echo $dateCounter ?>" type="radio" name="dates" class="btn-check" value="<?php echo $date ?>" required><label for="d<?php echo $dateCounter ?>" class="text-white fw-bold btn btn-outline-primary m-1 px-5"><?php echo $date ?></label></li>
                     <?php $dateCounter++; } ?>
                 </ul>
             </div>
@@ -122,30 +126,30 @@ INCLUDE __DIR__ . '/../header.php';
     </form>
 
 
-<script>
-    function updateTime(value, restaurant) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log("Response received: ", this.responseText);
-                try {
-                    var response = JSON.parse(this.responseText);
-                    console.log("Parsed response: ", response);
-                } catch (e) {
-                    console.error("Error parsing JSON response: ", e);
-                }
-            } else {
-                console.error("Error: ", this.status);
-            }
-        }
-        xhttp.open("POST", "/restaurant/updateTime", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        var params = "dates=" + encodeURIComponent(value) + "&restaurant=" + encodeURIComponent(restaurant);
-        xhttp.send(params);
-
-    }
-
-</script>
+<!--<script>-->
+<!--    function updateTime(value, restaurant) {-->
+<!--        var xhttp = new XMLHttpRequest();-->
+<!--        xhttp.onreadystatechange = function() {-->
+<!--            if (this.readyState == 4 && this.status == 200) {-->
+<!--                console.log("Response received: ", this.responseText);-->
+<!--                try {-->
+<!--                    var response = JSON.parse(this.responseText);-->
+<!--                    console.log("Parsed response: ", response);-->
+<!--                } catch (e) {-->
+<!--                    console.error("Error parsing JSON response: ", e);-->
+<!--                }-->
+<!--            } else {-->
+<!--                console.error("Error: ", this.status);-->
+<!--            }-->
+<!--        }-->
+<!--        xhttp.open("POST", "/restaurant/updateTime", true);-->
+<!--        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");-->
+<!--        var params = "dates=" + encodeURIComponent(value) + "&restaurant=" + encodeURIComponent(restaurant);-->
+<!--        xhttp.send(params);-->
+<!---->
+<!--    }-->
+<!---->
+<!--</script>-->
 
 
 <?php
