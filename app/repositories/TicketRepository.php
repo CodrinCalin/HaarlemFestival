@@ -99,6 +99,62 @@ class TicketRepository extends Repository {
     }
 
 
+    public function addTicket($ticket)
+    {
+        try {
+            $stmt = $this->connection->prepare(
+                "INSERT INTO tickets (name, category, type, quantity_available, price, location, duration, date_time, restaurant_name, star, food_type, language, guide, artist) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            );
+
+            $foodType = $ticket instanceof TicketYummy ? implode('/', $ticket->getFoodType()) : null;
+            $artist = $ticket instanceof TicketDance ? implode('/', $ticket->getArtist()) : null;
+
+            return $stmt->execute([
+                $ticket->getName(),
+                $ticket->getCategory(),
+                $ticket->getType(),
+                $ticket->getQuantityAvailable(),
+                $ticket->getPrice(),
+                $ticket->getLocation(),
+                $ticket->getDuration(),
+                $ticket->getDateTime(),
+                $ticket instanceof TicketYummy ? $ticket->getRestaurantName() : null,
+                $ticket instanceof TicketYummy ? $ticket->getStar() : null,
+                $foodType,
+                $ticket instanceof TicketHistory ? $ticket->getLanguage() : null,
+                $ticket instanceof TicketHistory ? $ticket->getGuide() : null,
+                $artist,
+            ]);
+        } catch (PDOException $e) {
+            throw new PDOException('Error adding ticket: ' . $e->getMessage());
+        }
+    }
+
+
+    public function updateTicket($id, $name, $category, $type, $quantityAvailable, $price, $location, $duration, $dateTime, $restaurantName, $star, $foodType, $language, $guide, $artist)
+    {
+        try {
+            $stmt = $this->connection->prepare(
+                "UPDATE tickets SET name = ?, category = ?, type = ?, quantity_available = ?, price = ?, location = ?, duration = ?, date_time = ?, restaurant_name = ?, star = ?, food_type = ?, language = ?, guide = ?, artist = ? WHERE id = ?"
+            );
+            return $stmt->execute([$name, $category, $type, $quantityAvailable, $price, $location, $duration, $dateTime, $restaurantName, $star, $foodType, $language, $guide, $artist, $id]);
+        } catch (PDOException $e) {
+            throw new PDOException('Error updating ticket: ' . $e->getMessage());
+        }
+    }
+
+    public function deleteTicket($id)
+    {
+        try {
+            $stmt = $this->connection->prepare(
+                "DELETE FROM ticket WHERE id = ?"
+            );
+            return $stmt->execute([$id]);
+        } catch (PDOException $e) {
+            throw new PDOException('Error deleting ticket: ' . $e->getMessage());
+        }
+    }
+
     private function transformDataToTicket($result){
         $ticket = "";
         switch ($result['category']) {

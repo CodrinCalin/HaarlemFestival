@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Haarlem Festival Dance!</title>
+<?php
+include __DIR__ . '/../header.php';
+?>
     <link href="css/dance-style.css" rel="stylesheet">
     <link href="css/dance-style-detail.css" rel="stylesheet">
-</head>
-<body class="d-flex flex-column min-vh-100">
-    <!-- Navbar  -->
-    <?php require 'navbar.php'; ?>
+
     <main class="flex-fill">
         <!-- Background -->
         <?php require 'websitebackround.php'; ?>
@@ -83,29 +75,47 @@
 
              <!-- Artist Performance Dates -->
                 <div class="container my-5">
-                <h2 class="section-header">Want To See <?= htmlspecialchars($artist->name, ENT_QUOTES, 'UTF-8'); ?> Live?</h2>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p><?= htmlspecialchars($artist->name, ENT_QUOTES, 'UTF-8'); ?> will perform in Haarlem at the following dates and venues.</p>
-                        <table class="table enevts-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Venue</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($events as $event) : ?>
+                    <h2 class="section-header">Want To See <?= htmlspecialchars($artist->name, ENT_QUOTES, 'UTF-8'); ?> Live?</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p><?= htmlspecialchars($artist->name, ENT_QUOTES, 'UTF-8'); ?> will perform in Haarlem at the following dates and venues.</p>
+                            <table class="table enevts-table">
+                                <thead>
                                     <tr>
-                                        <td><?= htmlspecialchars($event->venue_name, ENT_QUOTES, 'UTF-8') ?></td>
-                                        <td><?= htmlspecialchars($event->time, ENT_QUOTES, 'UTF-8') ?></td>
-                                        <td><?= htmlspecialchars($event->date, ENT_QUOTES, 'UTF-8') ?></td>
-                                        <td><a href="buy_ticket_link_here" class="btn btn-primary">BUY TICKET</a></td>
+                                        <th scope="col">Venue</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Add To Cart</th>
                                     </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($model as $ticket) { 
+                                        if($ticket->getType() === "Single" && in_array($artist->name, $ticket->getArtist())) { 
+                                            
+                                            ?>
+                                        <tr>
+                                            <td><?= implode(", " ,$ticket->getLocation()) ?></td>
+                                            <td><?php echo $ticket->getDateTime()->format('H:i') . ' (' . $ticket->getDuration() . ' min)'; ?></td>
+                                            <td><?php echo $ticket->getDateTime()->format('Y:m:d'); ?></td>
+                                            <td>
+                                                <form action="/cart/addToCart" method="post">
+                                                    <input type="hidden" name="ticket_id" value="<?php echo $ticket->getId(); ?>">
+                                                    <div class="row align-items-center justify-content-between">
+                                                        <div class="col-md-6">
+                                                            <label for="quantity_<?php echo $ticket->getId(); ?>" class="sr-only">Quantity</label>
+                                                            <input type="number" class="form-control" id="quantity_<?php echo $ticket->getId(); ?>" name="quantity" value="1" min="1">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <button type="submit" class="btn btn-primary btn-block" name="add_to_cart">Add to Cart</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <?php } } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div> 

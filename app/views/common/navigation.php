@@ -33,7 +33,7 @@
                             <div id="dropdownManagement" class="dropdown-menu dropdown-menu-end"
                                  aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/manageusers">Manage Users</a>
-                                <a class="dropdown-item" href="/managetickets">Manage Tickets</a>
+                                <a class="dropdown-item" href="/manageticket">Manage Tickets</a>
                                 <a class="dropdown-item" href="/managehistory">Manage History</a>
                                 <a class="dropdown-item" href="/managedance">Manage Dance</a>
                                 <a class="dropdown-item" href="/managerestaurants">Manage Restaurants</a>

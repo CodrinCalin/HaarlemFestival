@@ -26,8 +26,6 @@ class Cart {
                 break;
             }
         }
-        // Re-index the array to maintain consistent keys
-        $this->items = array_values($this->items);
     }
 
     public function getTotal() {
@@ -38,19 +36,19 @@ class Cart {
         return $total;
     }
 
-    // Get all items in the cart and sort by closest date/time
     public function getItems() {
-        //$this->sortByClosestDateTime(); // Ensure items are sorted before returning
         return $this->items;
     }
 
-    // Method to sort items by closest date/time
-    private function sortByClosestDateTime() {
-        usort($this->items, function($a, $b) {
+    // Method to return items sorted by closest date/time without affecting the original array
+    public function getTimeOrderedCart() {
+        $sortedItems = $this->items; // Make a copy of the items array
+        usort($sortedItems, function($a, $b) {
             $dateA = $a['ticket']->getDateTime();
             $dateB = $b['ticket']->getDateTime();
-            return strtotime($dateA) - strtotime($dateB);
+            return $dateA <=> $dateB;
         });
+        return $sortedItems;
     }
 
     public function printItems() {

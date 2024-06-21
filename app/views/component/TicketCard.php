@@ -4,12 +4,7 @@
     </div>
     <div class="card-body">
         <p class="card-text">
-            <strong>id:</strong> <?php echo $ticket->getId(); ?><br>
-            <strong>Type:</strong> <?php echo $ticket->getType(); ?><br>
-            <strong>Price:</strong> &#8364;<?php echo $ticket->getPrice(); ?><br>
-            <strong>Location:</strong> <?php echo implode(', ', $ticket->getLocation()); ?><br>
-            <strong>Duration:</strong> <?php echo $ticket->getDuration() ? $ticket->getDuration() . " minute(s)" : "Full day"; ?><br>
-            <strong>Date & Time:</strong> <?php echo $ticket->getDateTime(); ?>
+            <?php $ticket->printDetails(); ?>
         </p>
     </div>
     <div class="card-footer">

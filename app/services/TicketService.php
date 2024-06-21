@@ -33,4 +33,22 @@ class TicketService {
         $this->getNewInstance();
         return $this->repository->getAllYummyTicketsByName($name);
     }
+
+    function addTicket($ticket)
+    {
+        $this->getNewInstance();
+        return $this->repository->addTicket($ticket);
+    }
+
+    function updateTicket($id, $name, $category, $type, $quantityAvailable, $price, $location, $duration, $dateTime, $restaurantName, $star, $foodType, $language, $guide, $artist)
+    {
+        $this->getNewInstance();
+        return $this->repository->updateTicket($id, $name, $category, $type, $quantityAvailable, $price, $location, $duration, $dateTime, $restaurantName, $star, $foodType, $language, $guide, $artist);
+    }
+
+    function deleteTicket($id)
+    {
+        $this->getNewInstance();
+        return $this->repository->deleteTicket($id);
+    }
 }

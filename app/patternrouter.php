@@ -1,5 +1,6 @@
 <?php
 namespace App;
+use mysql_xdevapi\Exception;
 
 class PatternRouter
 {
@@ -41,8 +42,6 @@ class PatternRouter
                     $controllerObj->addToCart();
                 } elseif (isset($_POST['remove_from_cart'])) {
                     $controllerObj->removeFromCart();
-                } elseif (isset($_POST['dates'])) {
-                    $controllerObj->updateTime();
                 } else {
                     $controllerObj->$methodName();
                 }

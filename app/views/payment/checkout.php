@@ -25,7 +25,7 @@ foreach ($cart->getItems() as $item) {
             'unit_amount' => $ticket->getPrice() * 100, // Amount in cents
             'product_data' => [
                 'name' => $ticket->getFullTicketName(),
-                'description' => 'Date: ' . $ticket->getDateTime(),
+                'description' => 'Date: ' . $ticket->getDateTime()->format('Y-m-d H:i:s'),
             ],
         ],
         'quantity' => $item['quantity'],
@@ -35,7 +35,7 @@ foreach ($cart->getItems() as $item) {
 try {
     // Create a Stripe checkout session
     $checkout_session = Session::create([
-        'payment_method_types' => ['card'],
+        'payment_method_types' => ['card', 'ideal'],
         'line_items' => $lineItems,
         'mode' => 'payment',
         'success_url' => $domain . '/payment/checkout_success',

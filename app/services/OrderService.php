@@ -17,8 +17,7 @@ class OrderService
     }
 
     // <editor-fold desc="Create order">
-    public function createOrder($cartItems)
-    {
+    public function createOrder($cartItems) {
         $totalAmount = 0;
 
         foreach ($cartItems as $item) {
@@ -50,8 +49,7 @@ class OrderService
         return $uniqueCode;
     }
 
-    private function generateUniqueCode()
-    {
+    private function generateUniqueCode() {
         do {
             $uniqueCode = bin2hex(random_bytes(16));
         } while ($this->orderRepository->uniqueCodeExists($uniqueCode));
@@ -60,8 +58,7 @@ class OrderService
     }
     // <editor-fold>
 
-    public function getOrderDetails($unique_code)
-    {
+    public function getOrderDetails($unique_code) {
         return $this->orderRepository->getOrderDetails($unique_code);
     }
 }

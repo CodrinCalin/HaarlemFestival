@@ -8,6 +8,7 @@ use App\Models\restaurantReservation;
 use App\Services\RestaurantService;
 use App\Services\ManageRestaurantService;
 use App\Services\TicketService;
+use App\Controllers\CartController;
 use http\Header;
 
 class RestaurantController {
@@ -15,12 +16,14 @@ class RestaurantController {
     private $service;
     private $manageRestaurantService;
     private $ticketService;
+    private $cartController;
 
     function __construct() {
         session_start();
         $this->service = new RestaurantService();
         $this->manageRestaurantService = new ManageRestaurantService();
         $this->ticketService = new TicketService();
+        $this->cartController = new CartController();
     }
 
     public function index()
@@ -57,26 +60,31 @@ class RestaurantController {
     public function reserveSeats() {
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-            $restaurantReservation = new restaurantReservation();
-
-            $restaurantReservation->restaurantId = $_POST["id"];
-            $restaurantReservation->date = $_POST["dates"];
-            $restaurantReservation->time = $_POST["times"];
-            $restaurantReservation->comment = $_POST["comment"];
-            $restaurantReservation->adults = $_POST["adults"];
-            $restaurantReservation->children = $_POST["children"];
-            $restaurantReservation->totalPrice = $this->calculateTotalPrice($restaurantReservation);
-
-            if(!$this->updateAvailableSeats($restaurantReservation)) {
-                echo "<h1>No more seats available</h1>";
-                exit;
+//            $restaurantReservation = new restaurantReservation();
+//
+//            $restaurantReservation->restaurantId = $_POST["id"];
+//            $restaurantReservation->date = $_POST["dates"];
+//            $restaurantReservation->time = $_POST["times"];
+//            $restaurantReservation->comment = $_POST["comment"];
+//            $restaurantReservation->adults = $_POST["adults"];
+//            $restaurantReservation->children = $_POST["children"];
+//            $restaurantReservation->totalPrice = $this->calculateTotalPrice($restaurantReservation);
+//
+//            if(!$this->updateAvailableSeats($restaurantReservation)) {
+//                echo "<h1>No more seats available</h1>";
+//                exit;
+//            }
+//
+//            $this->manageRestaurantService->addReservation($restaurantReservation);
+            //Hardcoded values
+            $this->cartController->methodAddToCart(20, $_POST["adults"]);
+            if($_POST["children"] > 0) {
+                $this->cartController->methodAddToCart(41, $_POST["children"]);
             }
 
-            $this->manageRestaurantService->addReservation($restaurantReservation);
-
-            $this->returnToIndex();
+            $this->goToCart();
         }else{
-            echo "<h1>Invalid Reservation</h1>";
+            echo "<h1>Error making reservation, try again.</h1>";
         }
     }
 
@@ -164,22 +172,27 @@ class RestaurantController {
 
         return $timeTickets;
     }
-    public function updateTime()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $date = $_POST['dates'];
-            $restaurantId = $_POST['restaurant'];
-            header('Content-Type: application/json');
-
-            $times = [];
-            $times = $this->getTimeByDate($date, $restaurantId);
-            $encoded = json_encode($times[0], JSON_FORCE_OBJECT);
-        }
-    }
+//    public function updateTime()
+//    {
+//        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//            $date = $_POST['dates'];
+//            $restaurantId = $_POST['restaurant'];
+//            header('Content-Type: application/json');
+//
+//            $times = [];
+//            $times = $this->getTimeByDate($date, $restaurantId);
+//            $encoded = json_encode($times[0], JSON_FORCE_OBJECT);
+//        }
+//    }
 
     public function returnToIndex()
     {
         header("Location: /restaurant");
+        exit();
+    }
+
+    public function goToCart() {
+        header("Location: /personalprogram");
         exit();
     }
 }

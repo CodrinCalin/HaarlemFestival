@@ -1,28 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Haarlem Festival Dance!</title>
+<?php
+include __DIR__ . '/../header.php';
+?>
     <link href="css/dance-style.css" rel="stylesheet">
-</head>
-<body>
-<!-- Navbar  -->
-    <?php require 'navbar.php'; ?>
 
     <?php require 'websitebackround.php'; ?>
 
-    <div class="vh-100 d-flex align-items-center justify-content-center text-center bg-cover bg-center text-white text-uppercase overlay-text-container" style="background-image: url('img/danceimages/backround-picture.png');">
-        <h1 class="overlay-text" style="font-size: 9vw;">Haarlem Dance</h1>
-    </div>
+    <?php foreach ($dancecontenthome as $dancecontenthome) : ?>
+        <div class="vh-100 d-flex align-items-center justify-content-center text-center bg-cover bg-center text-white text-uppercase overlay-text-container" style="background-image: url('<?= $dancecontenthome->getMainImageUrl(); ?>');">
+            <h1 class="overlay-text" style="font-size: 9vw;">Haarlem Dance</h1>
+        </div>
+    <?php endforeach; ?>
 
     <div class="content">
 
-            <?php require 'introductionhomepage.php'; ?>
 
-           <?php require 'artistscards.php'; ?>
+
+        <?php require 'introductionhomepage.php'; ?>
+
+        <?php require 'artistscards.php'; ?>
 
 
         <!-- Timetable section ----------------------------------------------------------------------------------------------------------->
