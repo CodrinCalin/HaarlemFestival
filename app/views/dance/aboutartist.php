@@ -2,6 +2,8 @@
 include __DIR__ . '/../header.php';
 ?>
     <link href="css/dance-style.css" rel="stylesheet">
+    <link href="css/dance-style-detail.css" rel="stylesheet">
+
     <main class="flex-fill">
         <!-- Background -->
         <?php require 'websitebackround.php'; ?>

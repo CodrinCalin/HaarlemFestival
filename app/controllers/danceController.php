@@ -27,6 +27,7 @@ class DanceController extends Controller
         $specialTickets = $danceService->getAllSpecialTickets();
         $venues = $danceService->getAllVenues();
         $model = $this->ticketService->getAllDanceTickets();
+        $dancecontenthome = $danceService->getAllDanceContentHome();
 
         require __DIR__ . '/../views/dance/index.php';
     }
