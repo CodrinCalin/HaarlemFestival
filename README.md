@@ -56,6 +56,10 @@ Accounts available:
 - [Jonathan Mauricio](https://github.com/jonathan-mauricio)
 - [Ignas Montvydas](https://github.com/IgnasMon)
 - [Kim van Schagen](https://github.com/KimvanSchagen)
+  
+## What I've Contributed To
+- [HaarlemFestival](https://github.com/OriginalOwner/HaarlemFestival): Codrin Calin has designed and implemented the Haarlem Dance! section of the project, included with the admin part of it.
+
 
 ### Credits:
 
